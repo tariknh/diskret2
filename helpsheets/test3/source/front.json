@@ -1,0 +1,31 @@
+[
+  {
+    "key": "answer-start",
+    "title": "Din prøve: dette skal du krysse av",
+    "search": "KRYSS AV • G = ⟨x⟩ ⊆ S6 • order 3 • a5=a6=a7=0 • a5=b5",
+    "blocks": [
+      ["h", "GRUPPER: KRYSS AV 1, 2, 3 OG 5"],
+      ["p", "**G=⟨x⟩ ⊆ S6, x har orden 3.** Da er G={e,x,x²} og |G|=3."],
+      ["table", {"headers": ["Nr.", "Påstand i prøven", "Dette velger du"], "widths": [27,374,106], "rows": [
+        ["1", "There exists an element g ∈ G such that the order of the subgroup ⟨g⟩ equals the order of G.", "**KRYSS AV**"],
+        ["2", "The only subgroups of G are the trivial subgroup {e}, and G itself.", "**KRYSS AV**"],
+        ["3", "The order of G is divisible by 3.", "**KRYSS AV**"],
+        ["4", "There exist elements g,h ∈ G such that gh ≠ hg.", "**LA STÅ TOM**"],
+        ["5", "The group G is finite.", "**KRYSS AV**"],
+        ["6", "None of the above", "**LA STÅ TOM**"]
+      ]}],
+      ["h", "REKURRENS: KRYSS AV 1, 3 OG 5"],
+      ["p", "**−4*x[n]+8*x[n-1]−12*x[n-2]=0**, altså a[n]=2*a[n-1]−3*a[n-2]. a[n] betyr aₙ."],
+      ["table", {"headers": ["Nr.", "Påstand i prøven", "Dette velger du"], "widths": [27,374,106], "rows": [
+        ["1", "If a[n] is a solution, and a5=a6=a7=0, then a[n]=0 for each n≥1.", "**KRYSS AV**"],
+        ["2", "If a0=3, a1=0, then a[n] can not be a solution.", "**LA STÅ TOM**"],
+        ["3", "If a[n] is a solution, and a0=−3 and a1=0, then a[n] is an integer for each n≥1.", "**KRYSS AV**"],
+        ["4", "If a0=0, a1=3 then a[n] can not be a solution.", "**LA STÅ TOM**"],
+        ["5", "If a[n] is a solution and b[n] = −a[n], for each n, then b[n] is also a solution.", "**KRYSS AV**"],
+        ["6", "a[n] and b[n] are solutions, and if a5=b5, then a[n]=b[n] for each n≥1.", "**LA STÅ TOM**"],
+        ["7", "None of the above", "**LA STÅ TOM**"]
+      ]}],
+      ["p", "**Match teksten hvis alternativene flyttes.** Rekurrensfasiten gjelder likningen over. Kort forklaring: side **{page:my-group}** og **{page:my-recurrence}**. Innhold: side **{page:contents-1}**."]
+    ]
+  }
+]

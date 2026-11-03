@@ -1,0 +1,315 @@
+{
+  "version": 5,
+  "date": "3. november 2026",
+  "pages": 51,
+  "page_numbers": {
+    "answer-start": 1,
+    "contents-1": 2,
+    "contents-2": 3,
+    "contents-3": 4,
+    "my-recurrence": 5,
+    "rec-roots": 6,
+    "rec-repeated": 7,
+    "rec-particular": 8,
+    "rec-particular-lookup": 9,
+    "rec-words": 10,
+    "rec-words-general": 11,
+    "rec-mc-rules": 12,
+    "rec-index": 13,
+    "rec-integers": 14,
+    "rec-coefficients": 15,
+    "rec-cases-a": 16,
+    "rec-cases-b": 17,
+    "rec-cases-c": 18,
+    "rec-cases-d": 19,
+    "rec-cases-e": 20,
+    "my-group": 21,
+    "group-read": 22,
+    "group-matrix-basic": 23,
+    "group-matrix-subgroups": 24,
+    "group-matrix-order": 25,
+    "group-source-cards-1": 26,
+    "group-source-cards-2": 27,
+    "group-source-cards-3": 28,
+    "group-source-cards-4": 29,
+    "permutation-product": 30,
+    "permutation-inverse": 31,
+    "D3-meaning": 32,
+    "D3-table": 33,
+    "subgroup-zn": 34,
+    "subgroup-pairs": 35,
+    "subgroup-pairs-answers": 36,
+    "mod-product": 37,
+    "mod-inverse": 38,
+    "mod-tables57": 39,
+    "mod-tables89": 40,
+    "mod-known45-49": 41,
+    "mod-known50": 42,
+    "index-product": 43,
+    "index-d4": 44,
+    "calculator": 45,
+    "answer-format": 46,
+    "sources-1": 47,
+    "sources-2": 48,
+    "sources-3": 49,
+    "sources-4": 50,
+    "source-notes": 51
+  },
+  "layout": [
+    {
+      "key": "answer-start",
+      "scale": 0.94,
+      "content_height": 505.91
+    },
+    {
+      "key": "contents-1",
+      "scale": 1,
+      "content_height": 504.4
+    },
+    {
+      "key": "contents-2",
+      "scale": 1,
+      "content_height": 504.4
+    },
+    {
+      "key": "contents-3",
+      "scale": 1,
+      "content_height": 292.4
+    },
+    {
+      "key": "my-recurrence",
+      "scale": 1,
+      "content_height": 476.4
+    },
+    {
+      "key": "rec-roots",
+      "scale": 1,
+      "content_height": 499.0
+    },
+    {
+      "key": "rec-repeated",
+      "scale": 1,
+      "content_height": 604.0
+    },
+    {
+      "key": "rec-particular",
+      "scale": 1,
+      "content_height": 476.0
+    },
+    {
+      "key": "rec-particular-lookup",
+      "scale": 1,
+      "content_height": 658.4
+    },
+    {
+      "key": "rec-words",
+      "scale": 1,
+      "content_height": 488.3
+    },
+    {
+      "key": "rec-words-general",
+      "scale": 1,
+      "content_height": 441.6
+    },
+    {
+      "key": "rec-mc-rules",
+      "scale": 1,
+      "content_height": 430.4
+    },
+    {
+      "key": "rec-index",
+      "scale": 1,
+      "content_height": 527.1
+    },
+    {
+      "key": "rec-integers",
+      "scale": 1,
+      "content_height": 484.0
+    },
+    {
+      "key": "rec-coefficients",
+      "scale": 1,
+      "content_height": 616.9
+    },
+    {
+      "key": "rec-cases-a",
+      "scale": 1,
+      "content_height": 573.0
+    },
+    {
+      "key": "rec-cases-b",
+      "scale": 1,
+      "content_height": 549.0
+    },
+    {
+      "key": "rec-cases-c",
+      "scale": 1,
+      "content_height": 549.0
+    },
+    {
+      "key": "rec-cases-d",
+      "scale": 1,
+      "content_height": 573.0
+    },
+    {
+      "key": "rec-cases-e",
+      "scale": 1,
+      "content_height": 480.5
+    },
+    {
+      "key": "my-group",
+      "scale": 1,
+      "content_height": 454.5
+    },
+    {
+      "key": "group-read",
+      "scale": 1,
+      "content_height": 551.2
+    },
+    {
+      "key": "group-matrix-basic",
+      "scale": 1,
+      "content_height": 478.5
+    },
+    {
+      "key": "group-matrix-subgroups",
+      "scale": 1,
+      "content_height": 463.4
+    },
+    {
+      "key": "group-matrix-order",
+      "scale": 1,
+      "content_height": 473.4
+    },
+    {
+      "key": "group-source-cards-1",
+      "scale": 1,
+      "content_height": 534.0
+    },
+    {
+      "key": "group-source-cards-2",
+      "scale": 1,
+      "content_height": 534.0
+    },
+    {
+      "key": "group-source-cards-3",
+      "scale": 1,
+      "content_height": 572.3
+    },
+    {
+      "key": "group-source-cards-4",
+      "scale": 1,
+      "content_height": 492.1
+    },
+    {
+      "key": "permutation-product",
+      "scale": 1,
+      "content_height": 547.8
+    },
+    {
+      "key": "permutation-inverse",
+      "scale": 1,
+      "content_height": 571.9
+    },
+    {
+      "key": "D3-meaning",
+      "scale": 1,
+      "content_height": 409.9
+    },
+    {
+      "key": "D3-table",
+      "scale": 1,
+      "content_height": 536.7
+    },
+    {
+      "key": "subgroup-zn",
+      "scale": 1,
+      "content_height": 527.6
+    },
+    {
+      "key": "subgroup-pairs",
+      "scale": 1,
+      "content_height": 478.4
+    },
+    {
+      "key": "subgroup-pairs-answers",
+      "scale": 1,
+      "content_height": 388.2
+    },
+    {
+      "key": "mod-product",
+      "scale": 1,
+      "content_height": 477.7
+    },
+    {
+      "key": "mod-inverse",
+      "scale": 1,
+      "content_height": 535.5
+    },
+    {
+      "key": "mod-tables57",
+      "scale": 1,
+      "content_height": 606.7
+    },
+    {
+      "key": "mod-tables89",
+      "scale": 1,
+      "content_height": 606.7
+    },
+    {
+      "key": "mod-known45-49",
+      "scale": 1,
+      "content_height": 494.4
+    },
+    {
+      "key": "mod-known50",
+      "scale": 1,
+      "content_height": 585.0
+    },
+    {
+      "key": "index-product",
+      "scale": 1,
+      "content_height": 565.7
+    },
+    {
+      "key": "index-d4",
+      "scale": 1,
+      "content_height": 497.2
+    },
+    {
+      "key": "calculator",
+      "scale": 1,
+      "content_height": 605.9
+    },
+    {
+      "key": "answer-format",
+      "scale": 1,
+      "content_height": 509.1
+    },
+    {
+      "key": "sources-1",
+      "scale": 1,
+      "content_height": 587.6
+    },
+    {
+      "key": "sources-2",
+      "scale": 1,
+      "content_height": 587.6
+    },
+    {
+      "key": "sources-3",
+      "scale": 1,
+      "content_height": 587.6
+    },
+    {
+      "key": "sources-4",
+      "scale": 1,
+      "content_height": 255.6
+    },
+    {
+      "key": "source-notes",
+      "scale": 1,
+      "content_height": 516.5
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+[
+  {
+    "id": "T01",
+    "source_file": "regler/=== Test 3 (topics 7–9) – MA224 ===.txt",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "9af17a4a434496445e48dd3a012111f496ff8a5b20a1f89e9381ed4cad2e60d0",
+    "kind": "study_note",
+    "format": "text",
+    "notes": [
+      "Not authoritative answer key: old selections/partial scores do not prove truth.",
+      "Contains incorrect claimed answers: equality at one index does not determine an order-2 solution; zero triple -253 fails where -256 is required; Z7×Z10 is finite and cyclic."
+    ]
+  },
+  {
+    "id": "T02",
+    "source_file": "regler/gruppe-mønstre_Z7xZ10_og_P5.txt",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "a63ea6bde12b8de0e0e192b528d1a1ebdc8a85131e7150b38ca09a192b2c1232",
+    "kind": "study_note",
+    "format": "text",
+    "notes": [
+      "Not authoritative answer key: old selections/partial scores do not prove truth.",
+      "Group structure facts largely correct; None of the above depends on the actual option list, not a universal truth value."
+    ]
+  },
+  {
+    "id": "I01",
+    "source_file": "regler/røter_ext.png",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "f839bc31b1ba52c2bd2e8a27af960bc97a75c8d86104753764441a20414f3d4a",
+    "kind": "study_note",
+    "format": "image",
+    "dimensions": [
+      3024,
+      4032
+    ],
+    "topics": [
+      "D3",
+      "subgroup",
+      "index",
+      "permutation"
+    ]
+  },
+  {
+    "id": "I02",
+    "source_file": "regler/røtter.png",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "511bad989184104cab20fc5cc7d646cfb761538f966dbc50216da34924e4a638",
+    "kind": "study_note",
+    "format": "image",
+    "dimensions": [
+      3024,
+      4032
+    ],
+    "topics": [
+      "mod_products",
+      "initial_distinct",
+      "initial_repeated",
+      "particular"
+    ],
+    "notes": [
+      "Handwritten quadratic formula shown in monic form; general recurrence requires denominator 2*A."
+    ]
+  },
+  {
+    "id": "I03",
+    "source_file": "regler/tabell.png",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "e4f0c2d60be9f0e07eda23c473810c2675a19b7435a42067b2f11cfc5854d66f",
+    "kind": "study_note",
+    "format": "image",
+    "dimensions": [
+      3024,
+      4032
+    ],
+    "topics": [
+      "D3",
+      "subgroup",
+      "index"
+    ]
+  },
+  {
+    "id": "I04",
+    "source_file": "regler/tabell2.png",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "df32e7fbcd619c931ad755d4a54f30bbc09a21fa057b3eaf5eeb24ef6574f56e",
+    "kind": "study_note",
+    "format": "image",
+    "dimensions": [
+      3024,
+      4032
+    ],
+    "topics": [
+      "D3",
+      "index",
+      "words"
+    ]
+  }
+]

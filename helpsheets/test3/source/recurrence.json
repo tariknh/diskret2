@@ -1,0 +1,1422 @@
+[
+  {
+    "key": "my-recurrence",
+    "title": "Din rekurrensoppgave: kryss av 1, 3 og 5",
+    "search": "Consider the recurrence relation • −4*x[n]+8*x[n-1]−12*x[n-2]=0 • a5=b5",
+    "blocks": [
+      [
+        "box",
+        "**KRYSS AV: 1, 3 OG 5.**\n**LA STÅ TOM: 2, 4, 6 OG «NONE OF THE ABOVE».**"
+      ],
+      [
+        "code",
+        "-4*x[n]+8*x[n-1]-12*x[n-2]=0\na[n]=2*a[n-1]-3*a[n-2]"
+      ],
+      [
+        "p",
+        "Dette er likningen fra skjermbildet ditt. x[n], a[n] og b[n] er ulike navn på følger som skal følge samme regel. a[n] betyr aₙ."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Hele påstanden",
+            "Velg",
+            "Kort grunn"
+          ],
+          "rows": [
+            [
+              "1. If a[n] is a solution, and a5=a6=a7=0, then a[n]=0 for each n≥1.",
+              "**KRYSS AV**",
+              "To nabonuller er nok. Her har du tre."
+            ],
+            [
+              "2. If a0=3, a1=0, then a[n] can not be a solution.",
+              "**LA STÅ TOM**",
+              "To startverdier kan alltid videreføres i denne likningen."
+            ],
+            [
+              "3. If a[n] is a solution, and a0=−3 and a1=0, then a[n] is an integer for each n≥1.",
+              "**KRYSS AV**",
+              "Regelen bruker bare heltallene 2 og −3."
+            ],
+            [
+              "4. If a0=0, a1=3 then a[n] can not be a solution.",
+              "**LA STÅ TOM**",
+              "Også disse to startverdiene gir en løsning."
+            ],
+            [
+              "5. If a[n] is a solution and b[n] = −a[n], for each n, then b[n] is also a solution.",
+              "**KRYSS AV**",
+              "Du kan gange hele den homogene likningen med −1."
+            ],
+            [
+              "6. a[n] and b[n] are solutions, and if a5=b5, then a[n]=b[n] for each n≥1.",
+              "**LA STÅ TOM**",
+              "Én lik verdi er ikke nok til å bestemme en følge av orden 2."
+            ],
+            [
+              "7. None of the above",
+              "**LA STÅ TOM**",
+              "Påstand 1, 3 og 5 er sanne."
+            ]
+          ],
+          "widths": [
+            260,
+            100,
+            147
+          ]
+        }
+      ],
+      [
+        "p",
+        "**Fellen var påstand 6.** Nullfølgen har a5=0 og a6=0. En annen løsning med b0=11,b1=12 har b5=0 og b6=243. Følgene møtes ved 5 og skiller lag ved 6. Regning og andre indekser: {page:rec-index}."
+      ]
+    ]
+  },
+  {
+    "key": "rec-roots",
+    "title": "Lukket form: finn røtter, så tallene foran",
+    "search": "Find the solution to the initial value problem • distinct roots • initial conditions",
+    "blocks": [
+      [
+        "p",
+        "Når oppgaven gir en rekurrens med a[n], a[n-1], a[n-2] og to startverdier, skal du finne en formel som bare bruker **n**."
+      ],
+      [
+        "code",
+        "A*a[n]+B*a[n-1]+C*a[n-2]=0\nA*r^2+B*r+C=0"
+      ],
+      [
+        "p",
+        "Behold fortegnene. Casio fx-9860GIII: **MENU → EQUA → POLY → grad 2**. Skriv A, B, C. Eller regn r=(−B±sqrt(B²−4*A*C))/(2*A)."
+      ],
+      [
+        "box",
+        "**To ulike røtter r1,r2:** a[n]=U*r1^n+V*r2^n.\n**Én rot r to ganger:** a[n]=(U+V*n)*r^n. Se {page:rec-repeated}."
+      ],
+      [
+        "h",
+        "Gjennomregnet eksempel B19"
+      ],
+      [
+        "code",
+        "a[n]+2*a[n-1]-8*a[n-2]=0, a0=2, a1=10\nr^2+2*r-8=(r-2)*(r+4)=0\nr1=2, r2=-4\na[n]=U*2^n+V*(-4)^n\nn=0: U+V=2\nn=1: 2*U-4*V=10\nU=3, V=-1"
+      ],
+      [
+        "box",
+        "**Skriv som svar:** 3*2^n-(-4)^n"
+      ],
+      [
+        "p",
+        "Rask kontroll: n=0 gir 3−1=2. n=1 gir 6+4=10. Begge stemmer med startverdiene."
+      ],
+      [
+        "h",
+        "Hvis du vil regne U og V direkte"
+      ],
+      [
+        "code",
+        "U=(a1-r2*a0)/(r1-r2)\nV=a0-U"
+      ],
+      [
+        "p",
+        "Ikke la U,V stå igjen når oppgaven har gitt bestemte startverdier. Finn tallene. I en **general solution** kan frie konstanter stå igjen hvis oppgaven tillater det."
+      ]
+    ]
+  },
+  {
+    "key": "rec-repeated",
+    "title": "Like røtter og ferdige startverdi-eksempler",
+    "search": "repeated root • double root • Find the solution to the initial value problem • negative base",
+    "blocks": [
+      [
+        "box",
+        "**Dobbel rot:** bruk (U+V*n)*r^n.\nU=a0, V=a1/r−a0 når r≠0. Leddet V*n må være med."
+      ],
+      [
+        "code",
+        "N03: a[n]+6*a[n-1]+9*a[n-2]=0, a0=1,a1=-9\n(r+3)^2=0 → r=-3\nU=1, V=(-9)/(-3)-1=2\nSvar: (1+2*n)*(-3)^n"
+      ],
+      [
+        "p",
+        "Her er kontrollerte svar fra prøvemappen. **a0,a1 må også stemme med din oppgave.** Kilde-ID-ene står i kildeoversikten."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Kilde / likning",
+            "a0 ; a1",
+            "Svar som kan skrives inn"
+          ],
+          "rows": [
+            [
+              "B06\na[n]-2*a[n-1]-8*a[n-2]=0",
+              "1 ; -8",
+              "-4^n+2*(-2)^n"
+            ],
+            [
+              "B07\na[n]+2*a[n-1]-3*a[n-2]=0",
+              "1 ; -7",
+              "2*(-3)^n-1"
+            ],
+            [
+              "B08/B49\na[n]-a[n-1]-6*a[n-2]=0",
+              "1 ; -12",
+              "-2*3^n+3*(-2)^n"
+            ],
+            [
+              "B09\na[n]+4*a[n-1]+4*a[n-2]=0",
+              "-2 ; 6",
+              "(-2-n)*(-2)^n"
+            ],
+            [
+              "B19\na[n]+2*a[n-1]-8*a[n-2]=0",
+              "2 ; 10",
+              "3*2^n-(-4)^n"
+            ],
+            [
+              "B21\na[n]-4*a[n-1]+4*a[n-2]=0",
+              "1 ; 10",
+              "(1+4*n)*2^n"
+            ],
+            [
+              "B23\na[n]+a[n-1]-6*a[n-2]=0",
+              "-1 ; 8",
+              "2^n-2*(-3)^n"
+            ],
+            [
+              "B26\na[n]+3*a[n-1]-4*a[n-2]=0",
+              "7 ; -13",
+              "4*(-4)^n+3"
+            ],
+            [
+              "B39\na[n]+4*a[n-1]+3*a[n-2]=0",
+              "5 ; -13",
+              "(-1)^n+4*(-3)^n"
+            ],
+            [
+              "N01\na[n]-2*a[n-1]-3*a[n-2]=0",
+              "0 ; -4",
+              "-3^n+(-1)^n"
+            ]
+          ],
+          "widths": [
+            245,
+            62,
+            200
+          ]
+        }
+      ],
+      [
+        "p",
+        "**−3^n betyr −(3^n). (−3)^n har −3 som grunntall.** Dette gir forskjellige svar når n er partall. Dobbel rot 0 må behandles direkte: a[n]=0 for n≥2, startverdiene står separat."
+      ]
+    ]
+  },
+  {
+    "key": "rec-particular",
+    "title": "En gitt p[n]: lag en annen løsning og finn a1",
+    "search": "The following sequence • particular solution • special solution • Find another solution • Given the initial condition",
+    "blocks": [
+      [
+        "p",
+        "Når oppgaven allerede gir én løsning p[n], kopierer du den nøyaktig og legger til én potens. Du trenger ikke finne p[n] på nytt."
+      ],
+      [
+        "code",
+        "A*a[n]+B*a[n-1]=f(n)\nr=-B/A\nEn annen løsning: p[n]+r^n"
+      ],
+      [
+        "p",
+        "Flytt alle a-ledd til venstre før du leser A og B. Høyresiden kan være alt som bare avhenger av n. Formelen her brukes med A≠0 og r≠0, som i disse prøvevariantene."
+      ],
+      [
+        "box",
+        "**Del a:** svar med p[n]+r^n, uten frie konstanter. Bare p[n] er samme løsning og er derfor ikke nok når det står «another … not equal to p[n]».\n**Del b:** bruk den nye startverdien a0 og sett n=1 rett inn i likningen."
+      ],
+      [
+        "h",
+        "N02: brøk foran a[n]"
+      ],
+      [
+        "code",
+        "a[n]/2+4*a[n-1]=(-3)^n\np[n]=2*(-3)^(n+1)/5\nA=1/2, B=4 → r=-4/(1/2)=-8\nDel a: 2*(-3)^(n+1)/5+(-8)^n"
+      ],
+      [
+        "h",
+        "N02: a0=4/5, finn a1"
+      ],
+      [
+        "code",
+        "a1/2+4*(4/5)=-3\na1/2=-3-16/5=-31/5\na1=-62/5"
+      ],
+      [
+        "box",
+        "**Del b: skriv −62/5.** Det er ikke nødvendig å bruke formelen fra del a."
+      ],
+      [
+        "p",
+        "Hvis du vil finne hele løsningen som også passer med a0: a[n]=p[n]+C*r^n, der **C=a0−p[0]**. For N02 blir C=2. Del a og del b trenger ikke bruke samme C."
+      ]
+    ]
+  },
+  {
+    "key": "rec-particular-lookup",
+    "title": "Gitt p[n]: alle koeffisient- og a1-variantene",
+    "search": "special solution • another solution • a[n]/3 • a[n]/2 • 5*a[n] • a1",
+    "blocks": [
+      [
+        "p",
+        "Finn raden med dine a-ledd og din a0. **I del a: kopier hele den oppgitte p[n], og legg til potensen i midtkolonnen.** Midtkolonnen er bare tillegget, ikke hele svaret."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Kilde / a-ledd / startverdi",
+            "Tillegg til p[n]",
+            "Riktig a1"
+          ],
+          "rows": [
+            [
+              "B02: a[n]/3+3*a[n-1]\na0=-20/17",
+              "(-9)^n",
+              "309/34"
+            ],
+            [
+              "B11: 4*a[n]-5*a[n-1]\na0=11/6",
+              "(5/4)^n",
+              "29/12"
+            ],
+            [
+              "B13: 4*a[n]+2*a[n-1]\na0=13/10",
+              "(-1/2)^n",
+              "-7/5"
+            ],
+            [
+              "B14: 5*a[n]+3*a[n-1]\na0=7/4",
+              "(-3/5)^n",
+              "-67/60"
+            ],
+            [
+              "B17: -a[n]+a[n-1]/2\na0=-3/2",
+              "(1/2)^n",
+              "-1/4"
+            ],
+            [
+              "B18/B48: -a[n]/3-a[n-1]\na0=1/8",
+              "(-3)^n",
+              "-123/8"
+            ],
+            [
+              "B20: -5*a[n]+2*a[n-1]\na0=23/13",
+              "(2/5)^n",
+              "7/65"
+            ],
+            [
+              "B22: 3*a[n]-2*a[n-1]\na0=-2",
+              "(2/3)^n",
+              "-7/6"
+            ],
+            [
+              "B25: -a[n]/2+a[n-1]/2\na0=-9/2",
+              "1",
+              "-29/2"
+            ],
+            [
+              "B29/B30: -5*a[n]-4*a[n-1]\na0=2/3",
+              "(-4/5)^n",
+              "-2/15"
+            ],
+            [
+              "B31: a[n]/2+2*a[n-1]\na0=-3",
+              "(-4)^n",
+              "8"
+            ],
+            [
+              "B37: a[n]/2-a[n-1]/2\na0=1/3",
+              "1",
+              "-11/3"
+            ],
+            [
+              "B38: 5*a[n]-a[n-1]/3\na0=167/76",
+              "(1/15)^n",
+              "-973/1140"
+            ],
+            [
+              "B43: 5*a[n]-a[n-1]/2\na0=37/31",
+              "(1/10)^n",
+              "-149/310"
+            ],
+            [
+              "N02: a[n]/2+4*a[n-1]\na0=4/5",
+              "(-8)^n",
+              "-62/5"
+            ]
+          ],
+          "widths": [
+            270,
+            127,
+            110
+          ]
+        }
+      ],
+      [
+        "p",
+        "B38: tillegget er **(1/15)^n**, ikke (1/5)^n. Her må også den oppgitte brøken 167/76 leses riktig. Tabellen er regnet fra likningene; feil elevsvar i originalfilene er rettet."
+      ]
+    ]
+  },
+  {
+    "key": "rec-words",
+    "title": "Ordoppgaven: tell A og X, så bruk malen",
+    "search": "Let A and X be the sets • valid words • starts with • ends with • adjacent letters • Find a recurrence relation",
+    "blocks": [
+      [
+        "p",
+        "Denne malen gjelder de tre reglene i prøvene: ordet starter med et A-tegn, slutter med et A-tegn og kan ikke ha to X-tegn ved siden av hverandre."
+      ],
+      [
+        "code",
+        "p=antall tegn i A\nq=antall tegn i X"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Dette legger du til et gyldig ord",
+            "Antall valg",
+            "Bidrag"
+          ],
+          "rows": [
+            [
+              "Én A-bokstav",
+              "p",
+              "p*a[n-1]"
+            ],
+            [
+              "Én X-bokstav og deretter én A-bokstav",
+              "q*p",
+              "p*q*a[n-2]"
+            ]
+          ],
+          "widths": [
+            240,
+            80,
+            187
+          ]
+        }
+      ],
+      [
+        "box",
+        "**Rekurrens for n≥3:**\na[n]=p*a[n-1]+p*q*a[n-2]\n**Skriv som likning:** a[n]-p*a[n-1]-p*q*a[n-2]=0"
+      ],
+      [
+        "h",
+        "De korte ordene kan telles rett frem"
+      ],
+      [
+        "code",
+        "a1=p\na2=p^2\na3=p^3+p^2*q"
+      ],
+      [
+        "p",
+        "Ved lengde 1 kan du bare velge ett A-tegn. Ved lengde 3 er de eneste mønstrene **AAA** og **AXA**: p³ valg og p²q valg. Legg sammen."
+      ],
+      [
+        "h",
+        "Eksempel: A har 3 tegn og X har 6 tegn"
+      ],
+      [
+        "code",
+        "a[n]-3*a[n-1]-18*a[n-2]=0\na1=3\na3=3^3+3^2*6=27+54=81"
+      ],
+      [
+        "p",
+        "Hvert tegn teller én gang. Mengden {!,*,+,−} har fire tegn. Ikke kopier likningen i oppgavens syntax help; den viser bare hvordan svar skrives."
+      ]
+    ]
+  },
+  {
+    "key": "rec-words-general",
+    "title": "Ordoppgaven: ferdige tall og generell løsning",
+    "search": "Find the general solution to the reccurence relation • general solution • a1 • a3",
+    "blocks": [
+      [
+        "p",
+        "For den samme ordregelen blir den karakteristiske likningen r²−p*r−p*q=0. De to røttene er alltid forskjellige når p,q er positive."
+      ],
+      [
+        "code",
+        "r1=(p+sqrt(p^2+4*p*q))/2\nr2=(p-sqrt(p^2+4*p*q))/2\nGenerell løsning: U*r1^n+V*r2^n"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "p ; q",
+            "Rekurrens",
+            "a1 ; a3",
+            "Røtter r1 og r2"
+          ],
+          "rows": [
+            [
+              "3 ; 3",
+              "a[n]=3*a[n-1]+9*a[n-2]",
+              "3 ; 54",
+              "(3±sqrt(45))/2"
+            ],
+            [
+              "3 ; 4",
+              "a[n]=3*a[n-1]+12*a[n-2]",
+              "3 ; 63",
+              "(3±sqrt(57))/2"
+            ],
+            [
+              "3 ; 6",
+              "a[n]=3*a[n-1]+18*a[n-2]",
+              "3 ; 81",
+              "6 og −3"
+            ],
+            [
+              "4 ; 3",
+              "a[n]=4*a[n-1]+12*a[n-2]",
+              "4 ; 112",
+              "6 og −2"
+            ],
+            [
+              "5 ; 4",
+              "a[n]=5*a[n-1]+20*a[n-2]",
+              "5 ; 225",
+              "(5±sqrt(105))/2"
+            ],
+            [
+              "6 ; 3",
+              "a[n]=6*a[n-1]+18*a[n-2]",
+              "6 ; 324",
+              "3±sqrt(27)"
+            ]
+          ],
+          "widths": [
+            48,
+            210,
+            70,
+            179
+          ]
+        }
+      ],
+      [
+        "h",
+        "Svar som kan kopieres når p=3,q=6"
+      ],
+      [
+        "code",
+        "U*6^n+V*(-3)^n"
+      ],
+      [
+        "h",
+        "Svar som kan kopieres når p=3,q=4"
+      ],
+      [
+        "code",
+        "U*((3+sqrt(57))/2)^n+V*((3-sqrt(57))/2)^n"
+      ],
+      [
+        "box",
+        "«General solution» tillater frie konstanter når oppgaven sier det. **Begge røttene skal opphøyes i n.** Bruk sqrt(...) og eksakte brøker, ikke avrundede desimaltall."
+      ]
+    ]
+  },
+  {
+    "key": "rec-mc-rules",
+    "title": "Rekurrensflervalg: finn den konkrete regelen",
+    "search": "Select every statement below which is true • zero sequence • cannot be a solution • is also a solution",
+    "blocks": [
+      [
+        "p",
+        "Reglene nedenfor gjelder **A*a[n]+B*a[n-1]+C*a[n-2]=0**, for n≥2, med **A≠0 og C≠0**, over numeriske følger. Høyresiden 0 er viktig: likningen er homogen."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Engelsk påstand / ord å søke etter",
+            "Hva velger du her?"
+          ],
+          "rows": [
+            [
+              "The zero sequence a[n]=0 is a solution.",
+              "**KRYSS AV.** Bare nuller gir 0=0."
+            ],
+            [
+              "The zero sequence a[n]=0 is not a solution.",
+              "**LA STÅ TOM.** Ordet «not» gjør påstanden falsk."
+            ],
+            [
+              "If a is a solution, then b[n]=k*a[n] is also a solution.",
+              "**KRYSS AV** for et fast tall k, også −1,4,9,13,18."
+            ],
+            [
+              "If a and b are solutions, then d[n]=a[n]+3*b[n] is also a solution.",
+              "**KRYSS AV.** Summer og faste multipler virker."
+            ],
+            [
+              "If a0=u and a1=v, then a[n] can not be a solution.",
+              "**LA STÅ TOM.** Alle to numeriske startverdier kan videreføres. Brøker er lov."
+            ],
+            [
+              "If a0=u, a1=v and a2=w, then a[n] could be a solution.",
+              "**KRYSS AV akkurat når A*w+B*v+C*u=0.** Ellers la stå tom."
+            ],
+            [
+              "If a[k]=b[k], then a[n]=b[n] for each n≥1.",
+              "**LA STÅ TOM.** Én felles verdi er ikke nok."
+            ],
+            [
+              "Two consecutive values equal / consecutive zero terms",
+              "**KRYSS AV.** Se {page:rec-index}."
+            ],
+            [
+              "a[n] is an integer / at least one term is not an integer",
+              "Bruk koeffisientene og startverdiene: {page:rec-integers}."
+            ],
+            [
+              "None of the above",
+              "Kryss bare av hvis **alle** de andre påstandene er falske."
+            ]
+          ],
+          "widths": [
+            277,
+            230
+          ]
+        }
+      ],
+      [
+        "box",
+        "Nøyaktige avkryssinger for alle de observerte rekurrensflervalgene står fra {page:rec-cases-a}. Hvis alternativene flyttes, match påstandsteksten og vilkårene, ikke bare nummeret."
+      ]
+    ]
+  },
+  {
+    "key": "rec-index",
+    "title": "Like ledd: ett treff er ikke nok",
+    "search": "a1=b1 and a3=b3 • a4=b4 and a5=b5 • a2=b2 and a4=b4 • a5=b5",
+    "blocks": [
+      [
+        "p",
+        "Skriv rekurrensen som **a[n]=P*a[n-1]+Q*a[n-2]**. Her gjelder reglene for Q≠0. Se de små tallene under bokstavene."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Dette er oppgitt",
+            "Blir hele følgene like?"
+          ],
+          "rows": [
+            [
+              "Bare a5=b5",
+              "**NEI.** Ett ledd gir bare én betingelse."
+            ],
+            [
+              "a4=b4 OG a5=b5",
+              "**JA.** To naboverdier bestemmer resten begge veier."
+            ],
+            [
+              "a1=b1 OG a3=b3",
+              "**JA når P≠0.** Finn a2 fra a3=P*a2+Q*a1."
+            ],
+            [
+              "a2=b2 OG a4=b4",
+              "**JA når P≠0.** Finn a3 fra a4=P*a3+Q*a2."
+            ],
+            [
+              "a5=a6=a7=0",
+              "**JA, hele følgen er null.** a5=a6=0 er allerede nok."
+            ]
+          ],
+          "widths": [
+            245,
+            262
+          ]
+        }
+      ],
+      [
+        "h",
+        "Moteksempel til din påstand 6"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "n",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "rows": [
+            [
+              "a[n]",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "b[n]",
+              "11",
+              "12",
+              "−9",
+              "−54",
+              "−81",
+              "0",
+              "243"
+            ]
+          ],
+          "widths": [
+            73,
+            62,
+            62,
+            62,
+            62,
+            62,
+            62,
+            62
+          ]
+        }
+      ],
+      [
+        "p",
+        "Begge følger oppfyller a[n]=2*a[n-1]−3*a[n-2]. De har samme verdi ved 5, men forskjellig verdi ved 6. Derfor skal «a5=b5 ⇒ alle like» stå tom."
+      ],
+      [
+        "h",
+        "Hvis de oppgitte indeksene har større avstand"
+      ],
+      [
+        "p",
+        "La d være avstanden mellom de to indeksene. Lag H0=0,H1=1 og **samme** regel H[n]=P*H[n-1]+Q*H[n-2]."
+      ],
+      [
+        "box",
+        "**H[d]≠0:** de to like verdiene bestemmer hele følgen.\n**H[d]=0:** de er ikke nok.\nEksempler: H2=P og H3=P²+Q. Dette krever Q≠0."
+      ],
+      [
+        "p",
+        "Hvis P=0, er to ledd med ett hull mellom ikke nok. Eksempel a[n]=a[n-2]: a1 og a3 bestemmer ikke a2. Hvis Q=0, kan regelen om å regne bakover svikte."
+      ]
+    ]
+  },
+  {
+    "key": "rec-integers",
+    "title": "Heltall og tre startverdier: ferdige kontroller",
+    "search": "an is an integer for each n • at least one index • not an integer • could be a solution",
+    "blocks": [
+      [
+        "h",
+        "1. Isoler a[n], og se på tallene foran"
+      ],
+      [
+        "code",
+        "A*a[n]+B*a[n-1]+C*a[n-2]=0\na[n]=P*a[n-1]+Q*a[n-2]\nP=-B/A, Q=-C/A"
+      ],
+      [
+        "box",
+        "Hvis **P,Q,a0,a1 er heltall**, blir alle ledd heltall.\nDa: «is an integer for each n» = **KRYSS AV**.\n«At least one … is not an integer» = **LA STÅ TOM**."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Kilde og startverdier",
+            "Riktig a2 / test",
+            "Påstanden i prøven"
+          ],
+          "rows": [
+            [
+              "B03: a0=3,a1=3",
+              "−3/2",
+              "Minst ett ikke heltall: **KRYSS AV**"
+            ],
+            [
+              "B27: a0=5,a1=4",
+              "−31/30",
+              "Alle heltall: **LA STÅ TOM**"
+            ],
+            [
+              "B35: a0=2,a1=2",
+              "−6/5",
+              "Minst ett ikke heltall: **KRYSS AV**"
+            ],
+            [
+              "B36: a0=5,a1=5",
+              "−25/14",
+              "Minst ett ikke heltall: **KRYSS AV**"
+            ],
+            [
+              "N04: a0=5,a1=3",
+              "−9/7",
+              "Alle heltall: **LA STÅ TOM**"
+            ],
+            [
+              "B15: a0=48,a1=−256,foreslått a2=−1165",
+              "Riktig a2=−1168",
+              "Could be a solution: **LA STÅ TOM**"
+            ],
+            [
+              "B33: a0=0,a1=−128,foreslått a2=−253",
+              "Riktig a2=−256",
+              "Could be a solution: **LA STÅ TOM**"
+            ]
+          ],
+          "widths": [
+            180,
+            130,
+            197
+          ]
+        }
+      ],
+      [
+        "p",
+        "En brøk i selve koeffisientene er et signal om å undersøke, ikke et automatisk bevis. Ett brøkledd er nok til å bevise «minst ett ledd er ikke heltall». Ett heltallig a2 beviser ikke alle ledd: a[n]=(a[n-1]+a[n-2])/2,a0=0,a1=2 gir a2=1, men a3=3/2."
+      ],
+      [
+        "p",
+        "Tre gitte startverdier: sett u,v,w inn i **A*w+B*v+C*u**. Resultat 0 betyr at de passer. To startverdier alene kan alltid videreføres når A≠0."
+      ]
+    ]
+  },
+  {
+    "key": "rec-coefficients",
+    "title": "Alle rekurrensflervalgene: match din likning",
+    "search": "Consider the recurrence relation • coefficients • integer • 12 • 30 • 14 • -4",
+    "blocks": [
+      [
+        "p",
+        "Her er alle de ti forskjellige rekurrensene vi har funnet i flervalg. x[n] og a[n] betyr det samme i dette oppslaget. Kolonnen «Heltall?» forutsetter heltallige startverdier."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Kilde og likning",
+            "a[n]=P*a[n-1]+Q*a[n-2]",
+            "Heltall?"
+          ],
+          "rows": [
+            [
+              "B03\n12*a[n]+2*a[n-1]+4*a[n-2]=0",
+              "P=-1/6, Q=-1/3",
+              "Undersøk startverdiene"
+            ],
+            [
+              "B05\n4*a[n]-12*a[n-1]-12*a[n-2]=0",
+              "P=3, Q=3",
+              "**ALLE**"
+            ],
+            [
+              "B15\n4*a[n]-16*a[n-1]+12*a[n-2]=0",
+              "P=4, Q=-3",
+              "**ALLE**"
+            ],
+            [
+              "B16\n3*a[n]-9*a[n-1]+6*a[n-2]=0",
+              "P=3, Q=-2",
+              "**ALLE**"
+            ],
+            [
+              "B27\n30*a[n]+4*a[n-1]+3*a[n-2]=0",
+              "P=-2/15, Q=-1/10",
+              "Undersøk startverdiene"
+            ],
+            [
+              "B33\n4*a[n]-8*a[n-1]+8*a[n-2]=0",
+              "P=2, Q=-2",
+              "**ALLE**"
+            ],
+            [
+              "B35\n10*a[n]+1*a[n-1]+5*a[n-2]=0",
+              "P=-1/10, Q=-1/2",
+              "Undersøk startverdiene"
+            ],
+            [
+              "B36\n14*a[n]+1*a[n-1]+4*a[n-2]=0",
+              "P=-1/14, Q=-2/7",
+              "Undersøk startverdiene"
+            ],
+            [
+              "N04\n14*a[n]+1*a[n-1]+3*a[n-2]=0",
+              "P=-1/14, Q=-3/14",
+              "Undersøk startverdiene"
+            ],
+            [
+              "Din prøve\n-4*a[n]+8*a[n-1]-12*a[n-2]=0",
+              "P=2, Q=-3",
+              "**ALLE**"
+            ]
+          ],
+          "widths": [
+            244,
+            170,
+            93
+          ]
+        }
+      ],
+      [
+        "h",
+        "Full heltallstest hvis nye tall gir brøkkoeffisienter"
+      ],
+      [
+        "p",
+        "For **rasjonale P,Q, Q≠0 og heltallige a0,a1**, når minst én av P,Q ikke er et heltall:"
+      ],
+      [
+        "box",
+        "a0=a1=0 → alle ledd er heltall.\na0=0,a1≠0 → minst ett ledd er ikke heltall.\nEllers: regn r=a1/a0. Alle ledd er heltall **akkurat når r er et heltall og r²−P*r−Q=0**. Da er a[n]=a0*r^n. Hvis testen feiler, kommer det minst ett brøkledd."
+      ],
+      [
+        "p",
+        "Eksempel: P=5/2,Q=−1,a0=1,a1=2. r=2 og 4−5+1=0, så følgen er 2^n og har bare heltall selv om P er en brøk."
+      ]
+    ]
+  },
+  {
+    "key": "rec-cases-a",
+    "title": "Ferdig avkryssing: B03, B05",
+    "search": "Consider the recurrence relation • 12*a[n]+2*a[n-1]+4*a[n-2]=0 • 4*a[n]-12*a[n-1]-12*a[n-2]=0",
+    "blocks": [
+      [
+        "p",
+        "Match **likningen og påstandsteksten**. Numrene gjelder rekkefølgen i disse kildefilene. a[n] betyr aₙ. Flyttes alternativene, følger svaret teksten."
+      ],
+      [
+        "h",
+        "B03: KRYSS AV 1, 2, 5"
+      ],
+      [
+        "code",
+        "12*a[n]+2*a[n-1]+4*a[n-2]=0"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Hele påstanden",
+            "Velg"
+          ],
+          "rows": [
+            [
+              "1. If a[n] and b[n] are two solutions, then d[n]=a[n]+3*b[n] is also a solution.",
+              "**KRYSS AV**"
+            ],
+            [
+              "2. If a[n] is a solution, and a0=3 and a1=3, then there exists at least one index n such that a[n] is not an integer.",
+              "**KRYSS AV**"
+            ],
+            [
+              "3. If a0=3, a1=−5, then a[n] can not be a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "4. a[n] and b[n] are solutions, and if a3=b3, then a[n]=b[n] for each n≥1.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "5. If a[n] is a solution, and a3=a4=a5=0, then a[n]=0 for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "6. The zero sequence a[n]=0 is not a solution.",
+              "**LA STÅ TOM**"
+            ]
+          ],
+          "widths": [
+            402,
+            105
+          ]
+        }
+      ],
+      [
+        "p",
+        "**None of the above: LA STÅ TOM.**"
+      ],
+      [
+        "h",
+        "B05: KRYSS AV 1, 3, 4"
+      ],
+      [
+        "code",
+        "4*a[n]-12*a[n-1]-12*a[n-2]=0"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Hele påstanden",
+            "Velg"
+          ],
+          "rows": [
+            [
+              "1. If a[n] and b[n] are solutions, and if a1=b1 and a3=b3, then a[n]=b[n] for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "2. The zero sequence a[n]=0 is not a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "3. If a[n] is a solution, and a1=a2=0, then a[n]=0 for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "4. If a[n] is a solution, then b[n]=4*a[n] is also a solution.",
+              "**KRYSS AV**"
+            ],
+            [
+              "5. If a[n] is a solution, and a0=−1 and a1=−2, then there exists at least one index n such that a[n] is not an integer.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "6. If a0=0, a1=3, then a[n] can not be a solution.",
+              "**LA STÅ TOM**"
+            ]
+          ],
+          "widths": [
+            402,
+            105
+          ]
+        }
+      ],
+      [
+        "p",
+        "**None of the above: LA STÅ TOM.**"
+      ]
+    ]
+  },
+  {
+    "key": "rec-cases-b",
+    "title": "Ferdig avkryssing: B15, B16",
+    "search": "Consider the recurrence relation • 4*a[n]-16*a[n-1]+12*a[n-2]=0 • 3*a[n]-9*a[n-1]+6*a[n-2]=0",
+    "blocks": [
+      [
+        "p",
+        "Match **likningen og påstandsteksten**. Numrene gjelder rekkefølgen i disse kildefilene. a[n] betyr aₙ. Flyttes alternativene, følger svaret teksten."
+      ],
+      [
+        "h",
+        "B15: KRYSS AV 1, 4, 5, 6"
+      ],
+      [
+        "code",
+        "4*a[n]-16*a[n-1]+12*a[n-2]=0"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Hele påstanden",
+            "Velg"
+          ],
+          "rows": [
+            [
+              "1. If a[n] is a solution, and a1=a2=a3=0, then a[n]=0 for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "2. If a0=−3, a1=−1 then a[n] can not be a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "3. If a0=48, a1=−256, and a2=−1165, then a[n] could be a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "4. If a[n] and b[n] are solutions, and if a1=b1 and a3=b3, then a[n]=b[n] for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "5. If a[n] is a solution, and a0=0 and a1=−3, then a[n] is an integer for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "6. If a[n] is a solution, then b[n]=9*a[n] is also a solution.",
+              "**KRYSS AV**"
+            ]
+          ],
+          "widths": [
+            402,
+            105
+          ]
+        }
+      ],
+      [
+        "p",
+        "**None of the above: LA STÅ TOM.**"
+      ],
+      [
+        "h",
+        "B16: KRYSS AV 1, 2, 4, 6"
+      ],
+      [
+        "code",
+        "3*a[n]-9*a[n-1]+6*a[n-2]=0"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Hele påstanden",
+            "Velg"
+          ],
+          "rows": [
+            [
+              "1. If a[n] is a solution, and a0=−1 and a1=−3, then a[n] is an integer for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "2. If a[n] is a solution, and a4=a5=a6=0, then a[n]=0 for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "3. If a0=−1, a1=0 then a[n] can not be a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "4. If a[n] is a solution and b[n]=−a[n], for each n, then b[n] is also a solution.",
+              "**KRYSS AV**"
+            ],
+            [
+              "5. The zero sequence a[n]=0 is not a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "6. If a[n] and b[n] are solutions, and if a4=b4 and a5=b5, then a[n]=b[n] for each n≥1.",
+              "**KRYSS AV**"
+            ]
+          ],
+          "widths": [
+            402,
+            105
+          ]
+        }
+      ],
+      [
+        "p",
+        "**None of the above: LA STÅ TOM.**"
+      ]
+    ]
+  },
+  {
+    "key": "rec-cases-c",
+    "title": "Ferdig avkryssing: B27, B33",
+    "search": "Consider the recurrence relation • 30*a[n]+4*a[n-1]+3*a[n-2]=0 • 4*a[n]-8*a[n-1]+8*a[n-2]=0",
+    "blocks": [
+      [
+        "p",
+        "Match **likningen og påstandsteksten**. Numrene gjelder rekkefølgen i disse kildefilene. a[n] betyr aₙ. Flyttes alternativene, følger svaret teksten."
+      ],
+      [
+        "h",
+        "B27: KRYSS AV 1, 3"
+      ],
+      [
+        "code",
+        "30*a[n]+4*a[n-1]+3*a[n-2]=0"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Hele påstanden",
+            "Velg"
+          ],
+          "rows": [
+            [
+              "1. If a[n] is a solution, and a2=a3=0, then a[n]=0 for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "2. a[n] and b[n] are solutions, and if a2=b2, then a[n]=b[n] for each n≥1.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "3. If a[n] is a solution and b[n]=−a[n], for each n, then b[n] is also a solution.",
+              "**KRYSS AV**"
+            ],
+            [
+              "4. If a0=1, a1=−1, then a[n] can not be a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "5. If a0=−1, a1=1 then a[n] can not be a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "6. If a[n] is a solution, and a0=5 and a1=4, then a[n] is an integer for each n≥1.",
+              "**LA STÅ TOM**"
+            ]
+          ],
+          "widths": [
+            402,
+            105
+          ]
+        }
+      ],
+      [
+        "p",
+        "**None of the above: LA STÅ TOM.**"
+      ],
+      [
+        "h",
+        "B33: KRYSS AV 3, 4, 6"
+      ],
+      [
+        "code",
+        "4*a[n]-8*a[n-1]+8*a[n-2]=0"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Hele påstanden",
+            "Velg"
+          ],
+          "rows": [
+            [
+              "1. a[n] and b[n] are solutions, and if a1=b1, then a[n]=b[n] for each n≥1.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "2. If a0=0, a1=−128, and a2=−253, then a[n] could be a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "3. If a[n] is a solution, and a1=a2=0, then a[n]=0 for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "4. If a[n] is a solution, and a0=2 and a1=−2, then a[n] is an integer for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "5. If a0=−2, a1=1, then a[n] can not be a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "6. If a[n] is a solution, then b[n]=18*a[n] is also a solution.",
+              "**KRYSS AV**"
+            ]
+          ],
+          "widths": [
+            402,
+            105
+          ]
+        }
+      ],
+      [
+        "p",
+        "**None of the above: LA STÅ TOM.**"
+      ]
+    ]
+  },
+  {
+    "key": "rec-cases-d",
+    "title": "Ferdig avkryssing: B35, B36",
+    "search": "Consider the recurrence relation • 10*a[n]+1*a[n-1]+5*a[n-2]=0 • 14*a[n]+1*a[n-1]+4*a[n-2]=0",
+    "blocks": [
+      [
+        "p",
+        "Match **likningen og påstandsteksten**. Numrene gjelder rekkefølgen i disse kildefilene. a[n] betyr aₙ. Flyttes alternativene, følger svaret teksten."
+      ],
+      [
+        "h",
+        "B35: KRYSS AV 2, 5, 6"
+      ],
+      [
+        "code",
+        "10*a[n]+1*a[n-1]+5*a[n-2]=0"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Hele påstanden",
+            "Velg"
+          ],
+          "rows": [
+            [
+              "1. If a0=3, a1=1 then a[n] can not be a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "2. If a[n] is a solution, and a0=2 and a1=2, then there exists at least one index n such that a[n] is not an integer.",
+              "**KRYSS AV**"
+            ],
+            [
+              "3. a[n] and b[n] are solutions, and if a1=b1, then a[n]=b[n] for each n≥1.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "4. If a0=1, a1=3, then a[n] can not be a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "5. If a[n] is a solution, and a1=a2=a3=0, then a[n]=0 for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "6. If a[n] is a solution and b[n]=−a[n], for each n, then b[n] is also a solution.",
+              "**KRYSS AV**"
+            ]
+          ],
+          "widths": [
+            402,
+            105
+          ]
+        }
+      ],
+      [
+        "p",
+        "**None of the above: LA STÅ TOM.**"
+      ],
+      [
+        "h",
+        "B36: KRYSS AV 1, 2, 4, 5"
+      ],
+      [
+        "code",
+        "14*a[n]+1*a[n-1]+4*a[n-2]=0"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Hele påstanden",
+            "Velg"
+          ],
+          "rows": [
+            [
+              "1. If a[n] is a solution, and a0=5 and a1=5, then there exists at least one index n such that a[n] is not an integer.",
+              "**KRYSS AV**"
+            ],
+            [
+              "2. If a[n] is a solution, and a2=a3=0, then a[n]=0 for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "3. The zero sequence a[n]=0 is not a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "4. If a[n] is a solution and b[n]=−a[n], for each n, then b[n] is also a solution.",
+              "**KRYSS AV**"
+            ],
+            [
+              "5. If a[n] and b[n] are solutions, and if a2=b2 and a4=b4, then a[n]=b[n] for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "6. If a0=3, a1=−4 then a[n] can not be a solution.",
+              "**LA STÅ TOM**"
+            ]
+          ],
+          "widths": [
+            402,
+            105
+          ]
+        }
+      ],
+      [
+        "p",
+        "**None of the above: LA STÅ TOM.**"
+      ]
+    ]
+  },
+  {
+    "key": "rec-cases-e",
+    "title": "Ferdig avkryssing: N04",
+    "search": "Consider the recurrence relation • 14*a[n]+1*a[n-1]+3*a[n-2]=0",
+    "blocks": [
+      [
+        "p",
+        "Match **likningen og påstandsteksten**. Numrene gjelder rekkefølgen i disse kildefilene. a[n] betyr aₙ. Flyttes alternativene, følger svaret teksten."
+      ],
+      [
+        "h",
+        "N04: KRYSS AV 1, 3, 6"
+      ],
+      [
+        "code",
+        "14*a[n]+1*a[n-1]+3*a[n-2]=0"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Hele påstanden",
+            "Velg"
+          ],
+          "rows": [
+            [
+              "1. If a[n] and b[n] are solutions, and if a1=b1 and a2=b2, then a[n]=b[n] for each n≥1.",
+              "**KRYSS AV**"
+            ],
+            [
+              "2. The zero sequence a[n]=0 is not a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "3. If a[n] is a solution, then b[n]=13*a[n] is also a solution.",
+              "**KRYSS AV**"
+            ],
+            [
+              "4. If a[n] is a solution, and a0=5 and a1=3, then a[n] is an integer for each n≥1.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "5. If a0=−5, a1=−1, then a[n] can not be a solution.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "6. If a[n] is a solution, and a1=a2=0, then a[n]=0 for each n≥1.",
+              "**KRYSS AV**"
+            ]
+          ],
+          "widths": [
+            402,
+            105
+          ]
+        }
+      ],
+      [
+        "p",
+        "**None of the above: LA STÅ TOM.**"
+      ],
+      [
+        "h",
+        "N04: rask kontroll av heltallspåstanden"
+      ],
+      [
+        "code",
+        "14*a2+a1+3*a0=0\n14*a2+3+3*5=0\na2=-18/14=-9/7"
+      ],
+      [
+        "p",
+        "a2 er ikke et heltall. Derfor skal påstand 4 stå tom. «There exists at least one … not an integer» ville derimot være sann med de samme startverdiene."
+      ],
+      [
+        "box",
+        "Din egen variant med −4 foran x[n] har **andre koeffisienter**, og dermed en annen heltallsvurdering: se {page:my-recurrence}."
+      ]
+    ]
+  }
+]

@@ -1,0 +1,833 @@
+[
+  {
+    "id": "B01",
+    "source_file": "2 av 3/2 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "2041c5c472909beab60acb30aa8f8c189833f3d60d06d62919db9e0a49747859",
+    "pages": 6,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "words",
+      "2": "D3",
+      "3": "index"
+    },
+    "notes": []
+  },
+  {
+    "id": "B02",
+    "source_file": "2 av 3/2 av 3___2.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "75e8e7c132a37d1097ee7172f8ef9816c8cefb9ebeaaa047630178c745fd988c",
+    "pages": 7,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "permutation",
+      "3": "index"
+    },
+    "notes": []
+  },
+  {
+    "id": "B03",
+    "source_file": "2 av 3/2 av 3___3.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "ddc4ede8db68210b41086dc70a112673c4a80504ebcb25dc334ff8085d662a5d",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "recurrence_mc",
+      "2": "D3",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B04",
+    "source_file": "2 av 3/2 av 3___4.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "22428239dfbdc4228c2efb5607fec891bacf81f33ebc88db2b14cc84eaf80822",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "words",
+      "2": "permutation",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B05",
+    "source_file": "2 av 3/2 av 3___5.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "40580bf2fd1cb8d62aaa99c1cedf288a72a2cf9d06a389cc45a4891fbebe0075",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "recurrence_mc",
+      "2": "group_mc",
+      "3": "mod_products"
+    },
+    "notes": []
+  },
+  {
+    "id": "B06",
+    "source_file": "2 av 3/2 av 3___6.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "db1d962366a44ed0aa565f284d31f86bc641ecf88a04b00f2f7c11c1c891a669",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "initial_distinct",
+      "2": "permutation",
+      "3": "index"
+    },
+    "notes": []
+  },
+  {
+    "id": "B07",
+    "source_file": "2 av 3/2.08 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "a4f270c9fb7301474867d5135704ae185292f33748ec0c43e80dec2769dc176c",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "initial_distinct",
+      "2": "group_mc",
+      "3": "mod_products"
+    },
+    "notes": [
+      "Some embedded mathematical expressions are absent from native text extraction."
+    ]
+  },
+  {
+    "id": "B08",
+    "source_file": "2 av 3/2.33 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "139acedb3527e53a55ecab6a7b2e7826576fad5618970730a9a5bd32652a4e1c",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "initial_distinct",
+      "2": "group_mc",
+      "3": "index"
+    },
+    "notes": [
+      "Scanned source: OCR used for search; formulas checked against page images where needed.",
+      "Question 2 concerns the entire S6, not a generated cyclic subgroup; scanned heading is faint."
+    ]
+  },
+  {
+    "id": "B09",
+    "source_file": "2 av 3/2.42 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "b123c0d11735186c4e0a0cea7899b15cfe518ed22ad58347c23499556ec5fbe1",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "initial_repeated",
+      "2": "subgroup",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B10",
+    "source_file": "2 av 3/2.50 av 3 ___ 5.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "22e02a78a03f6bb6712f9e0ad2d3c9c00ebfc0ebc6f8f3502b69a87f62821a94",
+    "pages": 7,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "words",
+      "2": "D3",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B11",
+    "source_file": "2 av 3/2.50 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "37e2abb7ab0c4b7afd2351ada58879bce92551227711ab71ccc35bfafc3284e9",
+    "pages": 6,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "permutation",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B12",
+    "source_file": "2 av 3/2.50 av 3___2.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "22b7734c0980462dfbb84691226ab51dce7e1c49f977b00bae1470185a2d7343",
+    "pages": 6,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "words",
+      "2": "permutation",
+      "3": "mod_table"
+    },
+    "notes": [
+      "Scanned source: OCR used for search; formulas checked against page images where needed."
+    ]
+  },
+  {
+    "id": "B13",
+    "source_file": "2 av 3/2.50 av 3___3.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "20d5221f2f8e1877b3d7b227a715c6e694af0e5de06d8322840ecb873ccd47d7",
+    "pages": 6,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "permutation",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B14",
+    "source_file": "2 av 3/2.50 av 3___4.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "54bc859f8a6cd0eccdff87541ca5062292750bac0367de73b2d1b697e74eb771",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "D3",
+      "3": "mod_products"
+    },
+    "notes": []
+  },
+  {
+    "id": "B15",
+    "source_file": "2 av 3/2.75 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "6430bf6ea1135fcb5b0f2b6bb15b591dfdc85ee983d44f7edc9a115fe8fef487",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "recurrence_mc",
+      "2": "D3",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B16",
+    "source_file": "2 av 3/tet 3 2.75 av 3.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "81c471bad38017587326e8611a9415e7e99e21a7d32385ff4e5cda48a4128c24",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "recurrence_mc",
+      "2": "D3",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B17",
+    "source_file": "3 av 3/3 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "b6f265f754f94ffa090259aa99edbf096d1da4617fd1c7ceb8b317a9dc23e099",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "permutation",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B18",
+    "source_file": "3 av 3/3 av 3___10.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "38b14059dfd6f65d516848bbaa27f980ca3c643d317feccee455839656e48516",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "group_mc",
+      "3": "mod_table"
+    },
+    "notes": [
+      "Some embedded mathematical expressions are absent from native text extraction."
+    ]
+  },
+  {
+    "id": "B19",
+    "source_file": "3 av 3/3 av 3___2.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "1bbb0c9111b3120f678863a5d6ff37c8241de0aa5c492ae81278adf33963b36c",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "initial_distinct",
+      "2": "permutation",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B20",
+    "source_file": "3 av 3/3 av 3___3.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "25ed8c76e94c70a0cbc75be49077cd51a6f0c58be6a150dd6db5acf0984cf088",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "permutation",
+      "3": "mod_products"
+    },
+    "notes": [
+      "Some embedded mathematical expressions are absent from native text extraction."
+    ]
+  },
+  {
+    "id": "B21",
+    "source_file": "3 av 3/3 av 3___4.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "a611bead96ffca77016c83649fcf88d3cf095b0ddf016339d0f5de7d5d2c74f3",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "initial_repeated",
+      "2": "subgroup",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B22",
+    "source_file": "3 av 3/3 av 3___5.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "0e8d57337ae995b11774e9d2b64e26b249335c26b469b80f26911fe91ebb4ff4",
+    "pages": 2,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "group_mc",
+      "3": "index"
+    },
+    "notes": []
+  },
+  {
+    "id": "B23",
+    "source_file": "3 av 3/3 av 3___6.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "9b13b0b7a3f66986537c82b8b9bc248f88b96fc010177c3566215db46debd495",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "initial_distinct",
+      "2": "subgroup",
+      "3": "mod_products"
+    },
+    "notes": [
+      "Scanned source: OCR used for search; formulas checked against page images where needed."
+    ]
+  },
+  {
+    "id": "B24",
+    "source_file": "3 av 3/3 av 3___7.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "7f3a779f24b4346802c83bc54ffaf96b189f6bf7b063378cfc95170b8b686e73",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "words",
+      "2": "permutation",
+      "3": "index"
+    },
+    "notes": []
+  },
+  {
+    "id": "B25",
+    "source_file": "3 av 3/3 av 3___8.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "fd763df6c0aa76f685077b1e0fbb8d9426331b520b6ea57ccd6e8c0a4a4fb523",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "permutation",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B26",
+    "source_file": "3 av 3/3 av 3___9.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "ac84bdf0f6799520a8f609ea2b1a6d567d2a03feae1100bd378edbcb114b792d",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "initial_distinct",
+      "2": "permutation",
+      "3": "index"
+    },
+    "notes": []
+  },
+  {
+    "id": "B27",
+    "source_file": "alt under 2 av 3/0 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "d9aa49e2e443e9194f48735e4b54efd27e92cab9a965bf7d450de7d5cef2e31b",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "recurrence_mc",
+      "2": "D3",
+      "3": "index"
+    },
+    "notes": []
+  },
+  {
+    "id": "B28",
+    "source_file": "alt under 2 av 3/0.75 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "0ae6d66f5f890074a20a030a7da30bd1e7d06b11c173d41c53ff71457063ec18",
+    "pages": 6,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "words",
+      "2": "permutation",
+      "3": "mod_products"
+    },
+    "notes": []
+  },
+  {
+    "id": "B29",
+    "source_file": "alt under 2 av 3/1 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "286aa70e9c48ecffc877a65d6f0094b4e23635f394d29be4a8e25635cf707e0c",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "subgroup",
+      "3": "index"
+    },
+    "notes": []
+  },
+  {
+    "id": "B30",
+    "source_file": "alt under 2 av 3/1 av 3___2.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "286aa70e9c48ecffc877a65d6f0094b4e23635f394d29be4a8e25635cf707e0c",
+    "pages": 4,
+    "duplicate_of": "B29",
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "subgroup",
+      "3": "index"
+    },
+    "notes": [
+      "Byte-identical duplicate of B29."
+    ]
+  },
+  {
+    "id": "B31",
+    "source_file": "alt under 2 av 3/1 av 3___3.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "350ef8b57e75594a9b4f634aae9683c9ce859f0653df6f72f5989a0a87b08093",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "permutation",
+      "3": "index"
+    },
+    "notes": [
+      "Question 1 has a repeated characteristic base in a first-order inhomogeneous recurrence; still covered by the given-particular-solution method."
+    ]
+  },
+  {
+    "id": "B32",
+    "source_file": "alt under 2 av 3/1.25 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "9dbc1bc84da43caa0ae74f0d9559eaa3fd8d6e1a54b70b805f116697d0cda33b",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "words",
+      "2": "permutation",
+      "3": "mod_products"
+    },
+    "notes": []
+  },
+  {
+    "id": "B33",
+    "source_file": "alt under 2 av 3/1.33 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "e0bc427859f4fd8a889dbbcdce96f4a7525a3732355669c56460219782556b58",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "recurrence_mc",
+      "2": "subgroup",
+      "3": "index"
+    },
+    "notes": []
+  },
+  {
+    "id": "B34",
+    "source_file": "alt under 2 av 3/1.40 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "f6c2c50cf581d1ede1a703a70fb4dcd7c17c1a9ad8e3c386929e0cb73599f58c",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "words",
+      "2": "group_mc",
+      "3": "mod_table"
+    },
+    "notes": [
+      "Scanned source: OCR used for search; formulas checked against page images where needed."
+    ]
+  },
+  {
+    "id": "B35",
+    "source_file": "alt under 2 av 3/1.42 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "954573273a57c1ab33818072c29d9007c07b1a4990f82ef8cbd16a361e0b3c94",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "recurrence_mc",
+      "2": "group_mc",
+      "3": "index"
+    },
+    "notes": []
+  },
+  {
+    "id": "B36",
+    "source_file": "alt under 2 av 3/1.50 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "ad4a4a9111500a1fe89fd9dde74fafd627ee1a69c85763c709bb1263c693b86d",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "recurrence_mc",
+      "2": "permutation",
+      "3": "mod_table"
+    },
+    "notes": [
+      "Scanned source: OCR used for search; formulas checked against page images where needed."
+    ]
+  },
+  {
+    "id": "B37",
+    "source_file": "alt under 2 av 3/1.56 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "575af3a75479eaec60b1ad456b81a0cf9edb947f65d98539d67258f21fa9ad39",
+    "pages": 6,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "D3",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B38",
+    "source_file": "alt under 2 av 3/1.67 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "9e76efd974a5bd3c0c2a995ed62ef9c412fb3b8a3367be44c699713e7e01a5bf",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "D3",
+      "3": "mod_products"
+    },
+    "notes": [
+      "Scanned source: OCR used for search; formulas checked against page images where needed."
+    ]
+  },
+  {
+    "id": "B39",
+    "source_file": "alt under 2 av 3/1.89 av 3___1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "0dc9fd8175c8f6ed009a53602462007f05b236e9257d60571fd567db99795e7f",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "initial_distinct",
+      "2": "D3",
+      "3": "mod_products"
+    },
+    "notes": []
+  },
+  {
+    "id": "B40",
+    "source_file": "regler/Diskre_matte_oppgave_3_eks.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "0b363e6bcfe5fcf7deb8d8f762155c6817acd331105dd217efcc13922a221512",
+    "pages": 2,
+    "duplicate_of": null,
+    "kind": "study_note",
+    "question_types": {},
+    "notes": [],
+    "topics": [
+      "index"
+    ]
+  },
+  {
+    "id": "B41",
+    "source_file": "regler/Diskre_matte_oppgave_3_eks_2.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "32fbc1ae1afcbfb40b3c4ca139b458b5463030ae22129cee80418e3f719c8e67",
+    "pages": 2,
+    "duplicate_of": null,
+    "kind": "study_note",
+    "question_types": {},
+    "notes": [],
+    "topics": [
+      "mod_table"
+    ]
+  },
+  {
+    "id": "B42",
+    "source_file": "regler/Rekursjon_Leselig.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "6aea4a78d94803ca545e74df503e27af84e1982caafca7f79cac5aea1666b1c2",
+    "pages": 2,
+    "duplicate_of": null,
+    "kind": "study_note",
+    "question_types": {},
+    "notes": [],
+    "topics": [
+      "initial_distinct"
+    ]
+  },
+  {
+    "id": "B43",
+    "source_file": "regler/Test 3 100%.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "89c39bc8012f0cd9d50900517fc05ac69b5815085bd7681492348cb56e778003",
+    "pages": 6,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "D3",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "B44",
+    "source_file": "regler/diskre_prøve_3_oppg_1.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "a07107333e90372295d28c1cfec8cffac643fb6eb93ea5f6fc7378de88a1888e",
+    "pages": 2,
+    "duplicate_of": null,
+    "kind": "study_note",
+    "question_types": {},
+    "notes": [],
+    "topics": [
+      "initial_distinct"
+    ]
+  },
+  {
+    "id": "B45",
+    "source_file": "regler/spm_1_eks.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "e30fa3feabfdadb5dd281aa6040868031552d8443a9246d27b2b8d87f663f65a",
+    "pages": 2,
+    "duplicate_of": null,
+    "kind": "study_note",
+    "question_types": {},
+    "notes": [],
+    "topics": [
+      "initial_distinct"
+    ]
+  },
+  {
+    "id": "B46",
+    "source_file": "regler/spm_3_eks.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "4eae7c5feb9473910d91910b3a4b81daa0a3092be12c705c0beea87b086f3f3d",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "study_note",
+    "question_types": {},
+    "notes": [],
+    "topics": [
+      "mod_products"
+    ]
+  },
+  {
+    "id": "B47",
+    "source_file": "regler/subgroups_spm_2.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "b1dcb8472bca46224b6b97d7b3454c611f53ea9d78d6e1e76a259f20a6a31d01",
+    "pages": 2,
+    "duplicate_of": null,
+    "kind": "study_note",
+    "question_types": {},
+    "notes": [],
+    "topics": [
+      "subgroup"
+    ]
+  },
+  {
+    "id": "B48",
+    "source_file": "regler/test3_3p.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "38b14059dfd6f65d516848bbaa27f980ca3c643d317feccee455839656e48516",
+    "pages": 4,
+    "duplicate_of": "B18",
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "group_mc",
+      "3": "mod_table"
+    },
+    "notes": [
+      "Some embedded mathematical expressions are absent from native text extraction.",
+      "Byte-identical duplicate of B18."
+    ]
+  },
+  {
+    "id": "B49",
+    "source_file": "regler/test3_77% (1).pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "139acedb3527e53a55ecab6a7b2e7826576fad5618970730a9a5bd32652a4e1c",
+    "pages": 3,
+    "duplicate_of": "B08",
+    "kind": "attempt",
+    "question_types": {
+      "1": "initial_distinct",
+      "2": "group_mc",
+      "3": "index"
+    },
+    "notes": [
+      "Scanned source: OCR used for search; formulas checked against page images where needed.",
+      "Byte-identical duplicate of B08."
+    ]
+  },
+  {
+    "id": "B50",
+    "source_file": "regler/utvidet_euklidisk.pdf",
+    "origin": "tariknh/diskret@dcbf1e4",
+    "sha256": "e0e9aa9e9bb246e92be3ea9d55265d3fbcccfa25989fd5178cc6c746475964ec",
+    "pages": 2,
+    "duplicate_of": null,
+    "kind": "study_note",
+    "question_types": {},
+    "notes": [],
+    "topics": [
+      "mod_products"
+    ]
+  },
+  {
+    "id": "N01",
+    "source_file": "test3_100.pdf",
+    "origin": "user-upload",
+    "sha256": "2f1b0e3c475410f221da648de95cd67955fd2dd62514c1baff27b41cf84d6050",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "initial_distinct",
+      "2": "D3",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "N02",
+    "source_file": "test3_0%.pdf",
+    "origin": "user-upload",
+    "sha256": "d5f931da73cb3de46e5491bb78fc2fb1470a0e37bb8747a67b9739407bdef6d6",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "permutation",
+      "3": "mod_products"
+    },
+    "notes": []
+  },
+  {
+    "id": "N03",
+    "source_file": "Test 3 54.65%.pdf",
+    "origin": "user-upload",
+    "sha256": "0adb242d09f462b44c7bf044d4d3883e06b3ad77aa147e92080d894608caa69a",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "initial_repeated",
+      "2": "permutation",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "N04",
+    "source_file": "Topics7-9_100%.pdf",
+    "origin": "user-upload",
+    "sha256": "c9b317181ca101307455275ca28730a3da4982d60c668bfae59971db2d1fd67b",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": {
+      "1": "recurrence_mc",
+      "2": "permutation",
+      "3": "mod_table"
+    },
+    "notes": []
+  }
+]
