@@ -18,7 +18,7 @@ from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate, Table, T
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / 'source'
-VERSION = 6
+VERSION = 7
 STEM = f'TEST3DOCSV{VERSION}'
 DATE = '5. november 2026'
 WIDTH = A4[0] - 88
@@ -109,17 +109,18 @@ def catalog_pages(catalog):
 def all_pages():
     front = load('front.json')
     checklist = load('recurrence-checklist.json')
+    group_lookup = load('group-lookup.json')
     body = load('recurrence.json') + load('groups.json') + load('modular.json')
     catalog = load('catalog.json')
     tail = catalog_pages(catalog)
-    destinations = [(p['title'], p['key']) for p in checklist + body + tail]
+    destinations = [(p['title'], p['key']) for p in checklist + group_lookup + body + tail]
     toc = []
     for n, start in enumerate(range(0, len(destinations), 19), 1):
         toc.append(make_page(f'contents-{n}', f'Innhold {n}: klikk på oppgaven',
             'Cmd+F • Ctrl+F • søkbar • innhold',
             [['p', 'Ferdige avkryssinger til dine to spørsmål står på **side 1**. Klikk på en rad for å gå direkte til oppslaget. Du kan også søke på engelske ord fra oppgaveteksten.'],
              ['toc', destinations[start:start+19]]]))
-    pages = front + checklist + toc + body + tail
+    pages = front + checklist + group_lookup + toc + body + tail
     keys = [p['key'] for p in pages]
     if len(keys) != len(set(keys)):
         raise ValueError('Repeated page keys: ' + str([k for k in keys if keys.count(k) > 1]))
@@ -290,6 +291,34 @@ def build():
         title='Rekurrensflervalg – sjekkliste', author='MA-224 hjelpeark', subject='Faste svar, indekser og heltall')
     short_paint = lambda c, d: footer(c, d, len(selected))
     short_doc.build(short_story, onFirstPage=short_paint, onLaterPages=short_paint)
+    group_pages = load('group-lookup.json')
+    group_numbers = {p['key']: i+1 for i, p in enumerate(group_pages)}
+    def group_refs(v):
+        if isinstance(v, str):
+            return re.sub(r'\{page:([\w-]+)\}', lambda m: str(group_numbers[m[1]]), v)
+        if isinstance(v, list):
+            return [group_refs(x) for x in v]
+        if isinstance(v, dict):
+            return {k: group_refs(x) for k, x in v.items()}
+        return v
+    group_pages = group_refs(group_pages)
+    group_story = []
+    for i, page in enumerate(group_pages):
+        if i:
+            group_story.append(PageBreak())
+        content, _ = fit_page(page, group_numbers)
+        group_story.extend(content)
+    group_path = ROOT / 'GRUPPER_SVARPROFILER.pdf'
+    group_doc = SimpleDocTemplate(str(group_path), pagesize=A4, rightMargin=44, leftMargin=44, topMargin=48, bottomMargin=55,
+        title='Gruppeflervalg – velg gruppe og match påstanden', author='MA-224 hjelpeark', subject='Svarprofiler og regler for endrede tall')
+    group_doc.build(group_story, onFirstPage=lambda c,d: footer(c,d,len(group_pages)), onLaterPages=lambda c,d: footer(c,d,len(group_pages)))
+    group_pdf = fitz.open(group_path)
+    assert len(group_pdf) == len(group_pages)
+    group_pdf.set_toc([[1,p['title'],i+1] for i,p in enumerate(group_pages)])
+    group_tmp = group_path.with_suffix('.tmp.pdf')
+    group_pdf.save(group_tmp,garbage=4,deflate=True)
+    group_pdf.close()
+    group_tmp.replace(group_path)
     (ROOT / 'build-manifest.json').write_text(json.dumps(dict(version=VERSION, date=DATE, pages=len(pages), page_numbers=numbers, layout=layout), ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(f'Built {pdf}: {len(pages)} searchable pages.')
 

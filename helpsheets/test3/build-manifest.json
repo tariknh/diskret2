@@ -1,68 +1,79 @@
 {
-  "version": 6,
+  "version": 7,
   "date": "5. november 2026",
-  "pages": 54,
+  "pages": 65,
   "page_numbers": {
     "answer-start": 1,
     "rec-checklist-fast": 2,
     "rec-checklist-calculate": 3,
     "rec-checklist-finish": 4,
-    "contents-1": 5,
-    "contents-2": 6,
-    "contents-3": 7,
-    "my-recurrence": 8,
-    "rec-roots": 9,
-    "rec-repeated": 10,
-    "rec-particular": 11,
-    "rec-particular-lookup": 12,
-    "rec-words": 13,
-    "rec-words-general": 14,
-    "rec-mc-rules": 15,
-    "rec-index": 16,
-    "rec-integers": 17,
-    "rec-coefficients": 18,
-    "rec-cases-a": 19,
-    "rec-cases-b": 20,
-    "rec-cases-c": 21,
-    "rec-cases-d": 22,
-    "rec-cases-e": 23,
-    "my-group": 24,
-    "group-read": 25,
-    "group-matrix-basic": 26,
-    "group-matrix-subgroups": 27,
-    "group-matrix-order": 28,
-    "group-source-cards-1": 29,
-    "group-source-cards-2": 30,
-    "group-source-cards-3": 31,
-    "group-source-cards-4": 32,
-    "permutation-product": 33,
-    "permutation-inverse": 34,
-    "D3-meaning": 35,
-    "D3-table": 36,
-    "subgroup-zn": 37,
-    "subgroup-pairs": 38,
-    "subgroup-pairs-answers": 39,
-    "mod-product": 40,
-    "mod-inverse": 41,
-    "mod-tables57": 42,
-    "mod-tables89": 43,
-    "mod-known45-49": 44,
-    "mod-known50": 45,
-    "index-product": 46,
-    "index-d4": 47,
-    "calculator": 48,
-    "answer-format": 49,
-    "sources-1": 50,
-    "sources-2": 51,
-    "sources-3": 52,
-    "sources-4": 53,
-    "source-notes": 54
+    "gp-start": 5,
+    "gp-c3": 6,
+    "gp-c6": 7,
+    "gp-p5": 8,
+    "gp-z7z10": 9,
+    "gp-z3z10": 10,
+    "gp-s3": 11,
+    "gp-s6": 12,
+    "gp-new-group": 13,
+    "gp-new-statements": 14,
+    "contents-1": 15,
+    "contents-2": 16,
+    "contents-3": 17,
+    "contents-4": 18,
+    "my-recurrence": 19,
+    "rec-roots": 20,
+    "rec-repeated": 21,
+    "rec-particular": 22,
+    "rec-particular-lookup": 23,
+    "rec-words": 24,
+    "rec-words-general": 25,
+    "rec-mc-rules": 26,
+    "rec-index": 27,
+    "rec-integers": 28,
+    "rec-coefficients": 29,
+    "rec-cases-a": 30,
+    "rec-cases-b": 31,
+    "rec-cases-c": 32,
+    "rec-cases-d": 33,
+    "rec-cases-e": 34,
+    "my-group": 35,
+    "group-read": 36,
+    "group-matrix-basic": 37,
+    "group-matrix-subgroups": 38,
+    "group-matrix-order": 39,
+    "group-source-cards-1": 40,
+    "group-source-cards-2": 41,
+    "group-source-cards-3": 42,
+    "group-source-cards-4": 43,
+    "permutation-product": 44,
+    "permutation-inverse": 45,
+    "D3-meaning": 46,
+    "D3-table": 47,
+    "subgroup-zn": 48,
+    "subgroup-pairs": 49,
+    "subgroup-pairs-answers": 50,
+    "mod-product": 51,
+    "mod-inverse": 52,
+    "mod-tables57": 53,
+    "mod-tables89": 54,
+    "mod-known45-49": 55,
+    "mod-known50": 56,
+    "index-product": 57,
+    "index-d4": 58,
+    "calculator": 59,
+    "answer-format": 60,
+    "sources-1": 61,
+    "sources-2": 62,
+    "sources-3": 63,
+    "sources-4": 64,
+    "source-notes": 65
   },
   "layout": [
     {
       "key": "answer-start",
       "scale": 0.94,
-      "content_height": 505.91
+      "content_height": 519.35
     },
     {
       "key": "rec-checklist-fast",
@@ -80,6 +91,56 @@
       "content_height": 656.3
     },
     {
+      "key": "gp-start",
+      "scale": 1,
+      "content_height": 563.1
+    },
+    {
+      "key": "gp-c3",
+      "scale": 1,
+      "content_height": 628.0
+    },
+    {
+      "key": "gp-c6",
+      "scale": 1,
+      "content_height": 628.0
+    },
+    {
+      "key": "gp-p5",
+      "scale": 1,
+      "content_height": 613.7
+    },
+    {
+      "key": "gp-z7z10",
+      "scale": 1,
+      "content_height": 613.7
+    },
+    {
+      "key": "gp-z3z10",
+      "scale": 1,
+      "content_height": 613.7
+    },
+    {
+      "key": "gp-s3",
+      "scale": 1,
+      "content_height": 628.0
+    },
+    {
+      "key": "gp-s6",
+      "scale": 1,
+      "content_height": 628.0
+    },
+    {
+      "key": "gp-new-group",
+      "scale": 1,
+      "content_height": 599.3
+    },
+    {
+      "key": "gp-new-statements",
+      "scale": 1,
+      "content_height": 586.8
+    },
+    {
       "key": "contents-1",
       "scale": 1,
       "content_height": 504.4
@@ -92,7 +153,12 @@
     {
       "key": "contents-3",
       "scale": 1,
-      "content_height": 356.0
+      "content_height": 504.4
+    },
+    {
+      "key": "contents-4",
+      "scale": 1,
+      "content_height": 165.2
     },
     {
       "key": "my-recurrence",

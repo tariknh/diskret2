@@ -25,7 +25,7 @@
         ["6", "a[n] and b[n] are solutions, and if a5=b5, then a[n]=b[n] for each n≥1.", "**LA STÅ TOM**"],
         ["7", "None of the above", "**LA STÅ TOM**"]
       ]}],
-      ["p", "**Match teksten hvis alternativene flyttes.** Rekurrensfasiten gjelder likningen over. **Sjekkliste for rekurrensflervalg: side {page:rec-checklist-fast}–{page:rec-checklist-finish}.** Forklaringer: side {page:my-group} og {page:my-recurrence}. Innhold: side {page:contents-1}."]
+      ["p", "**Match teksten hvis alternativene flyttes.** Rekurrensfasiten gjelder likningen over. **Rekurrenssjekkliste: side {page:rec-checklist-fast}–{page:rec-checklist-finish}. Gruppeoppslag: start på side {page:gp-start}.** Forklaringer: side {page:my-group} og {page:my-recurrence}. Innhold: side {page:contents-1}."]
     ]
   }
 ]

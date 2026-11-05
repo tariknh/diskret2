@@ -84,7 +84,14 @@ def group_checks(pages):
         'The only subgroups of G are the trivial subgroup {e}, and G itself.': [not x for x in proper],
         'The order of G is divisible by 3.': [N % 3 == 0 for N in sizes],
     }
+    profile_columns = {key: i for i, key in enumerate(['gp-c3', 'gp-c6', 'gp-p5', 'gp-z7z10', 'gp-z3z10', 'gp-s3', 'gp-s6'])}
     for page in pages:
+        if page['key'] in profile_columns:
+            col = profile_columns[page['key']]
+            for row in tables(page)[0]['rows']:
+                match = re.fullmatch(r'The order of G is (\d+)\.', row[0])
+                expected = sizes[col] == int(match[1]) if match else lookup[row[0]][col]
+                check(page['key'] + ': ' + row[0], (flat(row[1]) == 'KRYSS AV') == expected)
         if not page['key'].startswith('group-matrix-'):
             continue
         for row in tables(page)[0]['rows']:
@@ -209,6 +216,33 @@ def verify():
             H.append(P*H[-1]+Q*H[-2])
         check(f'Checklist index-gap decision {P,Q,gap}', (H[gap] != 0) == expected)
     group_checks(pages)
+    group_pages = [p for p in pages if p['key'].startswith('gp-')]
+    group_pdf = fitz.open(ROOT / 'GRUPPER_SVARPROFILER.pdf')
+    check('Group lookup includes route, seven profiles and two rule pages', len(group_pages) == len(group_pdf) == 10)
+    for i, (page, actual) in enumerate(zip(group_pages, group_pdf), 1):
+        text = flat(actual.get_text())
+        check(f'Group lookup {i} title searchable', flat(page['title']) in text)
+        check(f'Group lookup {i} text within margins', all(b[0] >= 39 and b[1] >= 20 and b[2] <= actual.rect.width-39 and b[3] <= actual.rect.height-20 for b in actual.get_text('blocks')))
+        if page['key'] in ['gp-c3','gp-c6','gp-p5','gp-z7z10','gp-z3z10','gp-s3','gp-s6']:
+            for row in tables(page)[0]['rows']:
+                check(f'Group lookup {i} exact English statement {row[0]}', flat(row[0]) in text)
+    check('Group lookup has ten bookmarks', len(group_pdf.get_toc()) == 10)
+    # Exercise the changed-number rules, including the explicitly separated trivial case.
+    finite_examples = [(f'C{N}', [N//gcd(N,k) for k in range(N)]) for N in range(1,17)]
+    for m,n in [(1,1),(4,2),(2,2),(3,5)]:
+        finite_examples.append((f'Z{m}xZ{n}',[lcm(m//gcd(m,a),n//gcd(n,b)) for a in range(m) for b in range(n)]))
+    for m in range(2,21):
+        units = [a for a in range(1,m) if gcd(a,m)==1]
+        finite_examples.append((f'P{m}',[next(k for k in range(1,len(units)+1) if pow(a,k,m)==1) for a in units]))
+    for label, element_orders in finite_examples:
+        N=len(element_orders)
+        is_cyclic=N in element_orders
+        check(label+': every generated subgroup proper iff not cyclic', all(o<N for o in element_orders)==(not is_cyclic))
+        check(label+': every element generates whole group iff trivial', all(o==N for o in element_orders)==(N==1))
+        check(label+': some generated subgroup proper iff nontrivial', any(o<N for o in element_orders)==(N>1))
+        if N>1:
+            composite=any(N%d==0 for d in range(2,N))
+            check(label+': nontrivial proper subgroup for composite order', any(1<o<N for o in element_orders)==composite)
     modular_checks(pages)
     catalog = build.load('catalog.json')
     attempts = [x for x in catalog if x['kind'] == 'attempt']
