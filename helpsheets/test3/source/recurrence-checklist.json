@@ -1,0 +1,78 @@
+[
+  {
+    "key": "rec-checklist-fast",
+    "title": "Sjekkliste 1: finn de faste svarene",
+    "search": "recurrence relation • Select every statement • zero sequence • cannot be a solution • also a solution",
+    "blocks": [
+      ["p", "Bruk sjekklisten på hver påstand. Den dekker alle påstandstypene vi har funnet i rekurrensflervalgene. Du trenger ikke lage en lang tallfølge. **En sann påstand = KRYSS AV. En falsk påstand = LA STÅ TOM.**"],
+      ["h", "START: kontroller at denne malen passer"],
+      ["code", "A*a[n] + B*a[n-1] + C*a[n-2] = 0"],
+      ["p", "A, B og C er tallene foran de tre a-leddene. **A og C må ikke være 0.** Følgene er numeriske: brøkverdier er lov. Oppgavene i prøvesamlingen har disse vilkårene. Hvis høyresiden ikke er 0, gjelder ikke de faste svarene automatisk."],
+      ["h", "1. Skriv én gang hvordan du finner neste tall"],
+      ["code", "a[n] = P*a[n-1] + Q*a[n-2]\nP = -B/A\nQ = -C/A\n\nDin likning: 4*a[n]-16*a[n-1]+12*a[n-2]=0\nP = -(-16)/4 = 4\nQ = -12/4 = -3\nNeste tall = 4*siste tall - 3*nest siste tall"],
+      ["h", "2. Kryss av eller la stå tom direkte"],
+      ["table", {"headers": ["Ser du denne påstanden?", "Gjør dette"], "widths": [285,222], "rows": [
+        ["The zero sequence a[n]=0 is a solution.", "**KRYSS AV.** Bare nuller gir 0=0."],
+        ["The zero sequence … is not a solution.", "**LA STÅ TOM.** «Not» gjør påstanden feil."],
+        ["To gitte starttall a0=u,a1=v: could be a solution.", "**KRYSS AV.** Du kan fortsette fra alle to starttall."],
+        ["To gitte starttall a0=u,a1=v: can not / cannot be a solution.", "**LA STÅ TOM.** Brøker senere er også tillatt."],
+        ["If a is a solution, then b[n]=k*a[n] is also a solution.", "**KRYSS AV** for et fast tall k. Dette gjelder også −a[n]."],
+        ["If a and b are solutions, then u*a[n]+v*b[n] is also a solution.", "**KRYSS AV** når u og v er faste tall. Omfatter a[n]+3*b[n]."],
+        ["Bare én lik verdi, f.eks. a4=b4, betyr at hele følgene er like.", "**LA STÅ TOM.** Ett felles tall er ikke nok."],
+        ["Bare ett nullledd, f.eks. a5=0, betyr at hele følgen er null.", "**LA STÅ TOM.** Ett nulltall er ikke nok."]
+      ]}],
+      ["box", "**Gjenstår det tall, indekser eller heltall?** Bruk neste side. Les hele påstanden: «could» og «cannot» gir motsatte valg. Ord som «not» og «at least one» kan endre svaret."]
+    ]
+  },
+  {
+    "key": "rec-checklist-calculate",
+    "title": "Sjekkliste 2: tall, indekser og heltall",
+    "search": "could be a solution • a1=b1 and a3=b3 • consecutive • integer for each n • at least one index",
+    "blocks": [
+      ["p", "Bruk regelen du skrev på forrige side: **a[n]=P*a[n-1]+Q*a[n-2]**, med Q≠0. Hos deg er P=4 og Q=−3."],
+      ["h", "3. Er tre starttall oppgitt? Regn bare tredje tall"],
+      ["code", "Gitt a0=u, a1=v og foreslått a2=w:\nRiktig tredje tall = P*v + Q*u\n\nDin påstand: u=2, v=-2, w=-14\n4*(-2)-3*2 = -14  → stemmer"],
+      ["p", "**«Could be a solution»:** Kryss av hvis tallet stemmer; ellers la stå tom. **«Cannot be a solution»:** Gjør motsatt. To starttall kan alltid videreføres, men et tredje foreslått tall kan bryte oppskriften."],
+      ["h", "4. Er to løsninger like på bestemte plasser?"],
+      ["table", {"headers": ["Se på indeksene", "Gjør dette"], "widths": [219,288], "rows": [
+        ["To naboplasser: a4=b4 OG a5=b5", "**KRYSS AV** på «hele følgene er like». Samme to tall gir samme neste tall, og Q≠0 lar deg regne bakover."],
+        ["To nabonuller, f.eks. a5=a6=0; også a5=a6=a7=0", "**KRYSS AV** på «hele følgen er null». To nuller ved siden av hverandre er nok."],
+        ["Ett hull: a1=b1 OG a3=b3", "Se på P. **P≠0: KRYSS AV. P=0: LA STÅ TOM.** Her kan mellomtallet finnes fra a2=(a3-Q*a1)/P."],
+        ["Større avstand enn ett hull", "Regn d=avstanden mellom indeksene. Lag H0=0,H1=1 med samme P,Q. **H[d]≠0: KRYSS AV. H[d]=0: LA STÅ TOM.**"]
+      ]}],
+      ["p", "Eksempel: mellom a1 og a4 er avstanden d=3. H2=P og H3=P²+Q. Bruk samme test hvis påstanden gir to nullledd på atskilte plasser og hevder at hele følgen er null."],
+      ["h", "5. Påstår den at alle ledd er heltall?"],
+      ["p", "For heltallige a0,a1: **Er P og Q begge heltall? Da er alle ledd heltall.** Hos deg: P=4,Q=−3. Uansett hvilke heltall du starter med, gir 4*siste−3*nest siste et heltall."],
+      ["box", "Når alle ledd er heltall:\n«is an integer for each n» → **KRYSS AV**.\n«there exists at least one index … not an integer» → **LA STÅ TOM**.\nHar P eller Q en brøk? Bruk neste side før du velger."]
+    ]
+  },
+  {
+    "key": "rec-checklist-finish",
+    "title": "Sjekkliste 3: brøker og siste kontroll",
+    "search": "rational coefficients • integer • None of the above • 4*a[n]-16*a[n-1]+12*a[n-2]=0",
+    "blocks": [
+      ["h", "6. Brøkkoeffisienter: ikke gjett fra bare a2"],
+      ["p", "Denne testen gjelder når **P,Q er rasjonale tall, Q≠0, a0,a1 er heltall og minst én av P,Q ikke er et heltall**. Start med å regne a2. En brøk der beviser at ikke alle ledd er heltall. Hvis a2 er heltall, bruker du testen under:"],
+      ["table", {"headers": ["Gjør dette i rekkefølge", "Er alle ledd heltall?"], "widths": [300,207], "rows": [
+        ["a0=0 OG a1=0", "**JA.** Hele følgen er null."],
+        ["a0=0, men a1≠0", "**NEI.** Minst ett senere ledd blir en brøk."],
+        ["a0≠0: Regn r=a1/a0. Er r et heltall OG r*r=P*r+Q?", "**JA hvis begge krav stemmer.** Ellers **NEI**."]
+      ]}],
+      ["p", "Eksempel: P=5/2,Q=−1,a0=1,a1=2. Da er r=2 og 2*2=(5/2)*2−1. Begge krav stemmer, så alle ledd er heltall, selv med brøk i P. Derfor er «brøkkoeffisient → falskt» en feil snarvei."],
+      ["p", "**JA** gir KRYSS AV på «alle heltall», og LA STÅ TOM på «minst ett ikke heltall». **NEI** gir motsatte valg. Hvis startverdiene ikke er heltall, passer ikke denne testen; undersøk de oppgitte indeksene og likningen direkte."],
+      ["h", "7. Avslutt med «None of the above»"],
+      ["box", "Har du krysset av på minst én annen påstand? **LA «NONE» STÅ TOM.**\nEr alle de andre påstandene falske? **KRYSS AV PÅ «NONE».**\nSvarnumre kan flyttes. Match teksten, ikke plasseringen."],
+      ["h", "Din siste oppgave: slik brukes sjekklisten"],
+      ["p", "For 4*a[n]−16*a[n−1]+12*a[n−2]=0 får du P=4,Q=−3. Startverdiene i heltallspåstanden er a0=4,a1=1."],
+      ["table", {"headers": ["Påstand", "Sjekk / grunn", "Velg"], "widths": [200,204,103], "rows": [
+        ["1. Zero sequence is not a solution", "Bare nuller gir 0=0. «Not» er feil.", "**LA STÅ TOM**"],
+        ["2. a0=2,a1=−2,a2=−14 could be a solution", "4*(−2)−3*2=−14. Tredje tall passer.", "**KRYSS AV**"],
+        ["3. a4=b4 ⇒ hele følgene like", "Bare én felles verdi.", "**LA STÅ TOM**"],
+        ["4. a1=b1 OG a3=b3 ⇒ hele følgene like", "Ett hull; P=4 er ikke 0.", "**KRYSS AV**"],
+        ["5. a4=b4 OG a5=b5 ⇒ hele følgene like", "To like naboverdier.", "**KRYSS AV**"],
+        ["6. a0=4,a1=1 ⇒ alle senere ledd heltall", "Starttallene, P=4 og Q=−3 er heltall.", "**KRYSS AV**"],
+        ["7. None of the above", "Du har allerede sanne påstander.", "**LA STÅ TOM**"]
+      ]}]
+    ]
+  }
+]

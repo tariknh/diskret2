@@ -172,6 +172,42 @@ def verify():
         sequence.append(2*sequence[-1]-3*sequence[-2])
     check('Counterexample: same term at 5, different at 6', sequence == [11, 12, -9, -54, -81, 0, 243])
     check('Correct normalization of user recurrence', Fraction(-8, -4) == 2 and Fraction(12, -4) == -3)
+    short_pages = [p for p in pages if p['key'].startswith('rec-checklist-')]
+    short = fitz.open(ROOT / 'REKURRENS_SJEKKLISTE.pdf')
+    check('Printable checklist has three pages', len(short_pages) == len(short) == 3)
+    for i, (page, actual) in enumerate(zip(short_pages, short), 1):
+        check(f'Checklist {i} searchable title', flat(page['title']) in flat(actual.get_text()))
+        check(f'Checklist {i} text within margins', all(b[0] >= 39 and b[1] >= 20 and b[2] <= actual.rect.width-39 and b[3] <= actual.rect.height-20 for b in actual.get_text('blocks')))
+    latest = tables(short_pages[-1])[-1]
+    check('Checklist worked example has correct choices', [int(row[0].split('.')[0]) for row in latest['rows'] if flat(row[-1]) == 'KRYSS AV'] == [2, 4, 5, 6])
+    check('Worked example three initial values agree', 4*(-2)-3*2 == -14)
+    def integer_rule(P, Q, a0, a1):
+        if P.denominator == Q.denominator == 1:
+            return True
+        if a0 == a1 == 0:
+            return True
+        if a0 == 0:
+            return False
+        r = Fraction(a1, a0)
+        return r.denominator == 1 and r*r == P*r+Q
+    for P, Q, a0, a1, expected in [
+        (4, -3, 4, 1, True), (Fraction(5, 2), -1, 1, 2, True),
+        (Fraction(1, 2), Fraction(1, 2), 0, 0, True),
+        (Fraction(1, 2), Fraction(1, 2), 0, 2, False),
+        (Fraction(1, 2), Fraction(1, 2), 1, 2, False),
+        (Fraction(1, 2), Fraction(1, 2), 2, 1, False),
+    ]:
+        P, Q = Fraction(P), Fraction(Q)
+        check(f'Checklist integer decision {P,Q,a0,a1}', integer_rule(P, Q, a0, a1) == expected)
+        seq = [Fraction(a0), Fraction(a1)]
+        for _ in range(18):
+            seq.append(P*seq[-1]+Q*seq[-2])
+        check(f'Integer decision matches exact terms {P,Q,a0,a1}', all(v.denominator == 1 for v in seq) == expected)
+    for P, Q, gap, expected in [(4,-3,1,True), (4,-3,2,True), (0,1,2,False), (1,-1,3,False)]:
+        H = [0, 1]
+        for _ in range(max(0, gap-1)):
+            H.append(P*H[-1]+Q*H[-2])
+        check(f'Checklist index-gap decision {P,Q,gap}', (H[gap] != 0) == expected)
     group_checks(pages)
     modular_checks(pages)
     catalog = build.load('catalog.json')

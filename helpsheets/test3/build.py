@@ -18,9 +18,9 @@ from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate, Table, T
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / 'source'
-VERSION = 5
+VERSION = 6
 STEM = f'TEST3DOCSV{VERSION}'
-DATE = '3. november 2026'
+DATE = '5. november 2026'
 WIDTH = A4[0] - 88
 HEIGHT = A4[1] - 48 - 55 - 12
 NAVY = colors.HexColor('#17324e')
@@ -108,17 +108,18 @@ def catalog_pages(catalog):
 
 def all_pages():
     front = load('front.json')
+    checklist = load('recurrence-checklist.json')
     body = load('recurrence.json') + load('groups.json') + load('modular.json')
     catalog = load('catalog.json')
     tail = catalog_pages(catalog)
-    destinations = [(p['title'], p['key']) for p in body + tail]
+    destinations = [(p['title'], p['key']) for p in checklist + body + tail]
     toc = []
     for n, start in enumerate(range(0, len(destinations), 19), 1):
         toc.append(make_page(f'contents-{n}', f'Innhold {n}: klikk på oppgaven',
             'Cmd+F • Ctrl+F • søkbar • innhold',
             [['p', 'Ferdige avkryssinger til dine to spørsmål står på **side 1**. Klikk på en rad for å gå direkte til oppslaget. Du kan også søke på engelske ord fra oppgaveteksten.'],
              ['toc', destinations[start:start+19]]]))
-    pages = front + toc + body + tail
+    pages = front + checklist + toc + body + tail
     keys = [p['key'] for p in pages]
     if len(keys) != len(set(keys)):
         raise ValueError('Repeated page keys: ' + str([k for k in keys if keys.count(k) > 1]))
@@ -275,6 +276,20 @@ def build():
     document.close()
     temporary.replace(pdf)
     (ROOT / f'{STEM}.md').write_text(markdown(pages, numbers), encoding='utf-8')
+    # A short printable checklist, rebuilt from the same source as the full PDF.
+    selected = [p for p in pages if p['key'].startswith('rec-checklist-')]
+    short_numbers = {p['key']: i+1 for i, p in enumerate(selected)}
+    short_story = []
+    for i, page in enumerate(selected):
+        if i:
+            short_story.append(PageBreak())
+        content, _ = fit_page(page, short_numbers)
+        short_story.extend(content)
+    short = ROOT / 'REKURRENS_SJEKKLISTE.pdf'
+    short_doc = SimpleDocTemplate(str(short), pagesize=A4, rightMargin=44, leftMargin=44, topMargin=48, bottomMargin=55,
+        title='Rekurrensflervalg – sjekkliste', author='MA-224 hjelpeark', subject='Faste svar, indekser og heltall')
+    short_paint = lambda c, d: footer(c, d, len(selected))
+    short_doc.build(short_story, onFirstPage=short_paint, onLaterPages=short_paint)
     (ROOT / 'build-manifest.json').write_text(json.dumps(dict(version=VERSION, date=DATE, pages=len(pages), page_numbers=numbers, layout=layout), ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(f'Built {pdf}: {len(pages)} searchable pages.')
 
