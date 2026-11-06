@@ -228,6 +228,21 @@ def verify():
         sequence.append(2*sequence[-1]-3*sequence[-2])
     check('Counterexample: same term at 5, different at 6', sequence == [11, 12, -9, -54, -81, 0, 243])
     check('Correct normalization of user recurrence', Fraction(-8, -4) == 2 and Fraction(12, -4) == -3)
+    paren_example = next(p for p in pages if p['key']=='rec-parentheses-example')
+    check('Parentheses worked answer is present and searchable', '(-2+4*n)*2^n' in pdf[numbers['rec-parentheses-example']-1].get_text())
+    r,U,a1=2,-2,4
+    V=Fraction(a1,r)-U
+    check('Parentheses example repeated root', r*r-4*r+4==0 and 2*r-4==0)
+    check('Parentheses example coefficients', U==-2 and V==4)
+    seq=[(U+V*n)*r**n for n in range(10)]
+    check('Parentheses example initial values', seq[:3]==[-2,4,24])
+    check('Parentheses example satisfies recurrence', all(seq[n]-4*seq[n-1]+4*seq[n-2]==0 for n in range(2,len(seq))))
+    check('Without front parentheses gives wrong a1', -2+4*1*2**1==6 and 6!=a1)
+    check('Changing positive root to negative gives wrong a1', (-2+4*1)*(-2)**1==-4 and -4!=a1)
+    check('Negative base versus minus in front', (-2)**2==4 and -(2**2)==-4 and -2*2**2==-8)
+    check('Exponent grouping example', 2**(2+1)==8 and 2**2+1==5)
+    check('Fraction base grouping example', Fraction(2,3)**2==Fraction(4,9) and Fraction(2,3**2)==Fraction(2,9))
+    check('Denominator grouping example', Fraction(1,10*3)==Fraction(1,30) and Fraction(1,10)*3==Fraction(3,10))
     short_pages = [p for p in pages if p['key'].startswith('rec-checklist-')]
     short = fitz.open(ROOT / 'REKURRENS_SJEKKLISTE.pdf')
     check('Printable checklist has three pages', len(short_pages) == len(short) == 3)

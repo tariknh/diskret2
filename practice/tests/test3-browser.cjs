@@ -39,7 +39,8 @@ function check(ok,label){assert.ok(ok,label);checks++;}
     check(await page.evaluate(()=>JSON.stringify(Test3App.state.answers))===before,'Restore every saved answer');
     check(await page.evaluate(()=>localStorage.getItem('ma224-test3-v1'))==='previous-attempt-preserved','Old-version storage retained');
     const references=await page.locator('.help-ref a').evaluateAll(links=>links.map(a=>({text:a.textContent,url:a.href})));
-    check(references.length===7&&references.every(x=>x.text.includes('V8')&&x.url.endsWith('/TEST3DOCSV8.pdf')),'All hints link current helpsheet');
+    const help=await page.evaluate(()=>({version:Test3.HELP.version,url:Test3.HELP.url}));
+    check(references.length===7&&references.every(x=>x.text.includes(`V${help.version}`)&&x.url===help.url),'All hints link current helpsheet');
     await page.evaluate(()=>{
       Test3App.questions.forEach((q,i)=>Object.entries(q.solution).forEach(([key,value])=>{
         const el=document.querySelector(`#q${i} [data-k="${key}"]`);

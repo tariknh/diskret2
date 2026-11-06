@@ -135,6 +135,10 @@
         "**Dobbel rot:** bruk (U+V*n)*r^n.\nU=a0, V=a1/r−a0 når r≠0. Leddet V*n må være med."
       ],
       [
+        "p",
+        "Parenteser og fortegn: se den gjennomgåtte oppgaven med a0=−2,a1=4 på side {page:rec-parentheses-example}, og skrivereglene på side {page:rec-parentheses-rules}."
+      ],
+      [
         "code",
         "N03: a[n]+6*a[n-1]+9*a[n-2]=0, a0=1,a1=-9\n(r+3)^2=0 → r=-3\nU=1, V=(-9)/(-3)-1=2\nSvar: (1+2*n)*(-3)^n"
       ],

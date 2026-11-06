@@ -1,0 +1,50 @@
+[
+  {
+    "key": "rec-parentheses-example",
+    "title": "Parenteser: oppgaven din med startverdi −2",
+    "search": "a[n]-4*a[n-1]+4*a[n-2]=0 • a0=-2 • a1=4 • parentheses • (-2+4*n)*2^n",
+    "blocks": [
+      ["code", "a[n]-4*a[n-1]+4*a[n-2]=0\na0=-2, a1=4"],
+      ["h", "1. Finn grunntallet fra likningen"],
+      ["code", "r^2-4*r+4=(r-2)^2=0\nr=2 to ganger"],
+      ["box", "**Grunntallet er +2. Derfor bruker du 2^n.**\nStartverdien a0=−2 forteller ikke at grunntallet er −2. Grunntallet kommer fra rotlikningen."],
+      ["h", "2. Dobbel rot: grupper hele uttrykket foran potensen"],
+      ["code", "a[n]=(U+V*n)*2^n\na0=-2 → U=-2\na1=4 → (-2+V)*2=4\n        -2+V=2\n        V=4"],
+      ["box", "**Skriv i svarfeltet:**\n(-2+4*n)*2^n\n\nParentesen grupperer -2+4*n. HELE dette uttrykket skal ganges med 2^n."],
+      ["h", "3. Slik leser du svaret ved n=1"],
+      ["table", {"headers": ["Skrivemåte", "Regning ved n=1", "Passer med a1=4?"], "widths": [205,190,112], "rows": [
+        ["(-2+4*n)*2^n", "(-2+4)*2=2*2=4", "**JA**"],
+        ["-2+4*n*2^n", "-2+4*1*2=-2+8=6", "**NEI**"],
+        ["(-2+4*n)*(-2)^n", "(-2+4)*(-2)=-4", "**NEI**"]
+      ]}],
+      ["p", "Uten parentes rundt -2+4*n blir bare 4*n ganget med 2^n. Med (-2)^n har du byttet grunntallet til et annet tall. Det endrer følgen."],
+      ["h", "4. Kontroller begge startverdiene"],
+      ["code", "n=0: (-2+4*0)*2^0=-2\nn=1: (-2+4*1)*2^1=4"],
+      ["p", "Du kan også skrive (-2+4*n)*(2)^n. Parentesen rundt det positive tallet 2 er valgfri. Parentesen rundt summen -2+4*n må være med i denne skrivemåten."]
+    ]
+  },
+  {
+    "key": "rec-parentheses-rules",
+    "title": "Parenteser: når trengs de, og når er de valgfrie?",
+    "search": "negative base • minus • brackets • parentheses • 2^n • (-2)^n • (U+V*n) • denominator",
+    "blocks": [
+      ["box", "**Sett parentes rundt ALT som skal behandles som én samlet del.**\nSe særlig på grunntallet før ^, hele uttrykket foran en potens, og hele nevneren etter /."],
+      ["table", {"headers": ["Det du mener", "Skriv slik", "Hvorfor?"], "widths": [151,166,190], "rows": [
+        ["Positiv rot 2 opphøyd i n", "2^n\n(2)^n er også riktig", "Ett positivt tall trenger ikke parentes."],
+        ["Negativ rot −2 opphøyd i n", "(-2)^n", "Minustegnet er en del av grunntallet. Det må med inni parentesen."],
+        ["Minus FORAN potensen 2^n", "-2^n\neller -(2^n)", "Her regnes potensen først, og deretter settes minus foran."],
+        ["−2 som faktor foran 2^n", "-2*2^n\n(-2)*2^n er også riktig", "Stjernen betyr gange. Dette gjør ikke grunntallet negativt."],
+        ["Hele U+V*n skal ganges med r^n", "(U+V*n)*(r)^n", "Dobbel rot: parentesen holder hele frontleddet samlet."],
+        ["Brøken 2/3 er grunntallet", "(2/3)^n", "2/3^n betyr 2 delt på 3^n. Det er et annet uttrykk."],
+        ["Hele 2+2*sqrt(5) er grunntallet", "(2+2*sqrt(5))^n", "Hele summen skal opphøyes i n."],
+        ["Hele n+1 er eksponenten", "2^(n+1)", "2^n+1 betyr at du legger til 1 etter at potensen er regnet ut."],
+        ["Hele 10*3^n står under brøkstreken", "1/(10*3^n)", "1/10*3^n betyr (1/10)*3^n. Hele nevneren må grupperes."]
+      ]}],
+      ["h", "To minustegn som betyr forskjellige ting"],
+      ["code", "Ved n=2:\n(-2)^2 = (-2)*(-2) = 4\n-2^2   = -(2*2)    = -4\n-2*2^2 = (-2)*4    = -8"],
+      ["p", "Derfor må du finne røttene først. At en startverdi eller en koeffisient er negativ, er ikke alene en grunn til å skrive (-2)^n."],
+      ["h", "Sjekk før du leverer"],
+      ["p", "1. Er grunntallet en negativ verdi, brøk eller sum? Sett parentes rundt hele grunntallet.\n2. Har du dobbel rot? Behold (U+V*n) samlet foran potensen.\n3. Har nevneren flere faktorer eller ledd? Grupper hele nevneren.\n4. Sett n=0 og n=1 i det du faktisk har skrevet. Begge skal gi startverdiene.\n5. Bruk forhåndsvisningen: se hva som står inni potensen og under brøkstreken."]
+    ]
+  }
+]

@@ -152,7 +152,7 @@ footer { margin:28px 0 0 149px; padding-top:14px; border-top:1px solid var(--lin
     <button id="newBtn2" class="secondary" type="button">Nye oppgaver</button>
     <button id="printBtn" class="secondary" type="button" hidden>Skriv ut resultat</button>
   </div>
-  <footer>MA-224 · Delprøve 3 · 11 oppgavetyper. Én fil, fungerer uten internett. Lenker til hjelpearket V8 krever nett. Svar lagres i denne nettleseren når lokal lagring er tilgjengelig. Velger du ny prøve eller en annen modus, starter et nytt forsøk.</footer>
+  <footer>MA-224 · Delprøve 3 · 11 oppgavetyper. Én fil, fungerer uten internett. Lenker til hjelpearket V9 krever nett. Svar lagres i denne nettleseren når lokal lagring er tilgjengelig. Velger du ny prøve eller en annen modus, starter et nytt forsøk.</footer>
 </main>
 <script>
 'use strict';
@@ -161,9 +161,9 @@ footer { margin:28px 0 0 149px; padding-top:14px; border-top:1px solid var(--lin
 const Test3 = (() => {
   const VERSION = 2;
   const HELP = {
-    version: 8,
-    url: 'https://github.com/tariknh/diskret2/blob/main/helpsheets/test3/TEST3DOCSV8.pdf',
-    pages: { initial: '21–22 og 60', particular: '23–24 og 64', words: '25–26 og 63', recurrence_mc: '2–4, 27–35 og 65', permutation: '45–46', d3: '47–48', subgroup: '49–51', group_mc: '5–15 og 36–44', mod_products: '52–53 og 56–57', mod_table: '54–55', index: '58–59' }
+    version: 9,
+    url: 'https://github.com/tariknh/diskret2/blob/main/helpsheets/test3/TEST3DOCSV9.pdf',
+    pages: {"initial": "21–24 og 62", "particular": "25–26 og 66", "words": "27–28 og 65", "recurrence_mc": "2–4, 29–37 og 67", "permutation": "47–48", "d3": "49–50", "subgroup": "51–53", "group_mc": "5–15 og 38–46", "mod_products": "54–55 og 58–59", "mod_table": "56–57", "index": "60–61"}
   };
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const mod = (a, m) => ((a % m) + m) % m;

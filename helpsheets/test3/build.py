@@ -18,7 +18,7 @@ from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate, Table, T
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / 'source'
-VERSION = 8
+VERSION = 9
 STEM = f'TEST3DOCSV{VERSION}'
 DATE = '6. november 2026'
 WIDTH = A4[0] - 88
@@ -114,7 +114,10 @@ def all_pages():
     front = load('front.json')
     checklist = load('recurrence-checklist.json')
     group_lookup = load('group-lookup.json')
-    body = load('recurrence.json') + load('groups.json') + load('modular.json') + load('new-2026-11.json')
+    recurrence = load('recurrence.json')
+    insert_at = next(i+1 for i,p in enumerate(recurrence) if p['key']=='rec-repeated')
+    recurrence[insert_at:insert_at] = load('recurrence-parentheses.json')
+    body = recurrence + load('groups.json') + load('modular.json') + load('new-2026-11.json')
     catalog = load('catalog.json')
     tail = catalog_pages(catalog)
     destinations = [(p['title'], p['key']) for p in checklist + group_lookup + body + tail]

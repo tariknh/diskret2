@@ -19,3 +19,7 @@ Seks nye PDF-er (N05–N10) er gjennomgått, med 18 regneoppgaver. Ingen identis
 S2-profilen er kontrollert mot elementordenene 1 og 2. Alle påstandene er testet mot gruppeegenskapene. De nye ordvariantene er kontrollert ved å telle alle gyldige ord av lengde tre, og de eksakte røttene er satt inn i karakteristiske polynomer. De to nye partikulære løsningene er kontrollert både med en generell koeffisientidentitet og eksakt innsetting. De nye permutasjonene, D3-produktene, P5-produktene, P49-tallene og indeksene er regnet ut uavhengig. Den testbare matematiske datalisten ligger i `source/new-2026-11-checks.json`.
 
 N08 har fire matematisk riktige viste ordsvar, men viser 0.75/1. Det er kontrollert visuelt at de innskrevne potensene og rotuttrykkene samsvarer med tekstuttrekket. PDF-en gir ikke grunnlag for å tilskrive poengtapet en bestemt del eller endre et matematisk riktig svar.
+
+## Parentesforklaring i versjon 9
+
+Eksemplet med dobbel rot 2 og startverdiene −2,4 er kontrollert mot både startverdiene og rekurrensen. Det gir U=−2,V=4 og `(-2+4*n)*2^n`. Den innskrevne formen uten frontparentes gir feil a1=6; formen med negativt grunntall gir feil a1=−4. Potens-, brøk- og nevnerreglene er kontrollert med konkrete tall. Øvingssidens faktiske parser og retter godtar de riktige ekvivalente uttrykkene og avviser de tre viste grupperingene som endrer løsningen. Øvingssidens lenker og sidetall viser til V9; oppgavegeneratoren og eksisterende v2-forsøk er uendret.

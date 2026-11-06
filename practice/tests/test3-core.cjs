@@ -126,4 +126,7 @@ check(n10.grade({...n10.solution,x:'1/(10*3^n)-3*2^n'}).score===1,'Accept anothe
 check(T.preview('U*(2+2*sqrt(5))^n+V*(2-2*sqrt(5))^n').mathML.includes('<msqrt>'),'Native radical preview');
 check(T.preview('<img src=x onerror=alert(1)>').error,'Reject markup in math input');
 check(T.evaluate(T.parse('-2^2'))===-4&&T.evaluate(T.parse('(-2)^2'))===4,'Power precedence');
+const parentheses=T.genInitial(T.random(1),{repeated:true,x:2,u:-2,v:4});
+for(const x of ['(-2+4*n)*2^n','(-2+4*n)*(2)^n','-2*2^n+4*n*2^n'])check(parentheses.grade({x}).score===1,'Accept correct parentheses example: '+x);
+for(const x of ['-2+4*n*2^n','(-2+4*n)*(-2)^n','(-2+4*n)^n'])check(parentheses.grade({x}).score===0,'Reject changed grouping/base: '+x);
 console.log(JSON.stringify({passed:count,seeds:500,generatedQuestions:5500,latest:7,wordVariants:words.size,groupVariants:groups.size}));
