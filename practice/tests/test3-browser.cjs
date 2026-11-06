@@ -1,0 +1,75 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const http=require('node:http');
+const assert=require('node:assert/strict');
+const {chromium}=require('playwright');
+const html=fs.readFileSync(path.join(__dirname,'../../test3-med-preview.html'));
+const server=http.createServer((req,res)=>{res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'});res.end(html);});
+let checks=0;
+function check(ok,label){assert.ok(ok,label);checks++;}
+(async()=>{
+  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+  const url=`http://127.0.0.1:${server.address().port}/`;
+  const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
+  const context=await browser.newContext({viewport:{width:1365,height:900}});
+  const page=await context.newPage();
+  const errors=[],external=[];
+  page.on('pageerror',e=>errors.push(e.message));
+  await page.route('**/*',route=>{if(route.request().url().startsWith(url))return route.continue();external.push(route.request().url());return route.abort();});
+  await context.addInitScript(()=>{if(!localStorage.getItem('ma224-test3-v1'))localStorage.setItem('ma224-test3-v1','previous-attempt-preserved');});
+  try{
+    await page.goto(url);
+    check(await page.locator('article.question').count()===3,'Default full test has three questions');
+    check((await page.locator('#timer').textContent()).includes('Tid igjen'),'Full test is timed');
+    await page.selectOption('#mode','latest');
+    await page.evaluate(()=>Test3App.start('latest',42));
+    check(await page.locator('article.question').count()===7,'New-variants mode has seven questions');
+    check((await page.locator('#timer').textContent()).includes('Tid brukt'),'New variants have no time limit');
+    check(await page.locator('.feedback').count()===0,'Answers are not shown before submission');
+    check((await page.locator('#q1 .formulation').textContent()).includes('S2'),'S2 visible');
+    const last=page.locator('#q6 input[data-k=x]');
+    await last.fill('1/(10*3^n)+2^n');
+    check(await page.locator('#q6 .answer-preview math').count()===1,'Native MathML preview visible');
+    check(await page.locator('#q6 .answer-preview mfrac').count()>0,'Preview renders fractions');
+    check((await page.locator('#q6 .answer-preview').first().textContent()).includes('tolkes'),'Preview stays neutral');
+    const before=await page.evaluate(()=>JSON.stringify(Test3App.state.answers));
+    await page.reload();
+    check(await page.locator('article.question').count()===7,'Restore latest mode');
+    check(await page.locator('#q6 input[data-k=x]').inputValue()==='1/(10*3^n)+2^n','Restore typed answer');
+    check(await page.evaluate(()=>JSON.stringify(Test3App.state.answers))===before,'Restore every saved answer');
+    check(await page.evaluate(()=>localStorage.getItem('ma224-test3-v1'))==='previous-attempt-preserved','Old-version storage retained');
+    const references=await page.locator('.help-ref a').evaluateAll(links=>links.map(a=>({text:a.textContent,url:a.href})));
+    check(references.length===7&&references.every(x=>x.text.includes('V8')&&x.url.endsWith('/TEST3DOCSV8.pdf')),'All hints link current helpsheet');
+    await page.evaluate(()=>{
+      Test3App.questions.forEach((q,i)=>Object.entries(q.solution).forEach(([key,value])=>{
+        const el=document.querySelector(`#q${i} [data-k="${key}"]`);
+        if(el.type==='checkbox')el.checked=!!value;else el.value=value;
+        el.dispatchEvent(new Event('input',{bubbles:true}));
+      }));
+    });
+    check((await page.locator('#progress').textContent()).startsWith('7 av 7'),'Progress counts all seven');
+    await page.click('#finishBtn');
+    check((await page.locator('#summary h2').textContent())==='100 %','Correct answers grade 100 percent in UI');
+    check(await page.locator('.question.correct').count()===7,'Every latest variant correct');
+    check(await page.locator('.feedback').count()===7,'Feedback for every question');
+    check(await page.locator('[data-k]:not(:disabled)').count()===0,'Submitted inputs locked');
+    await page.reload();
+    check((await page.locator('#summary h2').textContent())==='100 %','Finished score survives reload');
+    await page.selectOption('#mode','all');
+    check(await page.locator('article.question').count()===11,'All eleven question types remain');
+    await page.evaluate(()=>Test3App.start('test',7));
+    await page.evaluate(()=>{const realNow=Date.now;Date.now=()=>realNow()+1801000;});
+    await page.waitForSelector('.summary');
+    check((await page.locator('#summary').textContent()).includes('Tiden er ute'),'Time expiry submits automatically');
+    check(await page.locator('[data-k]:not(:disabled)').count()===0,'Expired inputs locked');
+    await page.setViewportSize({width:390,height:844});
+    await page.evaluate(()=>Test3App.start('latest',42));
+    check(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),'Mobile layout fits viewport');
+    check(await page.locator('#mode').isVisible(),'Mobile mode selector visible');
+    const out=path.join(__dirname,'../../../reviews');fs.mkdirSync(out,{recursive:true});
+    await page.screenshot({path:path.join(out,'test3-practice-mobile.png')});
+    check(errors.length===0,'No browser errors: '+errors.join(';'));
+    check(external.length===0,'Practice works with every external network request blocked');
+    console.log(JSON.stringify({passed:checks,errors,externalRequests:external}));
+  }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}
+})().catch(e=>{console.error(e);server.close();process.exitCode=1;});

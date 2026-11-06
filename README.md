@@ -2,6 +2,8 @@
 
 ## Delprøve 3
 
+- [Last ned øvingsprøven med forhåndsvisning](test3-med-preview.html) – åpne HTML-filen i nettleseren. Velg «Nye prøvevarianter» for de siste tilleggene.
+- [Om øvingssiden og kontroller av fasit](practice/README.md)
 - [Sjekkliste for rekurrensflervalg – 3 sider](helpsheets/test3/REKURRENS_SJEKKLISTE.pdf)
 - [Gruppeflervalg – finn gruppen og match påstanden](helpsheets/test3/GRUPPER_SVARPROFILER.pdf)
 - [Last ned søkbart hjelpeark – versjon 8](helpsheets/test3/TEST3DOCSV8.pdf)

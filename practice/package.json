@@ -1,0 +1,11 @@
+{
+  "name": "ma224-test3-practice-checks",
+  "private": true,
+  "scripts": {
+    "test": "node tests/test3-core.cjs",
+    "test:browser": "node tests/test3-browser.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}
