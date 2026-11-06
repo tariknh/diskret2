@@ -1,5 +1,5 @@
 {
-  "passed": 1326,
+  "passed": 1330,
   "pdf_pages": 72,
   "distinct_attempts": 49,
   "math_questions": 147,
@@ -499,6 +499,10 @@
     "Front recurrence exact checkbox set",
     "Counterexample: same term at 5, different at 6",
     "Correct normalization of user recurrence",
+    "rec-words: remember current-term reminder",
+    "rec-words-general: remember current-term reminder",
+    "Word lookup includes full left-equals-right form",
+    "Word lookup includes full zero form",
     "Parentheses worked answer is present and searchable",
     "Parentheses example repeated root",
     "Parentheses example coefficients",

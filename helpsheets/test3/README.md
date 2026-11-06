@@ -1,6 +1,6 @@
 # Hjelpeark til delprøve 3
 
-[Gruppeflervalg – svarprofiler](GRUPPER_SVARPROFILER.pdf) · [Sjekkliste for rekurrensflervalg](REKURRENS_SJEKKLISTE.pdf) · [Last ned PDF – versjon 9](TEST3DOCSV9.pdf) · [Les den søkbare teksten](TEST3DOCSV9.md)
+[Gruppeflervalg – svarprofiler](GRUPPER_SVARPROFILER.pdf) · [Sjekkliste for rekurrensflervalg](REKURRENS_SJEKKLISTE.pdf) · [Last ned PDF – versjon 10](TEST3DOCSV10.pdf) · [Les den søkbare teksten](TEST3DOCSV10.md)
 
 Gjenoppbygd 3. november 2026 fra `tariknh/diskret/Delprove_3`, fire opplastede prøver og rettelsene i samtalen. Første side gir de konkrete avkryssingene til spørsmålene om `G=⟨x⟩ ⊆ S6`, der `x` har orden 3, og rekurrensen `−4a[n]+8a[n−1]−12a[n−2]=0`.
 
@@ -25,3 +25,5 @@ python helpsheets/test3/verify.py
 ```
 
 Rediger innholdet i `source/*.json`, og bygg på nytt. Byggingen lager PDF, Markdown og `build-manifest.json`. Kontrollprogrammet sjekker matematiske tabeller, svarene på første side, at sidene er søkbare, og at innhold og lenker får plass.
+
+Versjon 10 har en tydelig «Husk a[n]=»-påminnelse på side 27–28, særlig øverst på «Ordoppgaven: ferdige tall og generell løsning». Begge fullstendige likningsformer vises. Øvingssiden har samme påminnelse ved feltet og en konkret feilmelding når bare høyresiden er skrevet. Versjon 9 er beholdt.

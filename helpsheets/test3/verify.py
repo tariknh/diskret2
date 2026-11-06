@@ -228,6 +228,11 @@ def verify():
         sequence.append(2*sequence[-1]-3*sequence[-2])
     check('Counterexample: same term at 5, different at 6', sequence == [11, 12, -9, -54, -81, 0, 243])
     check('Correct normalization of user recurrence', Fraction(-8, -4) == 2 and Fraction(12, -4) == -3)
+    for key in ['rec-words','rec-words-general']:
+        check(key+': remember current-term reminder', 'HUSK A[N]=' in pdf[numbers[key]-1].get_text().upper())
+    words_text=flat(pdf[numbers['rec-words-general']-1].get_text())
+    check('Word lookup includes full left-equals-right form', 'a[n]=3*a[n-1]+18*a[n-2]' in words_text)
+    check('Word lookup includes full zero form', 'a[n]-3*a[n-1]-18*a[n-2]=0' in words_text)
     paren_example = next(p for p in pages if p['key']=='rec-parentheses-example')
     check('Parentheses worked answer is present and searchable', '(-2+4*n)*2^n' in pdf[numbers['rec-parentheses-example']-1].get_text())
     r,U,a1=2,-2,4

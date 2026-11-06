@@ -27,6 +27,8 @@ function check(ok,label){assert.ok(ok,label);checks++;}
     check((await page.locator('#timer').textContent()).includes('Tid brukt'),'New variants have no time limit');
     check(await page.locator('.feedback').count()===0,'Answers are not shown before submission');
     check((await page.locator('#q1 .formulation').textContent()).includes('S2'),'S2 visible');
+    check(await page.locator('.recurrence-reminder').count()===2,'Both word questions show the persistent current-term reminder');
+    check((await page.locator('#q2 .recurrence-reminder').textContent()).includes('Husk a[n]='),'Reminder visible before answering');
     const last=page.locator('#q6 input[data-k=x]');
     await last.fill('1/(10*3^n)+2^n');
     check(await page.locator('#q6 .answer-preview math').count()===1,'Native MathML preview visible');

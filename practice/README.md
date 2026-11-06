@@ -10,7 +10,8 @@ Oppdatert 6. november 2026:
 - Partikulære oppgaver inkluderer brøkkoeffisienten −1/3 og fortegnsfellen der riktig tillegg er +2^n.
 - Binære undergrupper kan ha blandede koordinater, slik de nye indeksoppgavene har.
 - «Nye prøvevarianter» gir sju målrettede oppgaver fra de seks nye filene. Dette er øving på de nye variantene, ikke seks komplette kopier av prøvene. De øvrige oppgavefamiliene finnes i de vanlige modusene.
-- Hint og forklaringer viser til hjelpeark V9, inkludert parentesforklaringen på side 23–24. De 11 oppgavetypene, 30-minutters fullprøve, automatisk innlevering, poengtrekk ved feil avkryssing og forhåndsvisning er beholdt.
+- Rekurrensfeltet minner om `a[n]=`; hvis bare de to tidligere leddene er skrevet, forklarer rettingen at hele likningen mangler. Begge fullstendige likningsformer godtas.
+- Hint og forklaringer viser til hjelpeark V10, inkludert parentesforklaringen på side 23–24. De 11 oppgavetypene, 30-minutters fullprøve, automatisk innlevering, poengtrekk ved feil avkryssing og forhåndsvisning er beholdt.
 
 Den oppdaterte generatoren bruker en ny lokal lagringsnøkkel. Tidligere v1-data slettes ikke, men et gammelt forsøk kan ikke gjenopptas med den endrede generatoren. Bare siste forsøk fra denne versjonen lagres. Ny prøve eller nytt modusvalg starter et nytt forsøk.
 

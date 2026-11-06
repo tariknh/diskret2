@@ -389,6 +389,10 @@
     "search": "Let A and X be the sets • valid words • starts with • ends with • adjacent letters • Find a recurrence relation",
     "blocks": [
       [
+        "box",
+        "**Husk a[n]= i rekurrensfeltet.** Skriv hele likningen: neste tall = regelen som bruker de to forrige. Bare p*a[n-1]+p*q*a[n-2] er høyresiden, ikke en full likning."
+      ],
+      [
         "p",
         "Denne malen gjelder de tre reglene i prøvene: ordet starter med et A-tegn, slutter med et A-tegn og kan ikke ha to X-tegn ved siden av hverandre."
       ],
@@ -458,6 +462,14 @@
     "title": "Ordoppgaven: ferdige tall og generell løsning",
     "search": "Find the general solution to the reccurence relation • general solution • a1 • a3",
     "blocks": [
+      [
+        "box",
+        "**DEL a: HUSK a[n]= – SKRIV HELE LIKNINGEN!**\nEksempel når A har 3 tegn og X har 6:\nRiktig: a[n]=3*a[n-1]+18*a[n-2]\nOgså riktig: a[n]-3*a[n-1]-18*a[n-2]=0\nUfullstendig: 3*a[n-1]+18*a[n-2]\nTallene på høyresiden er riktige. Legg a[n]= foran, så uttrykker du hva neste tall er."
+      ],
+      [
+        "p",
+        "**Del a ber om en likning. Del d ber om en formel i n.** I del d kan du kopiere U- og V-formlene under uten å skrive a[n]= foran."
+      ],
       [
         "p",
         "For den samme ordregelen blir den karakteristiske likningen r²−p*r−p*q=0. De to røttene er alltid forskjellige når p,q er positive."

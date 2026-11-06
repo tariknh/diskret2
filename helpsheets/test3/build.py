@@ -18,7 +18,7 @@ from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate, Table, T
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / 'source'
-VERSION = 9
+VERSION = 10
 STEM = f'TEST3DOCSV{VERSION}'
 DATE = '6. november 2026'
 WIDTH = A4[0] - 88

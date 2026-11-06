@@ -129,4 +129,10 @@ check(T.evaluate(T.parse('-2^2'))===-4&&T.evaluate(T.parse('(-2)^2'))===4,'Power
 const parentheses=T.genInitial(T.random(1),{repeated:true,x:2,u:-2,v:4});
 for(const x of ['(-2+4*n)*2^n','(-2+4*n)*(2)^n','-2*2^n+4*n*2^n'])check(parentheses.grade({x}).score===1,'Accept correct parentheses example: '+x);
 for(const x of ['-2+4*n*2^n','(-2+4*n)*(-2)^n','(-2+4*n)^n'])check(parentheses.grade({x}).score===0,'Reject changed grouping/base: '+x);
+const wordInput=T.types.find(t=>t.id==='words').gen(T.random(1),{p:3,q:6});
+check(wordInput.html.includes('recurrence-reminder')&&wordInput.html.includes('Husk a[n]='),'Persistent reminder next to word recurrence field');
+for(const rec of ['a[n]=3*a[n-1]+18*a[n-2]','a[n]-3*a[n-1]-18*a[n-2]=0'])check(wordInput.grade({...wordInput.solution,rec}).score===1,'Both full recurrence equations accepted: '+rec);
+const incomplete=wordInput.grade({...wordInput.solution,rec:'3*a[n-1]+18*a[n-2]'});
+check(incomplete.score===.75&&!incomplete.results[0].ok,'Bare RHS remains incorrect while other parts retain credit');
+check(incomplete.results[0].reason.includes('Husk a[n]='),'Incomplete recurrence explains missing current term');
 console.log(JSON.stringify({passed:count,seeds:500,generatedQuestions:5500,latest:7,wordVariants:words.size,groupVariants:groups.size}));

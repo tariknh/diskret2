@@ -1,5 +1,5 @@
 {
-  "version": 9,
+  "version": 10,
   "date": "6. november 2026",
   "pages": 72,
   "page_numbers": {
@@ -210,12 +210,12 @@
     {
       "key": "rec-words",
       "scale": 1,
-      "content_height": 488.3
+      "content_height": 535.9
     },
     {
       "key": "rec-words-general",
       "scale": 1,
-      "content_height": 484.0
+      "content_height": 626.4
     },
     {
       "key": "rec-mc-rules",
