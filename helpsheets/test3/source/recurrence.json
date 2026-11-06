@@ -354,6 +354,16 @@
               "N02: a[n]/2+4*a[n-1]\na0=4/5",
               "(-8)^n",
               "-62/5"
+            ],
+            [
+              "N09: -a[n]/3-a[n-1]\na0=7",
+              "(-3)^n",
+              "-15"
+            ],
+            [
+              "N10: -2*a[n]+4*a[n-1]\na0=-9/10",
+              "2^n",
+              "-59/30"
             ]
           ],
           "widths": [
@@ -497,6 +507,18 @@
               "a[n]=6*a[n-1]+18*a[n-2]",
               "6 ; 324",
               "3±sqrt(27)"
+            ],
+            [
+              "4 ; 4",
+              "a[n]=4*a[n-1]+16*a[n-2]",
+              "4 ; 128",
+              "2±2*sqrt(5)"
+            ],
+            [
+              "4 ; 6",
+              "a[n]=4*a[n-1]+24*a[n-2]",
+              "4 ; 160",
+              "2±2*sqrt(7)"
             ]
           ],
           "widths": [
@@ -802,7 +824,7 @@
     "blocks": [
       [
         "p",
-        "Her er alle de ti forskjellige rekurrensene vi har funnet i flervalg. x[n] og a[n] betyr det samme i dette oppslaget. Kolonnen «Heltall?» forutsetter heltallige startverdier."
+        "Her er alle de elleve forskjellige normaliserte rekurrensene vi har funnet i flervalg. N05 har halvparten av koeffisientene i B15 og gir samme regel. x[n] og a[n] betyr det samme her. Heltallskolonnen forutsetter heltallige startverdier."
       ],
       [
         "table",
@@ -824,7 +846,7 @@
               "**ALLE**"
             ],
             [
-              "B15\n4*a[n]-16*a[n-1]+12*a[n-2]=0",
+              "B15 / N05 (lik etter deling)\n4*a[n]-16*a[n-1]+12*a[n-2]=0",
               "P=4, Q=-3",
               "**ALLE**"
             ],
@@ -861,6 +883,11 @@
             [
               "Din prøve\n-4*a[n]+8*a[n-1]-12*a[n-2]=0",
               "P=2, Q=-3",
+              "**ALLE**"
+            ],
+            [
+              "N07\n3*a[n]+6*a[n-1]-6*a[n-2]=0",
+              "P=-2, Q=2",
               "**ALLE**"
             ]
           ],

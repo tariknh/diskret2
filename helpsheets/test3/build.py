@@ -18,9 +18,9 @@ from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate, Table, T
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / 'source'
-VERSION = 7
+VERSION = 8
 STEM = f'TEST3DOCSV{VERSION}'
-DATE = '5. november 2026'
+DATE = '6. november 2026'
 WIDTH = A4[0] - 88
 HEIGHT = A4[1] - 48 - 55 - 12
 NAVY = colors.HexColor('#17324e')
@@ -56,10 +56,14 @@ TYPE_NAMES = {
 def coverage_keys(source, typ):
     ident = source.get('duplicate_of') or source['id']
     if typ == 'recurrence_mc':
+        if ident in ['N05','N07']:
+            return ['new-nov6-mc']
         suffix = {'B03': 'a', 'B05': 'a', 'B15': 'b', 'B16': 'b',
                   'B27': 'c', 'B33': 'c', 'B35': 'd', 'B36': 'd', 'N04': 'e'}[ident]
         return ['rec-cases-' + suffix]
     if typ == 'group_mc':
+        if ident == 'N05':
+            return ['gp-s2']
         suffix = {'B05': '1', 'B22': '1', 'B07': '2', 'B34': '2',
                   'B18': '3', 'B08': '3', 'B35': '4'}[ident]
         return ['group-source-cards-' + suffix]
@@ -99,7 +103,7 @@ def catalog_pages(catalog):
     rows = [[x['id'] + '\n' + x['source_file'], '\n'.join(x.get('notes', [])) or 'Støttedokument; metoden er kontrollert mot prøveoppgavene.'] for x in notes]
     pages.append(make_page('source-notes', 'Kildegrunnlag og rettelser til gamle notater',
         'Rekursjon_Leselig • regler • source • fortegn • gamle notater',
-        [['p', '**Grunnlag:** 50 PDF-er i Delprove_3 på GitHub, fire nyere opplastede prøver og de to flervalgsspørsmålene fra ditt eget skjermbilde. Etter fjerning av identiske kopier: **43 ulike PDF-prøver med 129 regneoppgaver**. Signeringskode er ikke en regneoppgave.'],
+        [['p', '**Grunnlag:** 50 PDF-er i Delprove_3 på GitHub, ti nyere opplastede prøver og flervalgsspørsmål fra samtalen. Etter fjerning av identiske kopier: **49 ulike PDF-prøver med 147 regneoppgaver**. Signeringskode er ikke en regneoppgave.'],
          ['table', dict(headers=['Støttedokument', 'Bruk / merknad'], rows=rows, widths=[230, 277])],
          ['box', '**Gamle tekstnotater har feil.** Én lik verdi bestemmer ikke en andreordens følge. Z/7 × Z/10 er endelig og har 70 elementer. For a[n]=2*a[n-1]−2*a[n-2], a0=0,a1=−128 blir a2=−256, ikke −253. «None of the above» avhenger alltid av de andre alternativene.'],
          ['p', 'De to tekstnotatene og fire håndskrevne bildene i originalmappen er støttemateriale. Avkryssinger og prosenttall i tidligere forsøk er ikke alene brukt som fasit. Hver metode og svartabell er kontrollert matematisk.']]))
@@ -110,7 +114,7 @@ def all_pages():
     front = load('front.json')
     checklist = load('recurrence-checklist.json')
     group_lookup = load('group-lookup.json')
-    body = load('recurrence.json') + load('groups.json') + load('modular.json')
+    body = load('recurrence.json') + load('groups.json') + load('modular.json') + load('new-2026-11.json')
     catalog = load('catalog.json')
     tail = catalog_pages(catalog)
     destinations = [(p['title'], p['key']) for p in checklist + group_lookup + body + tail]

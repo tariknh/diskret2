@@ -11,3 +11,11 @@ Hjelpearket ble gjenoppbygd 3. november 2026. Innholdet er kontrollert mot 50 PD
 - `verify.py` kontrollerer den publiserte PDF-en, søkbar påstandstekst, bokmerker, lenker, avkryssinger, marger, kildekoblinger og numeriske tabeller på nytt.
 
 Gamle elevsvar og prosenttall er ikke alene brukt som fasit. Svarnumre gjelder rekkefølgen i det viste spørsmålet; hvis alternativene flyttes, må teksten matches. En tabell for én oppgitt likning eller gruppe må brukes med de samme vilkårene.
+
+## Tillegg 6. november 2026
+
+Seks nye PDF-er (N05–N10) er gjennomgått, med 18 regneoppgaver. Ingen identiske filkopier av tidligere kilder ble funnet. Kildegrunnlaget er nå 60 PDF-er, 49 ulike forsøk og 147 regneoppgaver.
+
+S2-profilen er kontrollert mot elementordenene 1 og 2. Alle påstandene er testet mot gruppeegenskapene. De nye ordvariantene er kontrollert ved å telle alle gyldige ord av lengde tre, og de eksakte røttene er satt inn i karakteristiske polynomer. De to nye partikulære løsningene er kontrollert både med en generell koeffisientidentitet og eksakt innsetting. De nye permutasjonene, D3-produktene, P5-produktene, P49-tallene og indeksene er regnet ut uavhengig. Den testbare matematiske datalisten ligger i `source/new-2026-11-checks.json`.
+
+N08 har fire matematisk riktige viste ordsvar, men viser 0.75/1. Det er kontrollert visuelt at de innskrevne potensene og rotuttrykkene samsvarer med tekstuttrekket. PDF-en gir ikke grunnlag for å tilskrive poengtapet en bestemt del eller endre et matematisk riktig svar.

@@ -1,7 +1,7 @@
 {
-  "version": 7,
-  "date": "5. november 2026",
-  "pages": 65,
+  "version": 8,
+  "date": "6. november 2026",
+  "pages": 70,
   "page_numbers": {
     "answer-start": 1,
     "rec-checklist-fast": 2,
@@ -13,61 +13,66 @@
     "gp-p5": 8,
     "gp-z7z10": 9,
     "gp-z3z10": 10,
-    "gp-s3": 11,
-    "gp-s6": 12,
-    "gp-new-group": 13,
-    "gp-new-statements": 14,
-    "contents-1": 15,
-    "contents-2": 16,
-    "contents-3": 17,
-    "contents-4": 18,
-    "my-recurrence": 19,
-    "rec-roots": 20,
-    "rec-repeated": 21,
-    "rec-particular": 22,
-    "rec-particular-lookup": 23,
-    "rec-words": 24,
-    "rec-words-general": 25,
-    "rec-mc-rules": 26,
-    "rec-index": 27,
-    "rec-integers": 28,
-    "rec-coefficients": 29,
-    "rec-cases-a": 30,
-    "rec-cases-b": 31,
-    "rec-cases-c": 32,
-    "rec-cases-d": 33,
-    "rec-cases-e": 34,
-    "my-group": 35,
-    "group-read": 36,
-    "group-matrix-basic": 37,
-    "group-matrix-subgroups": 38,
-    "group-matrix-order": 39,
-    "group-source-cards-1": 40,
-    "group-source-cards-2": 41,
-    "group-source-cards-3": 42,
-    "group-source-cards-4": 43,
-    "permutation-product": 44,
-    "permutation-inverse": 45,
-    "D3-meaning": 46,
-    "D3-table": 47,
-    "subgroup-zn": 48,
-    "subgroup-pairs": 49,
-    "subgroup-pairs-answers": 50,
-    "mod-product": 51,
-    "mod-inverse": 52,
-    "mod-tables57": 53,
-    "mod-tables89": 54,
-    "mod-known45-49": 55,
-    "mod-known50": 56,
-    "index-product": 57,
-    "index-d4": 58,
-    "calculator": 59,
-    "answer-format": 60,
-    "sources-1": 61,
-    "sources-2": 62,
-    "sources-3": 63,
-    "sources-4": 64,
-    "source-notes": 65
+    "gp-s2": 11,
+    "gp-s3": 12,
+    "gp-s6": 13,
+    "gp-new-group": 14,
+    "gp-new-statements": 15,
+    "contents-1": 16,
+    "contents-2": 17,
+    "contents-3": 18,
+    "contents-4": 19,
+    "my-recurrence": 20,
+    "rec-roots": 21,
+    "rec-repeated": 22,
+    "rec-particular": 23,
+    "rec-particular-lookup": 24,
+    "rec-words": 25,
+    "rec-words-general": 26,
+    "rec-mc-rules": 27,
+    "rec-index": 28,
+    "rec-integers": 29,
+    "rec-coefficients": 30,
+    "rec-cases-a": 31,
+    "rec-cases-b": 32,
+    "rec-cases-c": 33,
+    "rec-cases-d": 34,
+    "rec-cases-e": 35,
+    "my-group": 36,
+    "group-read": 37,
+    "group-matrix-basic": 38,
+    "group-matrix-subgroups": 39,
+    "group-matrix-order": 40,
+    "group-source-cards-1": 41,
+    "group-source-cards-2": 42,
+    "group-source-cards-3": 43,
+    "group-source-cards-4": 44,
+    "permutation-product": 45,
+    "permutation-inverse": 46,
+    "D3-meaning": 47,
+    "D3-table": 48,
+    "subgroup-zn": 49,
+    "subgroup-pairs": 50,
+    "subgroup-pairs-answers": 51,
+    "mod-product": 52,
+    "mod-inverse": 53,
+    "mod-tables57": 54,
+    "mod-tables89": 55,
+    "mod-known45-49": 56,
+    "mod-known50": 57,
+    "index-product": 58,
+    "index-d4": 59,
+    "calculator": 60,
+    "answer-format": 61,
+    "new-nov6": 62,
+    "new-nov6-words": 63,
+    "new-nov6-particular": 64,
+    "new-nov6-mc": 65,
+    "sources-1": 66,
+    "sources-2": 67,
+    "sources-3": 68,
+    "sources-4": 69,
+    "source-notes": 70
   },
   "layout": [
     {
@@ -93,7 +98,7 @@
     {
       "key": "gp-start",
       "scale": 1,
-      "content_height": 563.1
+      "content_height": 584.3
     },
     {
       "key": "gp-c3",
@@ -119,6 +124,11 @@
       "key": "gp-z3z10",
       "scale": 1,
       "content_height": 613.7
+    },
+    {
+      "key": "gp-s2",
+      "scale": 1,
+      "content_height": 656.6
     },
     {
       "key": "gp-s3",
@@ -158,7 +168,7 @@
     {
       "key": "contents-4",
       "scale": 1,
-      "content_height": 165.2
+      "content_height": 271.2
     },
     {
       "key": "my-recurrence",
@@ -183,7 +193,7 @@
     {
       "key": "rec-particular-lookup",
       "scale": 1,
-      "content_height": 658.4
+      "content_height": 724.8
     },
     {
       "key": "rec-words",
@@ -193,7 +203,7 @@
     {
       "key": "rec-words-general",
       "scale": 1,
-      "content_height": 441.6
+      "content_height": 484.0
     },
     {
       "key": "rec-mc-rules",
@@ -213,7 +223,7 @@
     {
       "key": "rec-coefficients",
       "scale": 1,
-      "content_height": 616.9
+      "content_height": 664.4
     },
     {
       "key": "rec-cases-a",
@@ -343,7 +353,7 @@
     {
       "key": "mod-known45-49",
       "scale": 1,
-      "content_height": 494.4
+      "content_height": 515.6
     },
     {
       "key": "mod-known50",
@@ -371,6 +381,26 @@
       "content_height": 509.1
     },
     {
+      "key": "new-nov6",
+      "scale": 1,
+      "content_height": 541.3
+    },
+    {
+      "key": "new-nov6-words",
+      "scale": 1,
+      "content_height": 566.6
+    },
+    {
+      "key": "new-nov6-particular",
+      "scale": 1,
+      "content_height": 595.9
+    },
+    {
+      "key": "new-nov6-mc",
+      "scale": 1,
+      "content_height": 641.6
+    },
+    {
       "key": "sources-1",
       "scale": 1,
       "content_height": 587.6
@@ -388,7 +418,7 @@
     {
       "key": "sources-4",
       "scale": 1,
-      "content_height": 255.6
+      "content_height": 562.8
     },
     {
       "key": "source-notes",

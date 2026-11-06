@@ -17,6 +17,10 @@
           ],
           "rows": [
             [
+              "G=S2, symmetric group of permutations of 2 symbols",
+              "{page:gp-s2}"
+            ],
+            [
               "G=⟨x⟩, x has order 3",
               "{page:gp-c3}"
             ],
@@ -600,6 +604,112 @@
       [
         "p",
         "Dette er gruppen av par. Den er syklisk fordi gcd(3,10)=1, og abelsk."
+      ],
+      [
+        "box",
+        "**None of the above:** Kryss av bare når alle de andre alternativene i den aktuelle oppgaven er falske. En sann rad på denne siden teller bare hvis den faktisk står i oppgaven din."
+      ]
+    ]
+  },
+  {
+    "key": "gp-s2",
+    "title": "Svarprofil: HELE S2",
+    "search": "G=S2 • symmetric group of permutations of 2 symbols • cyclic • abelian",
+    "blocks": [
+      [
+        "p",
+        "**Bruk denne siden når første linje sier:** G=S2, the symmetric group of permutations of 2 symbols."
+      ],
+      [
+        "box",
+        "**Antall elementer |G| = 2!=2.**\n«The order of G is k»: KRYSS AV akkurat når k=2.\n«Divisible by k»: KRYSS AV akkurat når 2/k er et heltall (k>0)."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Finn denne påstandsteksten",
+            "Dette velger du"
+          ],
+          "rows": [
+            [
+              "The order of G is 7.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "The group G is finite.",
+              "**KRYSS AV**"
+            ],
+            [
+              "The group G is infinite.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "The group G is abelian.",
+              "**KRYSS AV**"
+            ],
+            [
+              "For all elements a,b ∈ G, the following is true: ab = ba.",
+              "**KRYSS AV**"
+            ],
+            [
+              "The group G is not abelian.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "There exist elements g,h ∈ G such that gh ≠ hg.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "The group G is cyclic.",
+              "**KRYSS AV**"
+            ],
+            [
+              "The group G is not cyclic.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "There exists an element g ∈ G such that ⟨g⟩=G.",
+              "**KRYSS AV**"
+            ],
+            [
+              "There exists an element g ∈ G such that the order of the subgroup ⟨g⟩ equals the order of G.",
+              "**KRYSS AV**"
+            ],
+            [
+              "For each element g ∈ G, the subgroup ⟨g⟩ ⊊ G is a proper subgroup of G.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "For each element g ∈ G, ⟨g⟩=G.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "There exists an element g ∈ G such that ⟨g⟩ is a proper subgroup of G.",
+              "**KRYSS AV**"
+            ],
+            [
+              "The group G has a non-trivial and proper subgroup.",
+              "**LA STÅ TOM**"
+            ],
+            [
+              "The only subgroups of G are the trivial subgroup {e}, and G itself.",
+              "**KRYSS AV**"
+            ],
+            [
+              "The order of G is divisible by 3.",
+              "**LA STÅ TOM**"
+            ]
+          ],
+          "widths": [
+            398,
+            109
+          ]
+        }
+      ],
+      [
+        "p",
+        "S2 har identiteten og byttet av de to symbolene. Gruppen er syklisk og abelsk, men har ingen ikke-triviell ekte undergruppe. I N05 er bare påstanden «The group G is cyclic» sann (alternativ 5 i den filen)."
       ],
       [
         "box",

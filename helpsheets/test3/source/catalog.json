@@ -829,5 +829,97 @@
       "3": "mod_table"
     },
     "notes": []
+  },
+  {
+    "id": "N05",
+    "source_file": "Test 3 (topics 7-9_ Recurrence relations, Introduction to group theory, The multiplicative group of integers mod(n) and Lagrange's theorem)_ Attempt review _ Matric (1).pdf",
+    "sha256": "becdb823af54f2d9c8195eca91086f81a4b3fa30d5e878b7e26a47fc3b7e8c86",
+    "pages": 2,
+    "duplicate_of": null,
+    "origin": "user-upload",
+    "kind": "attempt",
+    "question_types": {
+      "1": "recurrence_mc",
+      "2": "group_mc",
+      "3": "index"
+    },
+    "notes": []
+  },
+  {
+    "id": "N06",
+    "source_file": "delprøve_3_92%.pdf",
+    "sha256": "be526c65bda6957444b7e3595281ec8f4631021f5463ac1c519872f40ab73b88",
+    "pages": 4,
+    "duplicate_of": null,
+    "origin": "user-upload",
+    "kind": "attempt",
+    "question_types": {
+      "1": "words",
+      "2": "permutation",
+      "3": "mod_products"
+    },
+    "notes": []
+  },
+  {
+    "id": "N07",
+    "source_file": "Test 3_1_66% (topics 7-9_ Recurrence relations, Introduction to group theory, The multiplicative group of integers mod(n) and Lagrange's theorem)_ Attempt review _ Matric.pdf",
+    "sha256": "e8d852d695eb67baec939a55c3591cfa9289ac1c4b95f3a8325aaa160da4aa30",
+    "pages": 4,
+    "duplicate_of": null,
+    "origin": "user-upload",
+    "kind": "attempt",
+    "question_types": {
+      "1": "recurrence_mc",
+      "2": "D3",
+      "3": "index"
+    },
+    "notes": []
+  },
+  {
+    "id": "N08",
+    "source_file": "Test 3, forsøk 1, 100%.pdf",
+    "sha256": "86f36a8b2919b10bc3fdbdfd050eccab72e44b6c764e368d3582a054eeeed85b",
+    "pages": 5,
+    "duplicate_of": null,
+    "origin": "user-upload",
+    "kind": "attempt",
+    "question_types": {
+      "1": "words",
+      "2": "permutation",
+      "3": "index"
+    },
+    "notes": [
+      "Filnavnet sier 100%, men oppgave 1 viser 0.75/1. De fire viste ordsvarene er matematisk riktige; PDF-en forklarer ikke poengtapet."
+    ]
+  },
+  {
+    "id": "N09",
+    "source_file": "quiz3_100.pdf",
+    "sha256": "8d40fccfb45909198b930af5c01c81c5edcad821ee9db6c312638e9e5cb40010",
+    "pages": 6,
+    "duplicate_of": null,
+    "origin": "user-upload",
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "permutation",
+      "3": "mod_table"
+    },
+    "notes": []
+  },
+  {
+    "id": "N10",
+    "source_file": "Test 3 (topics 7-9_ Recurrence relations, Introduction to group theory, The multiplicative group of integers mod(n) and Lagrange's theorem)_ Attempt review _ Matric.pdf",
+    "sha256": "537faf18d2cb64bfc0d4f217ca0dc0787bad457ffbdb5e2abeb69312d74a31fc",
+    "pages": 5,
+    "duplicate_of": null,
+    "origin": "user-upload",
+    "kind": "attempt",
+    "question_types": {
+      "1": "particular",
+      "2": "permutation",
+      "3": "index"
+    },
+    "notes": []
   }
 ]
