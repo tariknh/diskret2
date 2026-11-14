@@ -1,5 +1,9 @@
 # diskret2
 
+[Åpne nettsiden](https://tariknh.github.io/diskret2/) · [Aktiver automatisk publisering med GitHub Pages](PAGES.md)
+
+Nettsiden blir tilgjengelig når Pages er aktivert. Deretter oppdateres den automatisk ved endringer på `main`.
+
 ## Delprøve 4
 
 - [Søkbart hjelpeark V1 – 40 sider](helpsheets/test4/TEST4DOCSV1.pdf)
