@@ -1,0 +1,2902 @@
+[
+  {
+    "key": "start",
+    "title": "Delprøve 4: finn oppgaven din",
+    "search": "RSA • Coding theory • Applications of Lagrange's theorem • Hamming • generator • parity check • syndrome",
+    "blocks": [
+      [
+        "box",
+        "Start med den engelske setningen. Finn raden nedenfor. Følg oppskriften, eller bruk talloppslaget når ALLE tallene stemmer."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Ser du dette i oppgaven?",
+            "Gå til"
+          ],
+          "rows": [
+            [
+              "Select all options … valid key pair",
+              "RSA-flervalg: side {page:rsa-check}. Ferdige tall: {page:rsa-options-1}–{page:rsa-options-3}."
+            ],
+            [
+              "Bob’s RSA key is weak / Find the unencrypted message",
+              "Privat nøkkel og klartekst: {page:rsa-break}. Talloppslag: {page:rsa-known}."
+            ],
+            [
+              "minimal and maximal Hamming distance",
+              "Tell ulike bit: {page:hamming}. Oppslag: {page:hamming-known-1}–{page:hamming-known-2}."
+            ],
+            [
+              "noisy binary symmetric channel / at most",
+              "Sannsynlighet: {page:channel}. Oppslag: {page:channel-known}."
+            ],
+            [
+              "Find the generator matrix / parity check matrix",
+              "G, H og syndrom: {page:generator}–{page:syndrome}. Matriseoppslag: {page:matrices-known-1}."
+            ],
+            [
+              "minimum distance / always able to detect",
+              "Kodeord og minsteavstand: {page:distance}. Oppslag: {page:distance-known-1}."
+            ],
+            [
+              "Compute the error pattern / encoded message",
+              "Dekoding med 8 bit: {page:decode}–{page:decode-worked}. Fasiter: {page:decode-known}."
+            ]
+          ],
+          "widths": [
+            1,
+            1
+          ]
+        }
+      ],
+      [
+        "p",
+        "Dette arket dekker de 96 regneoppgavene i de 32 byte-ulike prøvefilene i Delprove_4, pluss supplerende regneeksempler fra notatene. Mappen har 44 PDF-er: 36 prøvekopier og 8 notatkopier. Kildesjekken bakerst viser hver fil."
+      ],
+      [
+        "p",
+        "Søk med Cmd+F / Ctrl+F. Oppgavene og tallene kan endres i nye prøver; bruk fremgangsmåten hvis oppslaget ikke matcher. Øvingssiden heter test4-med-preview.html."
+      ]
+    ]
+  },
+  {
+    "key": "quick",
+    "title": "Hurtigsjekk før du svarer",
+    "search": "quick checklist • syntax • leading zero • rounded off to three decimals",
+    "blocks": [
+      [
+        "table",
+        {
+          "headers": [
+            "Oppgavetype",
+            "Dette må du huske"
+          ],
+          "rows": [
+            [
+              "RSA-flervalg",
+              "p og q må være primtall. Test x*y modulo (p−1)*(q−1), ikke modulo n. Resten skal være 1."
+            ],
+            [
+              "Privat nøkkel",
+              "y er inversen til x modulo phi. Klartekst er M^y modulo n."
+            ],
+            [
+              "Hamming",
+              "Sammenlign ulike strenger. Fire strenger gir seks par. Ikke ta med avstand fra en streng til seg selv."
+            ],
+            [
+              "Sannsynlighet",
+              "Les tallet etter «at most». Høyst 2 inkluderer 0, 1 og 2 feil. Rund bare sluttsvaret."
+            ],
+            [
+              "En bestemt mottatt streng",
+              "Tell d ulike posisjoner. Bruk p^d*(1−p)^(n−d). Ingen binomialfaktor."
+            ],
+            [
+              "G og H",
+              "G har én rad per meldingsbit. H har én rad per kontrollbit. Alt regnes modulo 2."
+            ],
+            [
+              "Minimum distance / detect",
+              "d_min er minste vekten til et ikke-null kodeord. «Always detect» spør etter d_min−1."
+            ],
+            [
+              "Syndrom / error pattern",
+              "Ved 8-bit-oppgavene: syndrom har 4 bit. Feilmønster og korrigert kodeord har 8 bit."
+            ]
+          ]
+        }
+      ],
+      [
+        "box",
+        "Behold nuller først: skriv 0010, ikke 10. Matrise: mellomrom mellom tall, linjeskift mellom rader. Bitstreng: skriv bare bitene uten komma eller klammer."
+      ],
+      [
+        "p",
+        "Flervalg: «None of the above» krysses bare av når ingen vanlige alternativer er riktige. Rekkefølgen på alternativene kan endres. Match hele tallsettet, ikke alternativnummeret."
+      ]
+    ]
+  },
+  {
+    "key": "rsa-check",
+    "title": "RSA-flervalg: hva skal krysses av?",
+    "search": "valid RSA keys • valid key pair • Select all options • public and private key • x y p q n",
+    "blocks": [
+      [
+        "p",
+        "Du får x, y, p, q, n i hvert alternativ. Her brukes læreboktesten phi=(p−1)*(q−1)."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Steg",
+            "Gjør dette",
+            "Hvis testen feiler"
+          ],
+          "rows": [
+            [
+              "1",
+              "Kontroller at p og q er ulike primtall.",
+              "LA ALTERNATIVET STÅ TOMT."
+            ],
+            [
+              "2",
+              "Kontroller n=p*q.",
+              "LA DET STÅ TOMT."
+            ],
+            [
+              "3",
+              "Regn phi=(p−1)*(q−1).",
+              "Dette er modulen i neste steg."
+            ],
+            [
+              "4",
+              "Bruk produktkalkulatoren: Factor 1=x, Factor 2=y, Modulus=phi.",
+              "Hvis resten ikke er 1: LA DET STÅ TOMT."
+            ],
+            [
+              "5",
+              "Alle testene bestått?",
+              "KRYSS AV."
+            ]
+          ],
+          "widths": [
+            0.4,
+            1.7,
+            1
+          ]
+        }
+      ],
+      [
+        "box",
+        "Kalkulatorens «Modulus» skal være phi, selv om oppgaven kaller RSA-modulen n. Ikke skriv x*y mod n i denne testen."
+      ],
+      [
+        "p",
+        "Hvis gcd(x,phi)>1, kan x ikke ha en invers. Det er en rask måte å forkaste et alternativ på. Et partall x forkastes når p og q er odde primtall, fordi phi da er partall."
+      ],
+      [
+        "p",
+        "Men x og y kan gi rest 1 i kontrollen selv om p er et sammensatt tall. Derfor kan du ikke hoppe over primtallstesten."
+      ],
+      [
+        "p",
+        "De 30 tallalternativene som faktisk forekommer, står på side {page:rsa-options-1}–{page:rsa-options-3}."
+      ]
+    ]
+  },
+  {
+    "key": "rsa-prime",
+    "title": "RSA: to konkrete feller",
+    "search": "prime numbers • composite • gcd • 7637383 • 20271383 • Factor 1 • Modulus",
+    "blocks": [
+      [
+        "h",
+        "Et gyldig alternativ"
+      ],
+      [
+        "code",
+        "x=20271383, y=22663367\np=3557, q=7741, n=27534737\nphi=3556*7740=27523440\n(20271383*22663367) mod 27523440 = 1"
+      ],
+      [
+        "p",
+        "p og q er primtall, og p*q=n. Dette alternativet skal krysses av."
+      ],
+      [
+        "h",
+        "Et alternativ som lurer deg hvis du bare sjekker resten"
+      ],
+      [
+        "code",
+        "x=7637383, y=15705847\np=3921, q=5531, n=21687051\n3921=3*1307"
+      ],
+      [
+        "p",
+        "3921 er ikke primtall. Alternativet skal stå tomt selv om produktkontrollen med (3921−1)*(5531−1) gir rest 1."
+      ],
+      [
+        "h",
+        "Hvordan sjekker du et nytt tall?"
+      ],
+      [
+        "p",
+        "Prøv divisjon med primtallene opp til kvadratroten av tallet. Hvis én divisjon gir et heltall, er tallet sammensatt. Du kan stoppe når primtallets kvadrat er større enn tallet."
+      ],
+      [
+        "code",
+        "Primtall opp til 89:\n2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89"
+      ],
+      [
+        "p",
+        "Snarveier: partall >2 er ikke primtall. Siffersum delelig på 3 betyr delelig på 3. Tall som slutter på 0 eller 5 og er >5 er ikke primtall."
+      ]
+    ]
+  },
+  {
+    "key": "rsa-options-1",
+    "title": "RSA-oppslag 1 av 3: eksakte alternativer",
+    "search": "valid RSA keys • 682183 • 2124966 • 2497423 • 2846781 • 3008046 • 3872401 • 3975723 • 5066098 • 6058577 • 7057729",
+    "blocks": [
+      [
+        "box",
+        "Match alle fem tall: x, y, p, q og n. «KRYSS AV» betyr gyldig. Alle andre rader skal stå tomme."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "x og y",
+            "p, q og n",
+            "Velg slik"
+          ],
+          "rows": [
+            [
+              "x=682183\ny=22904887",
+              "p=6163, q=4217\nn=25989371",
+              "KRYSS AV"
+            ],
+            [
+              "x=2124966\ny=1889417",
+              "p=5477, q=2437\nn=13347449",
+              "gcd(x,phi)=6"
+            ],
+            [
+              "x=2497423\ny=16962307",
+              "p=7231, q=2687\nn=19429697",
+              "p er ikke primtall"
+            ],
+            [
+              "x=2846781\ny=2055541",
+              "p=2709, q=2861\nn=7750449",
+              "p er ikke primtall"
+            ],
+            [
+              "x=3008046\ny=2067287",
+              "p=3881, q=2549\nn=9892669",
+              "gcd(x,phi)=2"
+            ],
+            [
+              "x=3872401\ny=5158441",
+              "p=7247, q=4261\nn=30879467",
+              "KRYSS AV"
+            ],
+            [
+              "x=3975723\ny=862787",
+              "p=7901, q=3209\nn=25354309",
+              "KRYSS AV"
+            ],
+            [
+              "x=5066098\ny=11977289",
+              "p=6709, q=5641\nn=37845469",
+              "gcd(x,phi)=2"
+            ],
+            [
+              "x=6058577\ny=8054977",
+              "p=5303, q=6473\nn=34326319",
+              "KRYSS AV"
+            ],
+            [
+              "x=7057729\ny=1240783",
+              "p=6007, q=3271\nn=19648897",
+              "gcd(x,phi)=7"
+            ]
+          ],
+          "widths": [
+            1,
+            1.25,
+            0.8
+          ]
+        }
+      ],
+      [
+        "p",
+        "Nye tall? Bruk sjekklisten på side {page:rsa-check}. Disse radene er sortert etter x, ikke etter rekkefølgen i prøven."
+      ]
+    ]
+  },
+  {
+    "key": "rsa-options-2",
+    "title": "RSA-oppslag 2 av 3: eksakte alternativer",
+    "search": "valid RSA keys • 7637383 • 8000356 • 9017582 • 9657491 • 12903033 • 14024123 • 14907077 • 17570399 • 20271383 • 21226837",
+    "blocks": [
+      [
+        "box",
+        "Match alle fem tall: x, y, p, q og n. «KRYSS AV» betyr gyldig. Alle andre rader skal stå tomme."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "x og y",
+            "p, q og n",
+            "Velg slik"
+          ],
+          "rows": [
+            [
+              "x=7637383\ny=15705847",
+              "p=3921, q=5531\nn=21687051",
+              "p er ikke primtall"
+            ],
+            [
+              "x=8000356\ny=277063",
+              "p=4177, q=3851\nn=16085627",
+              "gcd(x,phi)=28"
+            ],
+            [
+              "x=9017582\ny=3606439",
+              "p=6673, q=4093\nn=27312589",
+              "gcd(x,phi)=2"
+            ],
+            [
+              "x=9657491\ny=10246811",
+              "p=2721, q=4021\nn=10941141",
+              "p er ikke primtall"
+            ],
+            [
+              "x=12903033\ny=3215451",
+              "p=6113, q=2437\nn=14897381",
+              "gcd(x,phi)=3"
+            ],
+            [
+              "x=14024123\ny=3588467",
+              "p=3879, q=6529\nn=25325991",
+              "p er ikke primtall"
+            ],
+            [
+              "x=14907077\ny=8920973",
+              "p=7177, q=2843\nn=20404211",
+              "KRYSS AV"
+            ],
+            [
+              "x=17570399\ny=30362099",
+              "p=7451, q=6451\nn=48066401",
+              "KRYSS AV"
+            ],
+            [
+              "x=20271383\ny=22663367",
+              "p=3557, q=7741\nn=27534737",
+              "KRYSS AV"
+            ],
+            [
+              "x=21226837\ny=3434893",
+              "p=5119, q=5563\nn=28476997",
+              "KRYSS AV"
+            ]
+          ],
+          "widths": [
+            1,
+            1.25,
+            0.8
+          ]
+        }
+      ],
+      [
+        "p",
+        "Nye tall? Bruk sjekklisten på side {page:rsa-check}. Disse radene er sortert etter x, ikke etter rekkefølgen i prøven."
+      ]
+    ]
+  },
+  {
+    "key": "rsa-options-3",
+    "title": "RSA-oppslag 3 av 3: eksakte alternativer",
+    "search": "valid RSA keys • 21749249 • 23095092 • 26924209 • 27087494 • 35131943 • 35413787 • 35519203 • 36661763 • 36784094 • 42185665",
+    "blocks": [
+      [
+        "box",
+        "Match alle fem tall: x, y, p, q og n. «KRYSS AV» betyr gyldig. Alle andre rader skal stå tomme."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "x og y",
+            "p, q og n",
+            "Velg slik"
+          ],
+          "rows": [
+            [
+              "x=21749249\ny=17859389",
+              "p=5335, q=6571\nn=35056285",
+              "p er ikke primtall"
+            ],
+            [
+              "x=23095092\ny=2157127",
+              "p=7027, q=3917\nn=27524759",
+              "gcd(x,phi)=12"
+            ],
+            [
+              "x=26924209\ny=43485577",
+              "p=7239, q=7789\nn=56384571",
+              "p er ikke primtall"
+            ],
+            [
+              "x=27087494\ny=8924683",
+              "p=7331, q=4231\nn=31017461",
+              "gcd(x,phi)=2"
+            ],
+            [
+              "x=35131943\ny=15273131",
+              "p=7579, q=7583\nn=57471557",
+              "p er ikke primtall"
+            ],
+            [
+              "x=35413787\ny=22470071",
+              "p=5575, q=7919\nn=44148425",
+              "p er ikke primtall"
+            ],
+            [
+              "x=35519203\ny=9772867",
+              "p=5471, q=7351\nn=40217321",
+              "KRYSS AV"
+            ],
+            [
+              "x=36661763\ny=31000091",
+              "p=5783, q=6553\nn=37895999",
+              "KRYSS AV"
+            ],
+            [
+              "x=36784094\ny=14173807",
+              "p=6833, q=6823\nn=46621559",
+              "gcd(x,phi)=2"
+            ],
+            [
+              "x=42185665\ny=31377985",
+              "p=7249, q=6329\nn=45878921",
+              "p er ikke primtall"
+            ]
+          ],
+          "widths": [
+            1,
+            1.25,
+            0.8
+          ]
+        }
+      ],
+      [
+        "p",
+        "Nye tall? Bruk sjekklisten på side {page:rsa-check}. Disse radene er sortert etter x, ikke etter rekkefølgen i prøven."
+      ]
+    ]
+  },
+  {
+    "key": "rsa-break",
+    "title": "Svak RSA: finn y og klarteksten",
+    "search": "Bob is using the RSA encryption scheme • weak • private key • unencrypted plain text message • 1349 527 1209",
+    "blocks": [
+      [
+        "p",
+        "Oppgaven gir offentlig nøkkel (n,x) og kryptert melding M. Du skal finne privat eksponent y og klartekst m."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Steg",
+            "Regel",
+            "Eksempel"
+          ],
+          "rows": [
+            [
+              "1",
+              "Faktoriser n=p*q i to primtall.",
+              "1349=19*71"
+            ],
+            [
+              "2",
+              "phi=(p−1)*(q−1)",
+              "18*70=1260"
+            ],
+            [
+              "3",
+              "Finn y slik at x*y mod phi=1.",
+              "527*y mod 1260=1 gir y=263."
+            ],
+            [
+              "4",
+              "m=M^y mod n",
+              "1209^263 mod 1349=1148."
+            ]
+          ],
+          "widths": [
+            0.35,
+            1.25,
+            1.2
+          ]
+        }
+      ],
+      [
+        "box",
+        "I potens-kalkulatoren: Base=1209, Exponent=263, Modulus=1349. Resultatet 1148 er klarteksten. Ikke bruk x i stedet for y når du dekrypterer."
+      ],
+      [
+        "p",
+        "Privatnøkkelen er (n,y)=(1349,263), men når svarfeltet allerede sier y=, skriver du bare 263."
+      ],
+      [
+        "p",
+        "Sjekk gjerne ved å kryptere tilbake: 1148^527 mod 1349 skal gi 1209. I noen eksempler blir m=M; det er mulig og betyr ikke automatisk regnefeil."
+      ],
+      [
+        "p",
+        "For de kjente tallene kan du slå opp på side {page:rsa-known}. For nye tall finner du inversen på neste side."
+      ]
+    ]
+  },
+  {
+    "key": "inverse",
+    "title": "Finn inversen y uten å gjette",
+    "search": "modular inverse • Euclid • extended Euclidean algorithm • x*y=1 mod phi • 527 1260",
+    "blocks": [
+      [
+        "p",
+        "Målet er x*y+phi*k=1. Da er y inversen til x modulo phi. Først deler du med rest, deretter regner du bakover."
+      ],
+      [
+        "code",
+        "1260 = 2*527 + 206\n 527 = 2*206 + 115\n 206 = 1*115 + 91\n 115 = 1*91 + 24\n  91 = 3*24 + 19\n  24 = 1*19 + 5\n  19 = 3*5 + 4\n   5 = 1*4 + 1"
+      ],
+      [
+        "h",
+        "Tabellmetoden: behold bare r og t"
+      ],
+      [
+        "p",
+        "Start med (r,t)=(phi,0) og (x,1). Hver ny rad: q=heltallsdelen av r_forrige/r_siste, ny r=r_forrige−q*r_siste, ny t=t_forrige−q*t_siste."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "r",
+            "t"
+          ],
+          "rows": [
+            [
+              "1260",
+              "0"
+            ],
+            [
+              "527",
+              "1"
+            ],
+            [
+              "206",
+              "−2"
+            ],
+            [
+              "115",
+              "5"
+            ],
+            [
+              "91",
+              "−7"
+            ],
+            [
+              "24",
+              "12"
+            ],
+            [
+              "19",
+              "−43"
+            ],
+            [
+              "5",
+              "55"
+            ],
+            [
+              "4",
+              "−208"
+            ],
+            [
+              "1",
+              "263"
+            ]
+          ]
+        }
+      ],
+      [
+        "box",
+        "Når r=1, er t inversen. Her y=263. Hvis t er negativ, legg til phi til du får 0<y<phi. Sjekk x*y mod phi=1."
+      ]
+    ]
+  },
+  {
+    "key": "rsa-known",
+    "title": "RSA: alle kjente svake nøkler og meldinger",
+    "search": "private key • plain text • 1333 • 2501 • 3139 • 5293 • 3713 • 1121 • 3233 • 1541 • 1121 • 1541 • 3763 • 1349 • 1357 • 1537 • 3337 • 2537",
+    "blocks": [
+      [
+        "p",
+        "Match n, x OG den krypterte meldingen M. Samme nøkkel kan brukes med flere forskjellige M. y er samme for nøkkelen, men m kan endres."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "n ; x",
+            "p ; q ; phi",
+            "M → m",
+            "y"
+          ],
+          "rows": [
+            [
+              "1333 ; 1091",
+              "31 ; 43 ; 1260",
+              "739 → 285",
+              "671"
+            ],
+            [
+              "2501 ; 2023",
+              "41 ; 61 ; 2400",
+              "633 → 37",
+              "1687"
+            ],
+            [
+              "3139 ; 883",
+              "43 ; 73 ; 3024",
+              "3121 → 3121",
+              "1387"
+            ],
+            [
+              "5293 ; 3875",
+              "67 ; 79 ; 5148",
+              "4275 → 1708",
+              "1379"
+            ],
+            [
+              "3713 ; 613",
+              "47 ; 79 ; 3588",
+              "3398 → 2055",
+              "2113"
+            ],
+            [
+              "1121 ; 115",
+              "19 ; 59 ; 1044",
+              "575 → 55",
+              "463"
+            ],
+            [
+              "3233 ; 1969",
+              "53 ; 61 ; 3120",
+              "1220 → 1220",
+              "2689"
+            ],
+            [
+              "1541 ; 475",
+              "23 ; 67 ; 1452",
+              "1002 → 1064",
+              "1183"
+            ],
+            [
+              "1121 ; 115",
+              "19 ; 59 ; 1044",
+              "1093 → 925",
+              "463"
+            ],
+            [
+              "1541 ; 475",
+              "23 ; 67 ; 1452",
+              "1227 → 1232",
+              "1183"
+            ],
+            [
+              "3763 ; 2029",
+              "53 ; 71 ; 3640",
+              "2873 → 170",
+              "2029"
+            ],
+            [
+              "1349 ; 527",
+              "19 ; 71 ; 1260",
+              "1209 → 1148",
+              "263"
+            ],
+            [
+              "1357 ; 277",
+              "23 ; 59 ; 1276",
+              "1228 → 49",
+              "281"
+            ],
+            [
+              "1537 ; 155",
+              "29 ; 53 ; 1456",
+              "1496 → 1462",
+              "883"
+            ],
+            [
+              "3337 ; 1257",
+              "47 ; 71 ; 3220",
+              "1096 → 825",
+              "3033"
+            ],
+            [
+              "2537 ; 1615",
+              "43 ; 59 ; 2436",
+              "1791 → 921",
+              "451"
+            ]
+          ],
+          "widths": [
+            1.05,
+            1.1,
+            1.05,
+            0.6
+          ]
+        }
+      ],
+      [
+        "p",
+        "Eksempel: n=1121,x=115 gir y=463. M=575 gir m=55, mens M=1093 gir m=925. Ikke kopier m fra feil rad."
+      ]
+    ]
+  },
+  {
+    "key": "calculator",
+    "title": "Store RSA-tall: bruk modulokalkulatoren",
+    "search": "modular product • modular exponentiation • Factor 1 • Factor 2 • Base • Exponent • Modulus • repeated squaring",
+    "blocks": [
+      [
+        "p",
+        "I prøvene ligger det kalkulatorer for moduloprodukt og modulopotens. Øvingssiden har de samme to verktøyene. Bruk dem direkte; ikke regn ut en enorm potens først."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Hva skal finnes?",
+            "Verktøy",
+            "Feltene"
+          ],
+          "rows": [
+            [
+              "Er x og y inverse?",
+              "Produkt modulo",
+              "Factor 1=x\nFactor 2=y\nModulus=(p−1)*(q−1)"
+            ],
+            [
+              "Dekryptert melding m",
+              "Potens modulo",
+              "Base=M\nExponent=y\nModulus=n"
+            ],
+            [
+              "Krypter tilbake og sjekk",
+              "Potens modulo",
+              "Base=m\nExponent=x\nModulus=n"
+            ]
+          ]
+        }
+      ],
+      [
+        "box",
+        "Mange vanlige kalkulatorer avrunder når x*y har 15–16 sifre. Da kan den avgjørende resten 1 forsvinne. Bruk den eksakte modulokalkulatoren i oppgaven / øvingssiden."
+      ],
+      [
+        "h",
+        "Hvis du må regne en potens manuelt"
+      ],
+      [
+        "p",
+        "Kvadrer med rest i hvert steg: b^1 mod n, b^2 mod n, b^4 mod n, b^8 mod n, osv. Del eksponenten i en sum av 1,2,4,8,… og multipliser de valgte restene, med modulo etter hvert produkt."
+      ],
+      [
+        "code",
+        "Eksempel: 7^13 mod 33\n7^1 → 7; 7^2 → 16; 7^4 → 25; 7^8 → 31\n13=8+4+1\n31*25 mod 33=16\n16*7 mod 33=13"
+      ],
+      [
+        "p",
+        "Svar derfor 13. Oppskriften virker fordi du kan ta resten etter hver multiplikasjon uten å endre sluttresten."
+      ]
+    ]
+  },
+  {
+    "key": "hamming",
+    "title": "Hamming-avstand: tell ulike posisjoner",
+    "search": "Compute the minimal and maximal Hamming distance • bitstrings • lmin • lmax • minimum maximum",
+    "blocks": [
+      [
+        "p",
+        "Avstanden mellom to strenger er antall plasser der bitene er forskjellige. Ikke tolk strengene som vanlige heltall."
+      ],
+      [
+        "code",
+        "000111\n000011\n   ↑\nBare posisjon 4 er ulik: avstanden er 1."
+      ],
+      [
+        "p",
+        "Kall de fire strengene A,B,C,D. Du trenger bare seks sammenligninger: AB, AC, AD, BC, BD, CD."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Par i eksemplet",
+            "Avstand"
+          ],
+          "rows": [
+            [
+              "A=000111, B=000011",
+              "1"
+            ],
+            [
+              "A=000111, C=100101",
+              "2"
+            ],
+            [
+              "A=000111, D=010011",
+              "2"
+            ],
+            [
+              "B=000011, C=100101",
+              "3"
+            ],
+            [
+              "B=000011, D=010011",
+              "1"
+            ],
+            [
+              "C=100101, D=010011",
+              "4"
+            ]
+          ]
+        }
+      ],
+      [
+        "box",
+        "l_min=1 og l_max=4. Se over ALLE seks par før du velger maksimum. Ikke ta med AA,BB,CC,DD: de ville alltid gitt 0."
+      ],
+      [
+        "p",
+        "Med XOR: like bit gir 0, ulike bit gir 1. Antall 1-ere i XOR-resultatet er avstanden. Behold ledende nuller."
+      ]
+    ]
+  },
+  {
+    "key": "hamming-known-1",
+    "title": "Hamming: kjente tallsett 1",
+    "search": "Hamming • 001011 • 000110 • 001111 • 110101 • 000111 • 111110 • 101010 • 000100 • 000010 • 001010",
+    "blocks": [
+      [
+        "table",
+        {
+          "headers": [
+            "De fire strengene (A,B,C,D)",
+            "AB AC AD BC BD CD",
+            "min ; max"
+          ],
+          "rows": [
+            [
+              "001011\n110000\n000010\n000111",
+              "5 2 2 3 5 2",
+              "2 ; 5"
+            ],
+            [
+              "000110\n000101\n000000\n101010",
+              "2 2 3 2 5 3",
+              "2 ; 5"
+            ],
+            [
+              "001111\n111111\n000101\n001000",
+              "2 2 3 4 5 3",
+              "2 ; 5"
+            ],
+            [
+              "110101\n010101\n001110\n001100",
+              "1 5 4 4 3 1",
+              "1 ; 5"
+            ],
+            [
+              "000111\n000011\n100101\n010011",
+              "1 2 2 3 1 4",
+              "1 ; 4"
+            ],
+            [
+              "111110\n110111\n110100\n100101",
+              "2 2 4 2 2 2",
+              "2 ; 4"
+            ],
+            [
+              "101010\n011001\n001001\n100100",
+              "4 3 3 1 5 4",
+              "1 ; 5"
+            ],
+            [
+              "000100\n001010\n011010\n001000",
+              "3 4 2 1 1 2",
+              "1 ; 4"
+            ],
+            [
+              "000010\n010000\n001001\n000100",
+              "2 3 2 3 2 3",
+              "2 ; 3"
+            ],
+            [
+              "001010\n110010\n110000\n010001",
+              "3 4 4 1 3 2",
+              "1 ; 4"
+            ]
+          ],
+          "widths": [
+            1,
+            0.9,
+            0.5
+          ]
+        }
+      ],
+      [
+        "p",
+        "Strengenes rekkefølge kan være endret. Minste og største avstand er likevel den samme for samme sett."
+      ]
+    ]
+  },
+  {
+    "key": "hamming-known-2",
+    "title": "Hamming: kjente tallsett 2",
+    "search": "Hamming • 110010",
+    "blocks": [
+      [
+        "table",
+        {
+          "headers": [
+            "De fire strengene (A,B,C,D)",
+            "AB AC AD BC BD CD",
+            "min ; max"
+          ],
+          "rows": [
+            [
+              "110010\n011110\n001001\n000000",
+              "3 5 3 4 4 2",
+              "2 ; 5"
+            ]
+          ],
+          "widths": [
+            1,
+            0.9,
+            0.5
+          ]
+        }
+      ],
+      [
+        "p",
+        "Strengenes rekkefølge kan være endret. Minste og største avstand er likevel den samme for samme sett."
+      ],
+      [
+        "p",
+        "Ekstra fra T41: [001010,110010,110000,010001] gir AB,AC,AD,BC,BD,CD = 3,4,4,1,3,2. Min=1, max=4."
+      ]
+    ]
+  },
+  {
+    "key": "channel",
+    "title": "Bitfeil: velg riktig sannsynlighetsformel",
+    "search": "noisy binary symmetric channel • probability • no errors • at most 1 2 3 bit errors • receiving • rounded off",
+    "blocks": [
+      [
+        "p",
+        "p er feilrisiko per bit, n er antall bit. Bitfeilene er uavhengige. Skriv q=1−p. I kildene er n=7."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Oppgaven spør om",
+            "Regn ut"
+          ],
+          "rows": [
+            [
+              "no errors",
+              "q^n"
+            ],
+            [
+              "exactly 1 bit error",
+              "n*p*q^(n−1)"
+            ],
+            [
+              "at most 1 bit error",
+              "q^n+n*p*q^(n−1)"
+            ],
+            [
+              "at most 2 bit errors",
+              "q^n+n*p*q^(n−1)+n*(n−1)/2*p^2*q^(n−2)"
+            ],
+            [
+              "at most 3 bit errors",
+              "Samme som høyst 2, pluss n*(n−1)*(n−2)/6*p^3*q^(n−3)"
+            ],
+            [
+              "transmitting w and receiving en bestemt r",
+              "p^d*q^(n−d), der d er Hamming-avstanden mellom w og r."
+            ]
+          ],
+          "widths": [
+            1,
+            1.4
+          ]
+        }
+      ],
+      [
+        "box",
+        "«At most» = høyst: inkluder 0 feil. «Receiving r» = akkurat denne strengen: IKKE gang med n eller en binomialkoeffisient."
+      ],
+      [
+        "p",
+        "For n=7 er faktorene for akkurat 0,1,2,3 feil: 1,7,21,35. Eksempel høyst 3: q^7+7*p*q^6+21*p^2*q^5+35*p^3*q^4."
+      ],
+      [
+        "p",
+        "Regn med alle desimaler underveis. Rund bare hvert ferdige svar til tre desimaler. 0.010 kan skrives 0.01, og 1.000 kan være et riktig avrundet svar selv om den eksakte sannsynligheten er litt mindre enn 1."
+      ]
+    ]
+  },
+  {
+    "key": "channel-worked",
+    "title": "Bitfeil: et helt gjennomregnet eksempel",
+    "search": "p=0.069 • 1000111 • 1000010 • at most 2 • specific received string",
+    "blocks": [
+      [
+        "code",
+        "p=0.069, q=0.931, n=7\nw=1000111\nr=1000010"
+      ],
+      [
+        "p",
+        "w og r er ulike på to plasser, så d=2."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Del",
+            "Skriv dette i kalkulatoren",
+            "Tre desimaler"
+          ],
+          "rows": [
+            [
+              "a) Ingen feil",
+              "(1−0.069)^7",
+              "0.606"
+            ],
+            [
+              "b) Høyst 2 feil",
+              "(1−0.069)^7 + 7*0.069*(1−0.069)^6 + 21*0.069^2*(1−0.069)^5",
+              "0.991"
+            ],
+            [
+              "c) Akkurat r",
+              "0.069^2*(1−0.069)^5",
+              "0.003"
+            ]
+          ],
+          "widths": [
+            0.75,
+            1.7,
+            0.6
+          ]
+        }
+      ],
+      [
+        "p",
+        "I c finnes det bare én bestemt feilplassering som gjør 1000111 til 1000010. I «akkurat 2 feil hvor som helst» finnes det 21 feilplasseringer. Derfor er dette to forskjellige spørsmål."
+      ],
+      [
+        "box",
+        "Hvis b i stedet sier «at most 1», fjern leddet med 21. Hvis b sier «at most 3», ta også med 35*p^3*(1−p)^4."
+      ],
+      [
+        "p",
+        "Den gamle prøven viser et studentinnsendt svar 0.03 på c. Det er ikke fasit. Riktig avrundet svar er 0.003."
+      ]
+    ]
+  },
+  {
+    "key": "channel-known",
+    "title": "Bitfeil: alle kjente oppsett og svar",
+    "search": "no errors • at most • probability • 0.069 • 0.074 • 0.149 • 0.148 • 0.077 • 0.113 • 0.091 • 0.078 • 0.074 • 0.097 • 0.116 • 0.051 • 0.052",
+    "blocks": [
+      [
+        "p",
+        "Svarrekkefølge: a=ingen feil, b=høyst k feil, c=akkurat den mottatte strengen r. Match p, w, r OG k."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "p ; k",
+            "w → r",
+            "d",
+            "a ; b ; c"
+          ],
+          "rows": [
+            [
+              "0.069 ; 2",
+              "1000111 →\n1000010",
+              "2",
+              "0.606 ; 0.991 ; 0.003"
+            ],
+            [
+              "0.074 ; 1",
+              "1110101 →\n1100100",
+              "2",
+              "0.584 ; 0.910 ; 0.004"
+            ],
+            [
+              "0.149 ; 1",
+              "1111001 →\n1111010",
+              "2",
+              "0.323 ; 0.719 ; 0.010"
+            ],
+            [
+              "0.148 ; 2",
+              "1101110 →\n1111111",
+              "2",
+              "0.326 ; 0.929 ; 0.010"
+            ],
+            [
+              "0.077 ; 1",
+              "1111111 →\n1011101",
+              "2",
+              "0.571 ; 0.904 ; 0.004"
+            ],
+            [
+              "0.113 ; 1",
+              "0000010 →\n0000001",
+              "2",
+              "0.432 ; 0.817 ; 0.007"
+            ],
+            [
+              "0.091 ; 1",
+              "0010110 →\n1000110",
+              "2",
+              "0.513 ; 0.872 ; 0.005"
+            ],
+            [
+              "0.078 ; 2",
+              "0011110 →\n1001110",
+              "2",
+              "0.566 ; 0.987 ; 0.004"
+            ],
+            [
+              "0.074 ; 2",
+              "1010000 →\n0010001",
+              "2",
+              "0.584 ; 0.989 ; 0.004"
+            ],
+            [
+              "0.097 ; 2",
+              "0000101 →\n0000000",
+              "2",
+              "0.490 ; 0.976 ; 0.006"
+            ],
+            [
+              "0.116 ; 1",
+              "0010101 →\n0011100",
+              "2",
+              "0.422 ; 0.809 ; 0.007"
+            ],
+            [
+              "0.051 ; 2",
+              "1011010 →\n1000010",
+              "2",
+              "0.693 ; 0.996 ; 0.002"
+            ],
+            [
+              "0.052 ; 3",
+              "0110101 →\n1110001",
+              "2",
+              "0.688 ; 1.000 ; 0.002"
+            ]
+          ],
+          "widths": [
+            0.7,
+            1.1,
+            0.25,
+            1.35
+          ]
+        }
+      ],
+      [
+        "p",
+        "«At most 3» ved p=0.052 gir 1.000 etter avrunding. Det betyr ikke at den eksakte sannsynligheten er 1."
+      ]
+    ]
+  },
+  {
+    "key": "generator",
+    "title": "Lag G: send 100, 010 og 001 gjennom regelen",
+    "search": "Find the generator matrix • encoding function • E(w1w2w3) • generator matrix G",
+    "blocks": [
+      [
+        "p",
+        "Alle kodereglene her bruker tre meldingsbit og to kontrollbit: E(w1w2w3)=w1w2w3w4w5. Regn kontrollbitene modulo 2."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Regneregel",
+            "Svar"
+          ],
+          "rows": [
+            [
+              "0+0",
+              "0"
+            ],
+            [
+              "0+1 eller 1+0",
+              "1"
+            ],
+            [
+              "1+1",
+              "0"
+            ],
+            [
+              "1+1+1",
+              "1"
+            ]
+          ]
+        }
+      ],
+      [
+        "p",
+        "Eksempel: w4=w1+w2, w5=w2+w3. Finn de tre radene slik:"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Input",
+            "w4",
+            "w5",
+            "Hele kodeordet = rad i G"
+          ],
+          "rows": [
+            [
+              "100",
+              "1+0=1",
+              "0+0=0",
+              "10010"
+            ],
+            [
+              "010",
+              "0+1=1",
+              "1+0=1",
+              "01011"
+            ],
+            [
+              "001",
+              "0+0=0",
+              "0+1=1",
+              "00101"
+            ]
+          ]
+        }
+      ],
+      [
+        "code",
+        "G =\n1 0 0 1 0\n0 1 0 1 1\n0 0 1 0 1"
+      ],
+      [
+        "box",
+        "Skriv ALLE tre radene og ALLE fem kolonnene. De tre første kolonnene er identitetsmatrisen. De to siste er kontrollbitene."
+      ],
+      [
+        "p",
+        "Hvis w4=0, blir hele kontrollkolonne 4 null. Hvis en melding påvirker begge kontrollbitene, får den raden to 1-ere til høyre."
+      ]
+    ]
+  },
+  {
+    "key": "parity",
+    "title": "Lag H fra G: snu kontrollblokken",
+    "search": "Find the parity check matrix • H • G=(I|P) • H=(P transpose|I) • binary field F2",
+    "blocks": [
+      [
+        "p",
+        "G har en identitetsblokk til venstre. Kall resten P. H får kontrollblokken P snudd fra rader til kolonner, og en ny identitetsblokk til høyre."
+      ],
+      [
+        "code",
+        "G = [ I3 | P ]          P =\n1 0 0 | 1 0            1 0\n0 1 0 | 1 1            1 1\n0 0 1 | 0 1            0 1\n\nH = [ P^T | I2 ] =\n1 1 0 | 1 0\n0 1 1 | 0 1"
+      ],
+      [
+        "h",
+        "Enda enklere: les kontrollreglene direkte"
+      ],
+      [
+        "p",
+        "w4=w1+w2 gir w1+w2+w4=0. Sett 1 på posisjon 1,2,4. Det gir første H-rad 1 1 0 1 0.\nw5=w2+w3 gir w2+w3+w5=0. Sett 1 på posisjon 2,3,5. Det gir andre H-rad 0 1 1 0 1."
+      ],
+      [
+        "box",
+        "Bruk kontrollbitene i oppgitt rekkefølge: først w4, så w5. Dette gir den vanlige H-matrisen og samme rekkefølge på syndrombitene som i oppslagene."
+      ],
+      [
+        "p",
+        "Kontroll: hver rad i G skal gi syndrom 00 med H. Ellers er H feil. I F2 er minus det samme som pluss, så det trengs ingen minustegn."
+      ]
+    ]
+  },
+  {
+    "key": "syndrome",
+    "title": "Syndrom: én kontrollsum per rad i H",
+    "search": "Compute the syndrome • received message • syndrome of r • H*r transpose • 11010",
+    "blocks": [
+      [
+        "code",
+        "H =\n1 1 0 1 0\n0 1 1 0 1\nr = 11010"
+      ],
+      [
+        "p",
+        "Første rad bruker posisjon 1,2,4. Andre rad bruker posisjon 2,3,5. Tell 1-ere på disse posisjonene, og ta resten ved deling på 2."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Syndrombit",
+            "Utregning",
+            "Rest modulo 2"
+          ],
+          "rows": [
+            [
+              "s1=r1+r2+r4",
+              "1+1+1=3",
+              "1"
+            ],
+            [
+              "s2=r2+r3+r5",
+              "1+0+0=1",
+              "1"
+            ]
+          ]
+        }
+      ],
+      [
+        "box",
+        "Syndromet er 11. Skriv 11 uten mellomrom eller klammer. To H-rader gir to syndrombit; fire H-rader gir fire bit."
+      ],
+      [
+        "p",
+        "00 betyr at r er et kodeord. Det beviser ikke at overføringen var feilfri: enkelte feil kan gjøre ett kodeord til et annet kodeord."
+      ],
+      [
+        "p",
+        "Bruk den H-matrisen du faktisk har valgt. Bytter du om H-radene, byttes også syndrombitene. I øvingssiden kan en annen gyldig H brukes i matriseoppgaven; syndromet rettes da mot den H-en du skrev."
+      ]
+    ]
+  },
+  {
+    "key": "matrices-known-1",
+    "title": "G, H og syndrom: oppslag 1",
+    "search": "generator matrix • parity check matrix • 11101 • 11010 • 00010",
+    "blocks": [
+      [
+        "p",
+        "Match både kontrollreglene og r. H står med kontrollbitene i vanlig rekkefølge. Skriv matrisene med mellomrom mellom bitene."
+      ],
+      [
+        "h",
+        "T02 · w4=w1+w3; w5=w3"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (3 rader)",
+            "H (2 rader)",
+            "r → syndrom"
+          ],
+          "rows": [
+            [
+              "1 0 0 1 0\n0 1 0 0 0\n0 0 1 1 1",
+              "1 0 1 1 0\n0 0 1 0 1",
+              "11101 → 00"
+            ]
+          ],
+          "widths": [
+            1,
+            1,
+            0.8
+          ]
+        }
+      ],
+      [
+        "h",
+        "T09 · w4=w1+w2; w5=w2+w3"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (3 rader)",
+            "H (2 rader)",
+            "r → syndrom"
+          ],
+          "rows": [
+            [
+              "1 0 0 1 0\n0 1 0 1 1\n0 0 1 0 1",
+              "1 1 0 1 0\n0 1 1 0 1",
+              "11010 → 11"
+            ]
+          ],
+          "widths": [
+            1,
+            1,
+            0.8
+          ]
+        }
+      ],
+      [
+        "h",
+        "T10 · w4=w1+w2+w3; w5=0"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (3 rader)",
+            "H (2 rader)",
+            "r → syndrom"
+          ],
+          "rows": [
+            [
+              "1 0 0 1 0\n0 1 0 1 0\n0 0 1 1 0",
+              "1 1 1 1 0\n0 0 0 0 1",
+              "00010 → 10"
+            ]
+          ],
+          "widths": [
+            1,
+            1,
+            0.8
+          ]
+        }
+      ]
+    ]
+  },
+  {
+    "key": "matrices-known-2",
+    "title": "G, H og syndrom: oppslag 2",
+    "search": "generator matrix • parity check matrix • 11001 • 01111 • 01110",
+    "blocks": [
+      [
+        "p",
+        "Match både kontrollreglene og r. H står med kontrollbitene i vanlig rekkefølge. Skriv matrisene med mellomrom mellom bitene."
+      ],
+      [
+        "h",
+        "T12 · w4=w3; w5=w1+w2"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (3 rader)",
+            "H (2 rader)",
+            "r → syndrom"
+          ],
+          "rows": [
+            [
+              "1 0 0 0 1\n0 1 0 0 1\n0 0 1 1 0",
+              "0 0 1 1 0\n1 1 0 0 1",
+              "11001 → 01"
+            ]
+          ],
+          "widths": [
+            1,
+            1,
+            0.8
+          ]
+        }
+      ],
+      [
+        "h",
+        "T13 · w4=w2+w3; w5=w2"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (3 rader)",
+            "H (2 rader)",
+            "r → syndrom"
+          ],
+          "rows": [
+            [
+              "1 0 0 0 0\n0 1 0 1 1\n0 0 1 1 0",
+              "0 1 1 1 0\n0 1 0 0 1",
+              "01111 → 10"
+            ]
+          ],
+          "widths": [
+            1,
+            1,
+            0.8
+          ]
+        }
+      ],
+      [
+        "h",
+        "T14, T15 · w4=w1+w2+w3; w5=w1"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (3 rader)",
+            "H (2 rader)",
+            "r → syndrom"
+          ],
+          "rows": [
+            [
+              "1 0 0 1 1\n0 1 0 1 0\n0 0 1 1 0",
+              "1 1 1 1 0\n1 0 0 0 1",
+              "01110 → 10"
+            ]
+          ],
+          "widths": [
+            1,
+            1,
+            0.8
+          ]
+        }
+      ]
+    ]
+  },
+  {
+    "key": "matrices-known-3",
+    "title": "G, H og syndrom: oppslag 3",
+    "search": "generator matrix • parity check matrix • 10010 • 01101 • 01001",
+    "blocks": [
+      [
+        "p",
+        "Match både kontrollreglene og r. H står med kontrollbitene i vanlig rekkefølge. Skriv matrisene med mellomrom mellom bitene."
+      ],
+      [
+        "h",
+        "T17 · w4=w1+w2; w5=w1+w3"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (3 rader)",
+            "H (2 rader)",
+            "r → syndrom"
+          ],
+          "rows": [
+            [
+              "1 0 0 1 1\n0 1 0 1 0\n0 0 1 0 1",
+              "1 1 0 1 0\n1 0 1 0 1",
+              "10010 → 01"
+            ]
+          ],
+          "widths": [
+            1,
+            1,
+            0.8
+          ]
+        }
+      ],
+      [
+        "h",
+        "T18 · w4=w1+w3; w5=w2"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (3 rader)",
+            "H (2 rader)",
+            "r → syndrom"
+          ],
+          "rows": [
+            [
+              "1 0 0 1 0\n0 1 0 0 1\n0 0 1 1 0",
+              "1 0 1 1 0\n0 1 0 0 1",
+              "01101 → 10"
+            ]
+          ],
+          "widths": [
+            1,
+            1,
+            0.8
+          ]
+        }
+      ],
+      [
+        "h",
+        "T20 · w4=0; w5=w2"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (3 rader)",
+            "H (2 rader)",
+            "r → syndrom"
+          ],
+          "rows": [
+            [
+              "1 0 0 0 0\n0 1 0 0 1\n0 0 1 0 0",
+              "0 0 0 1 0\n0 1 0 0 1",
+              "01001 → 00"
+            ]
+          ],
+          "widths": [
+            1,
+            1,
+            0.8
+          ]
+        }
+      ]
+    ]
+  },
+  {
+    "key": "matrices-known-4",
+    "title": "G, H og syndrom: oppslag 4",
+    "search": "generator matrix • parity check matrix • 01011 • 01000",
+    "blocks": [
+      [
+        "p",
+        "Match både kontrollreglene og r. H står med kontrollbitene i vanlig rekkefølge. Skriv matrisene med mellomrom mellom bitene."
+      ],
+      [
+        "h",
+        "T26 · w4=w1+w3; w5=w1+w2+w3"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (3 rader)",
+            "H (2 rader)",
+            "r → syndrom"
+          ],
+          "rows": [
+            [
+              "1 0 0 1 1\n0 1 0 0 1\n0 0 1 1 1",
+              "1 0 1 1 0\n1 1 1 0 1",
+              "01011 → 10"
+            ]
+          ],
+          "widths": [
+            1,
+            1,
+            0.8
+          ]
+        }
+      ],
+      [
+        "h",
+        "T33 · w4=w3; w5=w1+w2"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (3 rader)",
+            "H (2 rader)",
+            "r → syndrom"
+          ],
+          "rows": [
+            [
+              "1 0 0 0 1\n0 1 0 0 1\n0 0 1 1 0",
+              "0 0 1 1 0\n1 1 0 0 1",
+              "01000 → 01"
+            ]
+          ],
+          "widths": [
+            1,
+            1,
+            0.8
+          ]
+        }
+      ]
+    ]
+  },
+  {
+    "key": "distance",
+    "title": "Minimum distance, detect og kodeord",
+    "search": "Compute the minimum distance • codewords not equal • maximum number always able to detect • non-zero codeword • not a codeword",
+    "blocks": [
+      [
+        "p",
+        "For en lineær kode er minsteavstanden den minste vekten til et ikke-null kodeord. Vekt betyr antall 1-ere. Lag alle åtte kodeordene fra G."
+      ],
+      [
+        "code",
+        "Eksempel G:\n1 0 0 1 1\n0 1 0 1 0\n0 0 1 1 0"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Melding",
+            "Kodeord",
+            "Vekt"
+          ],
+          "rows": [
+            [
+              "000",
+              "00000",
+              "0 – utelates"
+            ],
+            [
+              "001",
+              "00110",
+              "2"
+            ],
+            [
+              "010",
+              "01010",
+              "2"
+            ],
+            [
+              "011",
+              "01100",
+              "2"
+            ],
+            [
+              "100",
+              "10011",
+              "3"
+            ],
+            [
+              "101",
+              "10101",
+              "3"
+            ],
+            [
+              "110",
+              "11001",
+              "3"
+            ],
+            [
+              "111",
+              "11111",
+              "5"
+            ]
+          ]
+        }
+      ],
+      [
+        "box",
+        "Minimum distance = 2. Always detect = 2−1 = 1. Always correct = floor((2−1)/2) = 0. Les hvilket av disse tre tallene oppgaven ber om."
+      ],
+      [
+        "p",
+        "Et non-zero codeword: velg en rad i G, for eksempel 10011. Et not-a-codeword: velg en 5-bitstreng som ikke finnes i tabellen, for eksempel 00001. 00000 er ALLTID et kodeord."
+      ],
+      [
+        "p",
+        "Ikke ta bare minste radvekt uten å sjekke XOR-kombinasjonene: to rader kan sammen gi et lettere kodeord. For systematisk G finnes en rask test for et foreslått kodeord: bruk de første tre bitene som melding, og sjekk om reglene gir de siste to."
+      ]
+    ]
+  },
+  {
+    "key": "distance-known-1",
+    "title": "Kodeavstand og deteksjon: oppslag 1",
+    "search": "minimum distance • detect • non-zero • T01 • T04 • T05 • T06 • T07",
+    "blocks": [
+      [
+        "p",
+        "Finn G-radene, eller lag G fra kontrollreglene. «Kodeord» og «ikke kodeord» er ett gyldig eksempel; flere svar kan være riktige."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G-radene",
+            "d_min ; detect",
+            "Kodeord ≠ 0",
+            "Ikke kodeord"
+          ],
+          "rows": [
+            [
+              "10010\n01001\n00101",
+              "2 ; 1",
+              "00101",
+              "00001"
+            ],
+            [
+              "10010\n01010\n00111",
+              "2 ; 1",
+              "00111",
+              "00001"
+            ],
+            [
+              "10011\n01010\n00100",
+              "1 ; 0",
+              "00100",
+              "00001"
+            ],
+            [
+              "10011\n01001\n00110",
+              "2 ; 1",
+              "00110",
+              "00001"
+            ],
+            [
+              "10000\n01010\n00100",
+              "1 ; 0",
+              "00100",
+              "00001"
+            ]
+          ],
+          "widths": [
+            1.2,
+            0.9,
+            0.8,
+            0.8
+          ]
+        }
+      ],
+      [
+        "box",
+        "Hvis d_min=1, er «always detect» 0. Det betyr at noen enkeltbitfeil kan gå uoppdaget. 0 er da svaret, selv om koden kan oppdage andre feil."
+      ]
+    ]
+  },
+  {
+    "key": "distance-known-2",
+    "title": "Kodeavstand og deteksjon: oppslag 2",
+    "search": "minimum distance • detect • non-zero • T11 • T16 • T19 • T21 • T22",
+    "blocks": [
+      [
+        "p",
+        "Finn G-radene, eller lag G fra kontrollreglene. «Kodeord» og «ikke kodeord» er ett gyldig eksempel; flere svar kan være riktige."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G-radene",
+            "d_min ; detect",
+            "Kodeord ≠ 0",
+            "Ikke kodeord"
+          ],
+          "rows": [
+            [
+              "10001\n01000\n00111",
+              "1 ; 0",
+              "00111",
+              "00001"
+            ],
+            [
+              "10000\n01011\n00110",
+              "1 ; 0",
+              "00110",
+              "00001"
+            ],
+            [
+              "10011\n01010\n00110",
+              "2 ; 1",
+              "00110",
+              "00001"
+            ],
+            [
+              "10000\n01001\n00111",
+              "1 ; 0",
+              "00111",
+              "00001"
+            ],
+            [
+              "10011\n01011\n00101",
+              "2 ; 1",
+              "00101",
+              "00001"
+            ]
+          ],
+          "widths": [
+            1.2,
+            0.9,
+            0.8,
+            0.8
+          ]
+        }
+      ],
+      [
+        "box",
+        "Hvis d_min=1, er «always detect» 0. Det betyr at noen enkeltbitfeil kan gå uoppdaget. 0 er da svaret, selv om koden kan oppdage andre feil."
+      ]
+    ]
+  },
+  {
+    "key": "distance-known-3",
+    "title": "Kodeavstand og deteksjon: oppslag 3",
+    "search": "minimum distance • detect • non-zero • T25 • T31",
+    "blocks": [
+      [
+        "p",
+        "Finn G-radene, eller lag G fra kontrollreglene. «Kodeord» og «ikke kodeord» er ett gyldig eksempel; flere svar kan være riktige."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G-radene",
+            "d_min ; detect",
+            "Kodeord ≠ 0",
+            "Ikke kodeord"
+          ],
+          "rows": [
+            [
+              "10011\n01001\n00100",
+              "1 ; 0",
+              "00100",
+              "00001"
+            ],
+            [
+              "10010\n01010\n00110",
+              "2 ; 1",
+              "00110",
+              "00001"
+            ]
+          ],
+          "widths": [
+            1.2,
+            0.9,
+            0.8,
+            0.8
+          ]
+        }
+      ],
+      [
+        "box",
+        "Hvis d_min=1, er «always detect» 0. Det betyr at noen enkeltbitfeil kan gå uoppdaget. 0 er da svaret, selv om koden kan oppdage andre feil."
+      ]
+    ]
+  },
+  {
+    "key": "decode",
+    "title": "Dekoding med 8 bit: finn feilposisjonen",
+    "search": "We use the generator matrix • Compute the error pattern • encoded message • r=c+e • syndrome decoding",
+    "blocks": [
+      [
+        "p",
+        "Her har G fire rader og åtte kolonner. Første fire kolonner er I4. Skriv H=(P^T|I4), akkurat som for 5-bit-kodene."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Steg",
+            "Det du gjør"
+          ],
+          "rows": [
+            [
+              "1",
+              "Finn de fire H-radene fra G."
+            ],
+            [
+              "2",
+              "Regn s=H*r^T modulo 2. Fire rader gir et 4-bit-syndrom."
+            ],
+            [
+              "3",
+              "Les hver KOLONNE i H ovenfra og ned. Finn kolonnen som er lik syndromet."
+            ],
+            [
+              "4",
+              "Hvis det er kolonne j, sett en 1-er på posisjon j i en ellers null 8-bitstreng. Dette er feilmønster e."
+            ],
+            [
+              "5",
+              "Korriger ved å flippe bit j i r. Resultatet er kodeord c=r XOR e."
+            ],
+            [
+              "6",
+              "Sjekk H*c^T=0000. Hvis det ikke stemmer, er c feil."
+            ]
+          ],
+          "widths": [
+            0.35,
+            2.4
+          ]
+        }
+      ],
+      [
+        "box",
+        "Syndrom 0010 betyr ikke automatisk «feil på plass 3». Du må finne hvilken H-kolonne som er 0010. Kolonnen kan stå hvor som helst."
+      ],
+      [
+        "p",
+        "Metoden gir entydig enkeltbitkorrigering når syndromet matcher én unik, ikke-null kolonne. Alle 8-bit-eksemplene i prøvemappen har slik en unik nærmeste løsning med én feil."
+      ],
+      [
+        "p",
+        "Ved andre matriser kan like kolonner gi flere muligheter. Hvis ingen kolonne matcher syndromet, kan det være flere bitfeil; da må du sammenligne avstanden til kodeordene. Ikke gjett en feilposisjon."
+      ]
+    ]
+  },
+  {
+    "key": "decode-worked",
+    "title": "Dekoding: se hele eksemplet",
+    "search": "01100111 • 01100011 • syndrome 0100 • error pattern 00000100",
+    "blocks": [
+      [
+        "table",
+        {
+          "headers": [
+            "G",
+            "H"
+          ],
+          "rows": [
+            [
+              "1 0 0 0 1 0 0 1\n0 1 0 0 1 1 0 1\n0 0 1 0 1 1 1 0\n0 0 0 1 1 0 1 1",
+              "1 1 1 1 1 0 0 0\n0 1 1 0 0 1 0 0\n0 0 1 1 0 0 1 0\n1 1 0 1 0 0 0 1"
+            ]
+          ],
+          "widths": [
+            1,
+            1
+          ]
+        }
+      ],
+      [
+        "code",
+        "r=01100111\ns1=r1+r2+r3+r4+r5 = 0+1+1+0+0 = 0 mod 2\ns2=r2+r3+r6       = 1+1+1     = 1 mod 2\ns3=r3+r4+r7       = 1+0+1     = 0 mod 2\ns4=r1+r2+r4+r8    = 0+1+0+1   = 0 mod 2\ns=0100"
+      ],
+      [
+        "p",
+        "Kolonne 6 i H er 0100. Derfor er bit nummer 6 feil. Feilmønsteret har åtte bit og en 1-er på plass 6."
+      ],
+      [
+        "code",
+        "e=00000100\nr=01100111\nc=01100011"
+      ],
+      [
+        "box",
+        "Svar a) 0100, b) 00000100, c) 01100011. c er hele det korrigerte kodeordet, ikke bare de fire opprinnelige meldingsbitene."
+      ],
+      [
+        "p",
+        "Ønsker oppgaven også selve meldingen w, kan du lese de første fire bitene av c når G er systematisk: her w=0110."
+      ]
+    ]
+  },
+  {
+    "key": "decode-matrices-1",
+    "title": "8-bit-matriser: D-oppslag 1",
+    "search": "generator matrix • D1 • D2",
+    "blocks": [
+      [
+        "p",
+        "Først finn D-nummeret ved å matche ALLE radene i G. Gå deretter til svaretabellen på side {page:decode-known}."
+      ],
+      [
+        "h",
+        "D1"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (4 × 8)",
+            "H (4 × 8)"
+          ],
+          "rows": [
+            [
+              "1 0 0 0 1 0 1 1\n0 1 0 0 1 0 0 1\n0 0 1 0 0 1 0 1\n0 0 0 1 0 0 1 1",
+              "1 1 0 0 1 0 0 0\n0 0 1 0 0 1 0 0\n1 0 0 1 0 0 1 0\n1 1 1 1 0 0 0 1"
+            ]
+          ],
+          "widths": [
+            1,
+            1
+          ]
+        }
+      ],
+      [
+        "p",
+        "H-kolonner 1–8: 1011 ; 1001 ; 0101 ; 0011 ; 1000 ; 0100 ; 0010 ; 0001"
+      ],
+      [
+        "h",
+        "D2"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (4 × 8)",
+            "H (4 × 8)"
+          ],
+          "rows": [
+            [
+              "1 0 0 0 1 0 0 1\n0 1 0 0 1 1 1 0\n0 0 1 0 1 0 1 1\n0 0 0 1 1 1 0 1",
+              "1 1 1 1 1 0 0 0\n0 1 0 1 0 1 0 0\n0 1 1 0 0 0 1 0\n1 0 1 1 0 0 0 1"
+            ]
+          ],
+          "widths": [
+            1,
+            1
+          ]
+        }
+      ],
+      [
+        "p",
+        "H-kolonner 1–8: 1001 ; 1110 ; 1011 ; 1101 ; 1000 ; 0100 ; 0010 ; 0001"
+      ]
+    ]
+  },
+  {
+    "key": "decode-matrices-2",
+    "title": "8-bit-matriser: D-oppslag 2",
+    "search": "generator matrix • D3 • D4",
+    "blocks": [
+      [
+        "p",
+        "Først finn D-nummeret ved å matche ALLE radene i G. Gå deretter til svaretabellen på side {page:decode-known}."
+      ],
+      [
+        "h",
+        "D3"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (4 × 8)",
+            "H (4 × 8)"
+          ],
+          "rows": [
+            [
+              "1 0 0 0 1 0 0 1\n0 1 0 0 1 1 0 1\n0 0 1 0 1 1 1 0\n0 0 0 1 1 0 1 1",
+              "1 1 1 1 1 0 0 0\n0 1 1 0 0 1 0 0\n0 0 1 1 0 0 1 0\n1 1 0 1 0 0 0 1"
+            ]
+          ],
+          "widths": [
+            1,
+            1
+          ]
+        }
+      ],
+      [
+        "p",
+        "H-kolonner 1–8: 1001 ; 1101 ; 1110 ; 1011 ; 1000 ; 0100 ; 0010 ; 0001"
+      ],
+      [
+        "h",
+        "D4"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (4 × 8)",
+            "H (4 × 8)"
+          ],
+          "rows": [
+            [
+              "1 0 0 0 0 1 0 1\n0 1 0 0 1 0 1 1\n0 0 1 0 1 0 0 1\n0 0 0 1 1 1 1 0",
+              "0 1 1 1 1 0 0 0\n1 0 0 1 0 1 0 0\n0 1 0 1 0 0 1 0\n1 1 1 0 0 0 0 1"
+            ]
+          ],
+          "widths": [
+            1,
+            1
+          ]
+        }
+      ],
+      [
+        "p",
+        "H-kolonner 1–8: 0101 ; 1011 ; 1001 ; 1110 ; 1000 ; 0100 ; 0010 ; 0001"
+      ]
+    ]
+  },
+  {
+    "key": "decode-matrices-3",
+    "title": "8-bit-matriser: D-oppslag 3",
+    "search": "generator matrix • D5 • D6",
+    "blocks": [
+      [
+        "p",
+        "Først finn D-nummeret ved å matche ALLE radene i G. Gå deretter til svaretabellen på side {page:decode-known}."
+      ],
+      [
+        "h",
+        "D5"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (4 × 8)",
+            "H (4 × 8)"
+          ],
+          "rows": [
+            [
+              "1 0 0 0 1 0 0 1\n0 1 0 0 1 0 1 1\n0 0 1 0 1 1 0 1\n0 0 0 1 0 0 1 1",
+              "1 1 1 0 1 0 0 0\n0 0 1 0 0 1 0 0\n0 1 0 1 0 0 1 0\n1 1 1 1 0 0 0 1"
+            ]
+          ],
+          "widths": [
+            1,
+            1
+          ]
+        }
+      ],
+      [
+        "p",
+        "H-kolonner 1–8: 1001 ; 1011 ; 1101 ; 0011 ; 1000 ; 0100 ; 0010 ; 0001"
+      ],
+      [
+        "h",
+        "D6"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G (4 × 8)",
+            "H (4 × 8)"
+          ],
+          "rows": [
+            [
+              "1 0 0 0 0 0 1 1\n0 1 0 0 1 0 1 1\n0 0 1 0 1 1 0 1\n0 0 0 1 1 1 1 0",
+              "0 1 1 1 1 0 0 0\n0 0 1 1 0 1 0 0\n1 1 0 1 0 0 1 0\n1 1 1 0 0 0 0 1"
+            ]
+          ],
+          "widths": [
+            1,
+            1
+          ]
+        }
+      ],
+      [
+        "p",
+        "H-kolonner 1–8: 0011 ; 1011 ; 1101 ; 1110 ; 1000 ; 0100 ; 0010 ; 0001"
+      ]
+    ]
+  },
+  {
+    "key": "decode-known",
+    "title": "8-bit-dekoding: alle kjente svar",
+    "search": "error pattern • encoded message • 10011010 • 11111111 • 01100111 • 01000010 • 10110101 • 11010110 • 01010110 • 10000100",
+    "blocks": [
+      [
+        "p",
+        "D1, D2, … er G-matrisene på de foregående sidene. Match både matrisen og den mottatte strengen r. Bruk oppgitt H-rekkefølge for syndromet."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "G",
+            "r",
+            "Syndrom",
+            "Feilmønster e",
+            "Kodeord c"
+          ],
+          "rows": [
+            [
+              "D1",
+              "10011010",
+              "0010",
+              "00000010",
+              "10011000"
+            ],
+            [
+              "D2",
+              "11111111",
+              "1110",
+              "01000000",
+              "10111111"
+            ],
+            [
+              "D3",
+              "01100111",
+              "0100",
+              "00000100",
+              "01100011"
+            ],
+            [
+              "D4",
+              "01000010",
+              "1001",
+              "00100000",
+              "01100010"
+            ],
+            [
+              "D5",
+              "10110101",
+              "0010",
+              "00000010",
+              "10110111"
+            ],
+            [
+              "D3",
+              "11010110",
+              "1001",
+              "10000000",
+              "01010110"
+            ],
+            [
+              "D6",
+              "01010110",
+              "0011",
+              "10000000",
+              "11010110"
+            ],
+            [
+              "D2",
+              "10000100",
+              "1101",
+              "00010000",
+              "10010100"
+            ]
+          ],
+          "widths": [
+            0.3,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      [
+        "box",
+        "De tidligere notatene om r=11010110 inneholder feil i H/syndrom. Med G som starter med rad 10001001 og deretter 01001101,00101110,00011011, er riktig syndrom 1001, e=10000000 og c=01010110."
+      ],
+      [
+        "p",
+        "Hvis oppgaven endrer rekkefølgen på H-radene, endres syndromet tilsvarende. Feilposisjonen og det korrigerte kodeordet er likevel de samme."
+      ]
+    ]
+  },
+  {
+    "key": "formats",
+    "title": "Svarformat og egenkontroll",
+    "search": "syntax guide • bitstrings • matrices • rounded off • None of the above",
+    "blocks": [
+      [
+        "table",
+        {
+          "headers": [
+            "Felt",
+            "Riktig form",
+            "Vanlig feil"
+          ],
+          "rows": [
+            [
+              "RSA y / m",
+              "263 / 1148",
+              "Bytter y og x, eller bruker phi som modul for klartekst."
+            ],
+            [
+              "Sannsynlighet",
+              "0.003",
+              "0.03 har ti ganger for stor verdi."
+            ],
+            [
+              "G",
+              "Tre rader, fem tall per rad",
+              "Mangler en rad eller kontrollkolonne."
+            ],
+            [
+              "H i 5-bitoppgave",
+              "To rader, fem tall per rad",
+              "Kopierer P uten å transponere / uten I2."
+            ],
+            [
+              "Syndrom i 5-bitoppgave",
+              "00,01,10 eller 11",
+              "Skriver bare 0 eller 1 og mister en bit."
+            ],
+            [
+              "Syndrom i 8-bitoppgave",
+              "Fire bit, f.eks. 0010",
+              "Tolker syndromet som feilplassnummer."
+            ],
+            [
+              "Feilmønster i 8-bitoppgave",
+              "Åtte bit, f.eks. 00000010",
+              "Skriver «7» eller bare fire bit."
+            ],
+            [
+              "Korrigert kodeord",
+              "Åtte bit",
+              "Skriver bare fire meldingsbit."
+            ]
+          ]
+        }
+      ],
+      [
+        "h",
+        "Kontrollregler som avdekker regnefeil"
+      ],
+      [
+        "p",
+        "RSA: x*y mod phi=1 og m^x mod n=M.\nHamming: 0≤min≤max≤strenglengden, og ulike strenger har avstand >0.\nKode: H*g^T=0 for hver rad g i G.\nDekoding: r XOR e=c, og H*c^T=0."
+      ],
+      [
+        "p",
+        "Øvingssiden viser hva svaret tolkes som mens du skriver. En forhåndsvisning betyr at formatet kan leses; riktig/feil vises først når du leverer."
+      ]
+    ]
+  },
+  {
+    "key": "sources-1",
+    "title": "Kildesjekk: prøvefiler 1",
+    "search": "coverage • Delprove_4 • T01 • T02 • T03 • T04 • T05 • T06 • T07 • T08 • T09 • T10 • T11 • T12",
+    "blocks": [
+      [
+        "p",
+        "Alle de tre regneoppgavene er dekket. Fullprøvemodus i HTML velger én oppgave fra hver kolonne; «Kildeprøve Txx» bruker de konkrete tallene fra den filen."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Kildefil",
+            "Oppgave 1",
+            "Oppgave 2",
+            "Oppgave 3"
+          ],
+          "rows": [
+            [
+              "T01\n2av3/1.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Bitfeil\nside {page:channel}",
+              "Feildeteksjon\nside {page:distance}"
+            ],
+            [
+              "T02\n2av3/3.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Bitfeil\nside {page:channel}",
+              "G, H og syndrom\nside {page:generator}"
+            ],
+            [
+              "T03\n2av3/4.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Hamming\nside {page:hamming}",
+              "8-bit-dekoding\nside {page:decode}"
+            ],
+            [
+              "T04\n2av3/5.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Bitfeil\nside {page:channel}",
+              "Kodeavstand\nside {page:distance}"
+            ],
+            [
+              "T05\n2av3/6.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Hamming\nside {page:hamming}",
+              "Feildeteksjon\nside {page:distance}"
+            ],
+            [
+              "T06\n2av3/7.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Hamming\nside {page:hamming}",
+              "Kodeavstand\nside {page:distance}"
+            ],
+            [
+              "T07\n2av3/8.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Hamming\nside {page:hamming}",
+              "Feildeteksjon\nside {page:distance}"
+            ],
+            [
+              "T08\n2av3/9.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Bitfeil\nside {page:channel}",
+              "8-bit-dekoding\nside {page:decode}"
+            ],
+            [
+              "T09\n3av3/1.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Hamming\nside {page:hamming}",
+              "G, H og syndrom\nside {page:generator}"
+            ],
+            [
+              "T10\n3av3/10.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Hamming\nside {page:hamming}",
+              "G, H og syndrom\nside {page:generator}"
+            ],
+            [
+              "T11\n3av3/11.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Bitfeil\nside {page:channel}",
+              "Kodeavstand\nside {page:distance}"
+            ],
+            [
+              "T12\n3av3/12.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Hamming\nside {page:hamming}",
+              "G, H og syndrom\nside {page:generator}"
+            ]
+          ],
+          "widths": [
+            1.4,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    ]
+  },
+  {
+    "key": "sources-2",
+    "title": "Kildesjekk: prøvefiler 2",
+    "search": "coverage • Delprove_4 • T13 • T14 • T15 • T16 • T17 • T18 • T19 • T20 • T21 • T22 • T23 • T24",
+    "blocks": [
+      [
+        "p",
+        "Alle de tre regneoppgavene er dekket. Fullprøvemodus i HTML velger én oppgave fra hver kolonne; «Kildeprøve Txx» bruker de konkrete tallene fra den filen."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Kildefil",
+            "Oppgave 1",
+            "Oppgave 2",
+            "Oppgave 3"
+          ],
+          "rows": [
+            [
+              "T13\n3av3/13.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Hamming\nside {page:hamming}",
+              "G, H og syndrom\nside {page:generator}"
+            ],
+            [
+              "T14\n3av3/14.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Hamming\nside {page:hamming}",
+              "G, H og syndrom\nside {page:generator}"
+            ],
+            [
+              "T15 (kopi av T14)\n3av3/15.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Hamming\nside {page:hamming}",
+              "G, H og syndrom\nside {page:generator}"
+            ],
+            [
+              "T16\n3av3/16.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Bitfeil\nside {page:channel}",
+              "Kodeavstand\nside {page:distance}"
+            ],
+            [
+              "T17\n3av3/17.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Hamming\nside {page:hamming}",
+              "G, H og syndrom\nside {page:generator}"
+            ],
+            [
+              "T18\n3av3/18.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Bitfeil\nside {page:channel}",
+              "G, H og syndrom\nside {page:generator}"
+            ],
+            [
+              "T19\n3av3/19.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Hamming\nside {page:hamming}",
+              "Kodeavstand\nside {page:distance}"
+            ],
+            [
+              "T20\n3av3/2.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Hamming\nside {page:hamming}",
+              "G, H og syndrom\nside {page:generator}"
+            ],
+            [
+              "T21\n3av3/3.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Hamming\nside {page:hamming}",
+              "Feildeteksjon\nside {page:distance}"
+            ],
+            [
+              "T22\n3av3/4.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Bitfeil\nside {page:channel}",
+              "Kodeavstand\nside {page:distance}"
+            ],
+            [
+              "T23\n3av3/5.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Bitfeil\nside {page:channel}",
+              "8-bit-dekoding\nside {page:decode}"
+            ],
+            [
+              "T24\n3av3/6.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Hamming\nside {page:hamming}",
+              "8-bit-dekoding\nside {page:decode}"
+            ]
+          ],
+          "widths": [
+            1.4,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    ]
+  },
+  {
+    "key": "sources-3",
+    "title": "Kildesjekk: prøvefiler 3",
+    "search": "coverage • Delprove_4 • T25 • T26 • T27 • T28 • T29 • T30 • T31 • T32 • T33 • T34 • T35 • T36",
+    "blocks": [
+      [
+        "p",
+        "Alle de tre regneoppgavene er dekket. Fullprøvemodus i HTML velger én oppgave fra hver kolonne; «Kildeprøve Txx» bruker de konkrete tallene fra den filen."
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Kildefil",
+            "Oppgave 1",
+            "Oppgave 2",
+            "Oppgave 3"
+          ],
+          "rows": [
+            [
+              "T25\n3av3/9.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Bitfeil\nside {page:channel}",
+              "Kodeavstand\nside {page:distance}"
+            ],
+            [
+              "T26\ndiverse_scores/1.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Hamming\nside {page:hamming}",
+              "G, H og syndrom\nside {page:generator}"
+            ],
+            [
+              "T27\ndiverse_scores/2.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Hamming\nside {page:hamming}",
+              "8-bit-dekoding\nside {page:decode}"
+            ],
+            [
+              "T28\ndiverse_scores/3.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Hamming\nside {page:hamming}",
+              "8-bit-dekoding\nside {page:decode}"
+            ],
+            [
+              "T29\ndiverse_scores/4.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Bitfeil\nside {page:channel}",
+              "8-bit-dekoding\nside {page:decode}"
+            ],
+            [
+              "T30\ndiverse_scores/5.pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Bitfeil\nside {page:channel}",
+              "Kodeavstand\nside {page:distance}"
+            ],
+            [
+              "T31\ndiverse_scores/6.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Hamming\nside {page:hamming}",
+              "Kodeavstand\nside {page:distance}"
+            ],
+            [
+              "T32\ndiverse_scores/7.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Bitfeil\nside {page:channel}",
+              "8-bit-dekoding\nside {page:decode}"
+            ],
+            [
+              "T33\ndiverse_scores/8.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Hamming\nside {page:hamming}",
+              "G, H og syndrom\nside {page:generator}"
+            ],
+            [
+              "T34 (kopi av T28)\ndiverse_scores/9.pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Hamming\nside {page:hamming}",
+              "8-bit-dekoding\nside {page:decode}"
+            ],
+            [
+              "T35 (kopi av T28)\nregler/Test 4 (1).pdf",
+              "Svak RSA\nside {page:rsa-known}",
+              "Hamming\nside {page:hamming}",
+              "8-bit-dekoding\nside {page:decode}"
+            ],
+            [
+              "T36 (kopi av T24)\nregler/Test 4 (topics 10-12_ Applications of Lagrange's theorem,Coding theory,Coding theory and group codes)_ Attempt review (1).pdf",
+              "RSA-flervalg\nside {page:rsa-check}",
+              "Hamming\nside {page:hamming}",
+              "8-bit-dekoding\nside {page:decode}"
+            ]
+          ],
+          "widths": [
+            1.4,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    ]
+  },
+  {
+    "key": "notes",
+    "title": "Kildesjekk: notater og rettelser",
+    "search": "source notes • RSA • Hamming • parity check • wrong H • 11010110",
+    "blocks": [
+      [
+        "table",
+        {
+          "headers": [
+            "Notat",
+            "Innhold og kontroll"
+          ],
+          "rows": [
+            [
+              "T37 · regler/diskre_prøve_4_oppg_1 (1).pdf",
+              "Svak RSA n=3139,x=883,M=3121. Regnet på nytt: y=1387,m=3121."
+            ],
+            [
+              "T38 og kopi T39 · oppg_1 (2)",
+              "Svak RSA n=1349,x=527,M=1209. Regnet på nytt: y=263,m=1148."
+            ],
+            [
+              "T40 · oppg_1.pdf",
+              "RSA-validering. Tallalternativene finnes i RSA-oppslaget."
+            ],
+            [
+              "T41 · oppg_2.pdf",
+              "Hamming for 001010,110010,110000,010001. Avstander 3,4,4,1,3,2 gir min=1,max=4."
+            ],
+            [
+              "T42 · oppg_3 (2).pdf",
+              "G-rader 10001,00011,01110 (ikke systematisk G). Kodeord: 00000,01110,00011,01101,10001,11111,10010,11100. d_min=2, detect=1. Gyldige eksempler: kodeord 10001, ikke-kodeord 01010. Enumering virker også uten en I-blokk."
+            ],
+            [
+              "T43 · oppg_3 (3).pdf og T44 · oppg_3.pdf",
+              "Dekodingsnotater har feil / blandede H-matriser og syndrom. Bruk korrigert utregning på side {page:decode-known}."
+            ]
+          ],
+          "widths": [
+            1,
+            1.5
+          ]
+        }
+      ],
+      [
+        "p",
+        "Kildegrunnlag: github.com/tariknh/diskret, mappen Delprove_4. Kilderevisjon dcbf1e4e8597e1a80a445f1df91bf8864f74d836. Innhold kontrollert 14. november 2026."
+      ],
+      [
+        "p",
+        "Kildekatalogen i source/catalog.json inneholder filnavn og SHA-256 for å skille kopier fra ulike filer. source/cases.json inneholder bare matematiske oppgavetall og nyberegnede svar, uten studentnavn eller signeringskoder."
+      ],
+      [
+        "p",
+        "Dekningen gjelder materialet i denne mappen. En ny prøve kan bruke nye tall eller oppgavevarianter; derfor står både oppskrifter og konkrete oppslag i arket."
+      ]
+    ]
+  },
+  {
+    "key": "contents",
+    "title": "Innhold: klikk deg til riktig oppslag",
+    "search": "innhold • contents • index",
+    "blocks": [
+      [
+        "toc",
+        [
+          [
+            "Delprøve 4: finn oppgaven din",
+            "start"
+          ],
+          [
+            "Hurtigsjekk før du svarer",
+            "quick"
+          ],
+          [
+            "RSA-flervalg: hva skal krysses av?",
+            "rsa-check"
+          ],
+          [
+            "RSA: to konkrete feller",
+            "rsa-prime"
+          ],
+          [
+            "Svak RSA: finn y og klarteksten",
+            "rsa-break"
+          ],
+          [
+            "Finn inversen y uten å gjette",
+            "inverse"
+          ],
+          [
+            "RSA: alle kjente svake nøkler og meldinger",
+            "rsa-known"
+          ],
+          [
+            "Store RSA-tall: bruk modulokalkulatoren",
+            "calculator"
+          ],
+          [
+            "Hamming-avstand: tell ulike posisjoner",
+            "hamming"
+          ],
+          [
+            "Bitfeil: velg riktig sannsynlighetsformel",
+            "channel"
+          ],
+          [
+            "Bitfeil: et helt gjennomregnet eksempel",
+            "channel-worked"
+          ],
+          [
+            "Bitfeil: alle kjente oppsett og svar",
+            "channel-known"
+          ],
+          [
+            "Lag G: send 100, 010 og 001 gjennom regelen",
+            "generator"
+          ],
+          [
+            "Lag H fra G: snu kontrollblokken",
+            "parity"
+          ],
+          [
+            "Syndrom: én kontrollsum per rad i H",
+            "syndrome"
+          ],
+          [
+            "Minimum distance, detect og kodeord",
+            "distance"
+          ],
+          [
+            "Dekoding med 8 bit: finn feilposisjonen",
+            "decode"
+          ],
+          [
+            "Dekoding: se hele eksemplet",
+            "decode-worked"
+          ],
+          [
+            "8-bit-dekoding: alle kjente svar",
+            "decode-known"
+          ],
+          [
+            "Svarformat og egenkontroll",
+            "formats"
+          ],
+          [
+            "Kildesjekk: notater og rettelser",
+            "notes"
+          ]
+        ]
+      ]
+    ]
+  }
+]

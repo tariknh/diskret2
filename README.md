@@ -1,5 +1,15 @@
 # diskret2
 
+## Delprøve 4
+
+- [Søkbart hjelpeark V1 – 40 sider](helpsheets/test4/TEST4DOCSV1.pdf)
+- [Les hjelpearket som tekst](helpsheets/test4/TEST4DOCSV1.md)
+- [Last ned øvingsprøven med forhåndsvisning](test4-med-preview.html) – åpne den lagrede HTML-filen i nettleseren.
+- [Bruk av øvingssiden og kontroller](practice/TEST4.md)
+- [Kilder og gjenoppbygging av hjelpearket](helpsheets/test4/README.md)
+
+Dekker alle 96 regneoppgavene i de 32 ulike prøvefilene i `Delprove_4`: RSA, Hamming-avstand, bitfeilsannsynlighet (høyst 1, 2 eller 3 feil), G/H-matriser, kodeavstand, feildeteksjon og syndromdekoding. Øvingssiden har åtte oppgavetyper, kildeprøver med de konkrete tallene, eksakte modulokalkulatorer og automatisk innlevering etter 30 minutter.
+
 ## Delprøve 3
 
 - [Last ned øvingsprøven med forhåndsvisning](test3-med-preview.html) – åpne HTML-filen i nettleseren. Velg «Nye prøvevarianter» for de siste tilleggene.

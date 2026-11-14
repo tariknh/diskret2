@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "test": "node tests/test3-core.cjs",
-    "test:browser": "node tests/test3-browser.cjs"
+    "test:browser": "node tests/test3-browser.cjs",
+    "test:test4": "node tests/test4-core.cjs",
+    "test:browser:test4": "node tests/test4-browser.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

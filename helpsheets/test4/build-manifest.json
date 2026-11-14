@@ -1,0 +1,249 @@
+{
+  "version": 1,
+  "date": "14. november 2026",
+  "pages": 40,
+  "page_numbers": {
+    "start": 1,
+    "quick": 2,
+    "rsa-check": 3,
+    "rsa-prime": 4,
+    "rsa-options-1": 5,
+    "rsa-options-2": 6,
+    "rsa-options-3": 7,
+    "rsa-break": 8,
+    "inverse": 9,
+    "rsa-known": 10,
+    "calculator": 11,
+    "hamming": 12,
+    "hamming-known-1": 13,
+    "hamming-known-2": 14,
+    "channel": 15,
+    "channel-worked": 16,
+    "channel-known": 17,
+    "generator": 18,
+    "parity": 19,
+    "syndrome": 20,
+    "matrices-known-1": 21,
+    "matrices-known-2": 22,
+    "matrices-known-3": 23,
+    "matrices-known-4": 24,
+    "distance": 25,
+    "distance-known-1": 26,
+    "distance-known-2": 27,
+    "distance-known-3": 28,
+    "decode": 29,
+    "decode-worked": 30,
+    "decode-matrices-1": 31,
+    "decode-matrices-2": 32,
+    "decode-matrices-3": 33,
+    "decode-known": 34,
+    "formats": 35,
+    "sources-1": 36,
+    "sources-2": 37,
+    "sources-3": 38,
+    "notes": 39,
+    "contents": 40
+  },
+  "layout": [
+    {
+      "key": "start",
+      "scale": 1,
+      "content_height": 370.7
+    },
+    {
+      "key": "quick",
+      "scale": 1,
+      "content_height": 436.0
+    },
+    {
+      "key": "rsa-check",
+      "scale": 1,
+      "content_height": 372.6
+    },
+    {
+      "key": "rsa-prime",
+      "scale": 1,
+      "content_height": 415.1
+    },
+    {
+      "key": "rsa-options-1",
+      "scale": 1,
+      "content_height": 484.8
+    },
+    {
+      "key": "rsa-options-2",
+      "scale": 1,
+      "content_height": 484.8
+    },
+    {
+      "key": "rsa-options-3",
+      "scale": 1,
+      "content_height": 484.8
+    },
+    {
+      "key": "rsa-break",
+      "scale": 1,
+      "content_height": 339.4
+    },
+    {
+      "key": "inverse",
+      "scale": 1,
+      "content_height": 565.0
+    },
+    {
+      "key": "rsa-known",
+      "scale": 1,
+      "content_height": 510.6
+    },
+    {
+      "key": "calculator",
+      "scale": 1,
+      "content_height": 498.5
+    },
+    {
+      "key": "hamming",
+      "scale": 1,
+      "content_height": 422.5
+    },
+    {
+      "key": "hamming-known-1",
+      "scale": 1,
+      "content_height": 694.8
+    },
+    {
+      "key": "hamming-known-2",
+      "scale": 1,
+      "content_height": 217.6
+    },
+    {
+      "key": "channel",
+      "scale": 1,
+      "content_height": 372.8
+    },
+    {
+      "key": "channel-worked",
+      "scale": 1,
+      "content_height": 356.9
+    },
+    {
+      "key": "channel-known",
+      "scale": 1,
+      "content_height": 588.7
+    },
+    {
+      "key": "generator",
+      "scale": 1,
+      "content_height": 486.9
+    },
+    {
+      "key": "parity",
+      "scale": 1,
+      "content_height": 359.4
+    },
+    {
+      "key": "syndrome",
+      "scale": 1,
+      "content_height": 366.3
+    },
+    {
+      "key": "matrices-known-1",
+      "scale": 1,
+      "content_height": 395.8
+    },
+    {
+      "key": "matrices-known-2",
+      "scale": 1,
+      "content_height": 395.8
+    },
+    {
+      "key": "matrices-known-3",
+      "scale": 1,
+      "content_height": 395.8
+    },
+    {
+      "key": "matrices-known-4",
+      "scale": 1,
+      "content_height": 294.4
+    },
+    {
+      "key": "distance",
+      "scale": 1,
+      "content_height": 504.5
+    },
+    {
+      "key": "distance-known-1",
+      "scale": 1,
+      "content_height": 396.4
+    },
+    {
+      "key": "distance-known-2",
+      "scale": 1,
+      "content_height": 396.4
+    },
+    {
+      "key": "distance-known-3",
+      "scale": 1,
+      "content_height": 260.8
+    },
+    {
+      "key": "decode",
+      "scale": 1,
+      "content_height": 387.1
+    },
+    {
+      "key": "decode-worked",
+      "scale": 1,
+      "content_height": 392.9
+    },
+    {
+      "key": "decode-matrices-1",
+      "scale": 1,
+      "content_height": 350.7
+    },
+    {
+      "key": "decode-matrices-2",
+      "scale": 1,
+      "content_height": 350.7
+    },
+    {
+      "key": "decode-matrices-3",
+      "scale": 1,
+      "content_height": 350.7
+    },
+    {
+      "key": "decode-known",
+      "scale": 1,
+      "content_height": 402.9
+    },
+    {
+      "key": "formats",
+      "scale": 1,
+      "content_height": 443.6
+    },
+    {
+      "key": "sources-1",
+      "scale": 1,
+      "content_height": 521.2
+    },
+    {
+      "key": "sources-2",
+      "scale": 1,
+      "content_height": 521.2
+    },
+    {
+      "key": "sources-3",
+      "scale": 1,
+      "content_height": 569.2
+    },
+    {
+      "key": "notes",
+      "scale": 1,
+      "content_height": 423.5
+    },
+    {
+      "key": "contents",
+      "scale": 1,
+      "content_height": 509.2
+    }
+  ]
+}

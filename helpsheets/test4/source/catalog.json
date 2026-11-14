@@ -1,0 +1,534 @@
+[
+  {
+    "id": "T01",
+    "source_file": "2av3/1.pdf",
+    "sha256": "92a8aef4723ed81f2684840cfe568d50453e5fe3b5b219acc48b7c9e72eb14a2",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "channel",
+      "code_detect"
+    ]
+  },
+  {
+    "id": "T02",
+    "source_file": "2av3/3.pdf",
+    "sha256": "623152b8f0c990d844394ef609ee5f92f36f7fbf0d380538f90241f4ff7abe4d",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "channel",
+      "coding_matrices"
+    ]
+  },
+  {
+    "id": "T03",
+    "source_file": "2av3/4.pdf",
+    "sha256": "d8058bef0ee39e76aae0fbf0791a511bbeb77f90c72e5b02577e1f9711c6b8cc",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "hamming",
+      "syndrome_decode"
+    ]
+  },
+  {
+    "id": "T04",
+    "source_file": "2av3/5.pdf",
+    "sha256": "7db0b0034d4c5f77fd9ae895122e9b743d3865e88ad26ad26751caa787c1b6bd",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "channel",
+      "code_dmin"
+    ]
+  },
+  {
+    "id": "T05",
+    "source_file": "2av3/6.pdf",
+    "sha256": "0fbde6673e8c061b7a2357cf5140bc19e5138dc44a83a846c9e7477bbd1a0306",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "hamming",
+      "code_detect"
+    ]
+  },
+  {
+    "id": "T06",
+    "source_file": "2av3/7.pdf",
+    "sha256": "db295951e46af65ecbe1c5bf41fdb9d70809ec2737edd072ddc1e95e272aff6d",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "hamming",
+      "code_dmin"
+    ]
+  },
+  {
+    "id": "T07",
+    "source_file": "2av3/8.pdf",
+    "sha256": "231b5f72209b4083b39a29e72b2d274f40eeb8dbcc7ddc43c4fe30cc11446394",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "hamming",
+      "code_detect"
+    ]
+  },
+  {
+    "id": "T08",
+    "source_file": "2av3/9.pdf",
+    "sha256": "cb3ee806ec6a8f56b0607c6ecef24fefda285536b7bc8b04da23f0fbfcd560f1",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "channel",
+      "syndrome_decode"
+    ]
+  },
+  {
+    "id": "T09",
+    "source_file": "3av3/1.pdf",
+    "sha256": "131ced7a9d6f0c056b1e6d550b5988d03a1a390972eabe98f56ac0b2cb455fb4",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "hamming",
+      "coding_matrices"
+    ]
+  },
+  {
+    "id": "T10",
+    "source_file": "3av3/10.pdf",
+    "sha256": "a59f62db07525d6119c9027b4a75b8e0d48d7599029537493fe3046e68734a58",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "hamming",
+      "coding_matrices"
+    ]
+  },
+  {
+    "id": "T11",
+    "source_file": "3av3/11.pdf",
+    "sha256": "8cdacc808fd4f8b71cf396f0977451b76ac1c74d19d6dd4814aa79d172492afb",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "channel",
+      "code_dmin"
+    ]
+  },
+  {
+    "id": "T12",
+    "source_file": "3av3/12.pdf",
+    "sha256": "b0b0d7fde75e0ccc7e4d57f7b2eb0934ec02e5c7509cfe18730123789e3a1601",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "hamming",
+      "coding_matrices"
+    ]
+  },
+  {
+    "id": "T13",
+    "source_file": "3av3/13.pdf",
+    "sha256": "5e89402ad9ac1549628616c6fd0b3d531ebefc46000841a3c4e0b4d715511b2f",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "hamming",
+      "coding_matrices"
+    ]
+  },
+  {
+    "id": "T14",
+    "source_file": "3av3/14.pdf",
+    "sha256": "778681a27d3c463e61b7ae036bbe44bd181f659dce31a0a611052a20aa946a23",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "hamming",
+      "coding_matrices"
+    ]
+  },
+  {
+    "id": "T15",
+    "source_file": "3av3/15.pdf",
+    "sha256": "778681a27d3c463e61b7ae036bbe44bd181f659dce31a0a611052a20aa946a23",
+    "pages": 5,
+    "duplicate_of": "T14",
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "hamming",
+      "coding_matrices"
+    ]
+  },
+  {
+    "id": "T16",
+    "source_file": "3av3/16.pdf",
+    "sha256": "c3bffa2b3eb17f1c293bec8df517c34b0408c7fa43f397704096b5a046a62c98",
+    "pages": 1,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "channel",
+      "code_dmin"
+    ]
+  },
+  {
+    "id": "T17",
+    "source_file": "3av3/17.pdf",
+    "sha256": "685a9b241de0d5a60c2b7d56d5c29e4b5f361a87e75b8effc7a88587f763961f",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "hamming",
+      "coding_matrices"
+    ]
+  },
+  {
+    "id": "T18",
+    "source_file": "3av3/18.pdf",
+    "sha256": "ab5c482589bb9de6e6763a784484c756bdd46b7e97e5ca3835f5cacc6eef6b58",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "channel",
+      "coding_matrices"
+    ]
+  },
+  {
+    "id": "T19",
+    "source_file": "3av3/19.pdf",
+    "sha256": "f56751447c585f81652169bbc855d6bde350ae9b82de5664e670dae1edebf463",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "hamming",
+      "code_dmin"
+    ]
+  },
+  {
+    "id": "T20",
+    "source_file": "3av3/2.pdf",
+    "sha256": "9a0b350e61da59cb10bcf1e3478b2e3382689c900fb16f62b70b1cf876d5da09",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "hamming",
+      "coding_matrices"
+    ]
+  },
+  {
+    "id": "T21",
+    "source_file": "3av3/3.pdf",
+    "sha256": "38c2a6d131cd60f3cd4993156bc579f2d63fc5c35535fccf1839cb024af8b560",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "hamming",
+      "code_detect"
+    ]
+  },
+  {
+    "id": "T22",
+    "source_file": "3av3/4.pdf",
+    "sha256": "9022dd61790871e4eeb3f7f5e9cc3d7e0e9404b3d1089688a84036b71791651f",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "channel",
+      "code_dmin"
+    ]
+  },
+  {
+    "id": "T23",
+    "source_file": "3av3/5.pdf",
+    "sha256": "c64c330955d862725cdda8c6e8ed033b37e00410f98f9b0c37fa6bd1b26046ee",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "channel",
+      "syndrome_decode"
+    ]
+  },
+  {
+    "id": "T24",
+    "source_file": "3av3/6.pdf",
+    "sha256": "7f70e1ef9e04e97091d63b71cfb0aa8a43812f8cab538cc11719a90ada74ebe3",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "hamming",
+      "syndrome_decode"
+    ]
+  },
+  {
+    "id": "T25",
+    "source_file": "3av3/9.pdf",
+    "sha256": "f0dd95c913155200706d86db4b852b46226741b186c1618025cb4b13f325b65b",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "channel",
+      "code_dmin"
+    ]
+  },
+  {
+    "id": "T26",
+    "source_file": "diverse_scores/1.pdf",
+    "sha256": "c193c569cb52e21778b23c8fe96a184e1282325a47aab1f11d93ba7e863f0326",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "hamming",
+      "coding_matrices"
+    ]
+  },
+  {
+    "id": "T27",
+    "source_file": "diverse_scores/2.pdf",
+    "sha256": "76399c28efdf617f4fb6c5f70e1ddfd4082257eca35ced7dda5e843fbabaf28e",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "hamming",
+      "syndrome_decode"
+    ]
+  },
+  {
+    "id": "T28",
+    "source_file": "diverse_scores/3.pdf",
+    "sha256": "2687d4743d1764a8e9992e5beb4592d7116511e42b7d71c22294f8aa1e8cfbbc",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "hamming",
+      "syndrome_decode"
+    ]
+  },
+  {
+    "id": "T29",
+    "source_file": "diverse_scores/4.pdf",
+    "sha256": "ff32f0c6278b29a2ac7097e19ff8a17b1339d4993c4e7c778b981e13c6d5d6d0",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "channel",
+      "syndrome_decode"
+    ]
+  },
+  {
+    "id": "T30",
+    "source_file": "diverse_scores/5.pdf",
+    "sha256": "bc97a959462d1a73e052fbbbcb85e495d2ee859eae6e103e7fd3217a9fa9a56e",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "channel",
+      "code_dmin"
+    ]
+  },
+  {
+    "id": "T31",
+    "source_file": "diverse_scores/6.pdf",
+    "sha256": "c4d1d65be12b838eaa1bb6a970b3b78874e9df937f5ba12e6e012a9eb72752a4",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "hamming",
+      "code_dmin"
+    ]
+  },
+  {
+    "id": "T32",
+    "source_file": "diverse_scores/7.pdf",
+    "sha256": "a7c6379c8b34d346d5fa314344ff54ff3737c9b62c81d144a52ed96be5c56d44",
+    "pages": 7,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "channel",
+      "syndrome_decode"
+    ]
+  },
+  {
+    "id": "T33",
+    "source_file": "diverse_scores/8.pdf",
+    "sha256": "8d355d897effe9ebae7e9bb0887e3acb7444edfa8f6ba4397cafd0906cb86579",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "hamming",
+      "coding_matrices"
+    ]
+  },
+  {
+    "id": "T34",
+    "source_file": "diverse_scores/9.pdf",
+    "sha256": "2687d4743d1764a8e9992e5beb4592d7116511e42b7d71c22294f8aa1e8cfbbc",
+    "pages": 4,
+    "duplicate_of": "T28",
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "hamming",
+      "syndrome_decode"
+    ]
+  },
+  {
+    "id": "T35",
+    "source_file": "regler/Test 4 (1).pdf",
+    "sha256": "2687d4743d1764a8e9992e5beb4592d7116511e42b7d71c22294f8aa1e8cfbbc",
+    "pages": 4,
+    "duplicate_of": "T28",
+    "kind": "attempt",
+    "question_types": [
+      "rsa_break",
+      "hamming",
+      "syndrome_decode"
+    ]
+  },
+  {
+    "id": "T36",
+    "source_file": "regler/Test 4 (topics 10-12_ Applications of Lagrange's theorem,Coding theory,Coding theory and group codes)_ Attempt review (1).pdf",
+    "sha256": "7f70e1ef9e04e97091d63b71cfb0aa8a43812f8cab538cc11719a90ada74ebe3",
+    "pages": 5,
+    "duplicate_of": "T24",
+    "kind": "attempt",
+    "question_types": [
+      "rsa_valid",
+      "hamming",
+      "syndrome_decode"
+    ]
+  },
+  {
+    "id": "T37",
+    "source_file": "regler/diskre_prøve_4_oppg_1 (1).pdf",
+    "sha256": "1529ade350c1476dfca2be5a1bf66df3983b9c0a86631fcc9ffb6b5bfb9c7f6b",
+    "pages": 8,
+    "duplicate_of": null,
+    "kind": "note"
+  },
+  {
+    "id": "T38",
+    "source_file": "regler/diskre_prøve_4_oppg_1 (2) (1).pdf",
+    "sha256": "837d88507933e95d3ae61ece3da24966223740ac5b324532e13f7de1e7d69991",
+    "pages": 4,
+    "duplicate_of": null,
+    "kind": "note"
+  },
+  {
+    "id": "T39",
+    "source_file": "regler/diskre_prøve_4_oppg_1 (2).pdf",
+    "sha256": "837d88507933e95d3ae61ece3da24966223740ac5b324532e13f7de1e7d69991",
+    "pages": 4,
+    "duplicate_of": "T38",
+    "kind": "note"
+  },
+  {
+    "id": "T40",
+    "source_file": "regler/diskre_prøve_4_oppg_1.pdf",
+    "sha256": "6996192307955bd2005f196a35cf0434167bd8ed14a9edde707fb87578c3a4d3",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "note"
+  },
+  {
+    "id": "T41",
+    "source_file": "regler/diskre_prøve_4_oppg_2.pdf",
+    "sha256": "82da3bb39d3a04679201421348fb1c6946642b396d985a3dc1b5de49395fb4d7",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "note"
+  },
+  {
+    "id": "T42",
+    "source_file": "regler/diskre_prøve_4_oppg_3 (2).pdf",
+    "sha256": "4540d95ed60d619b3ce3b00bb9e5fdd16031aea406cb2dadd2ca081ea43a02f7",
+    "pages": 6,
+    "duplicate_of": null,
+    "kind": "note"
+  },
+  {
+    "id": "T43",
+    "source_file": "regler/diskre_prøve_4_oppg_3 (3).pdf",
+    "sha256": "a27561094351e01a460237ec5fb7f912b676fd852be242e18e4f79fbd2493613",
+    "pages": 5,
+    "duplicate_of": null,
+    "kind": "note"
+  },
+  {
+    "id": "T44",
+    "source_file": "regler/diskre_prøve_4_oppg_3.pdf",
+    "sha256": "a05fa911fe5cfe99f726f5593ef6896434d48237cf758a88aa81b5ee2c8f3631",
+    "pages": 3,
+    "duplicate_of": null,
+    "kind": "note"
+  }
+]
