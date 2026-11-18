@@ -1,7 +1,7 @@
 {
-  "version": 1,
-  "date": "14. november 2026",
-  "pages": 40,
+  "version": 2,
+  "date": "18. november 2026",
+  "pages": 41,
   "page_numbers": {
     "start": 1,
     "quick": 2,
@@ -14,41 +14,42 @@
     "inverse": 9,
     "rsa-known": 10,
     "calculator": 11,
-    "hamming": 12,
-    "hamming-known-1": 13,
-    "hamming-known-2": 14,
-    "channel": 15,
-    "channel-worked": 16,
-    "channel-known": 17,
-    "generator": 18,
-    "parity": 19,
-    "syndrome": 20,
-    "matrices-known-1": 21,
-    "matrices-known-2": 22,
-    "matrices-known-3": 23,
-    "matrices-known-4": 24,
-    "distance": 25,
-    "distance-known-1": 26,
-    "distance-known-2": 27,
-    "distance-known-3": 28,
-    "decode": 29,
-    "decode-worked": 30,
-    "decode-matrices-1": 31,
-    "decode-matrices-2": 32,
-    "decode-matrices-3": 33,
-    "decode-known": 34,
-    "formats": 35,
-    "sources-1": 36,
-    "sources-2": 37,
-    "sources-3": 38,
-    "notes": 39,
-    "contents": 40
+    "rsa-casio": 12,
+    "hamming": 13,
+    "hamming-known-1": 14,
+    "hamming-known-2": 15,
+    "channel": 16,
+    "channel-worked": 17,
+    "channel-known": 18,
+    "generator": 19,
+    "parity": 20,
+    "syndrome": 21,
+    "matrices-known-1": 22,
+    "matrices-known-2": 23,
+    "matrices-known-3": 24,
+    "matrices-known-4": 25,
+    "distance": 26,
+    "distance-known-1": 27,
+    "distance-known-2": 28,
+    "distance-known-3": 29,
+    "decode": 30,
+    "decode-worked": 31,
+    "decode-matrices-1": 32,
+    "decode-matrices-2": 33,
+    "decode-matrices-3": 34,
+    "decode-known": 35,
+    "formats": 36,
+    "sources-1": 37,
+    "sources-2": 38,
+    "sources-3": 39,
+    "notes": 40,
+    "contents": 41
   },
   "layout": [
     {
       "key": "start",
       "scale": 1,
-      "content_height": 370.7
+      "content_height": 382.7
     },
     {
       "key": "quick",
@@ -83,7 +84,7 @@
     {
       "key": "rsa-break",
       "scale": 1,
-      "content_height": 339.4
+      "content_height": 377.0
     },
     {
       "key": "inverse",
@@ -98,7 +99,12 @@
     {
       "key": "calculator",
       "scale": 1,
-      "content_height": 498.5
+      "content_height": 521.8
+    },
+    {
+      "key": "rsa-casio",
+      "scale": 1,
+      "content_height": 571.1
     },
     {
       "key": "hamming",
@@ -243,7 +249,7 @@
     {
       "key": "contents",
       "scale": 1,
-      "content_height": 509.2
+      "content_height": 530.4
     }
   ]
 }

@@ -17,9 +17,9 @@ from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate, Table, T
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / 'source'
-VERSION = 1
+VERSION = 2
 STEM = f'TEST4DOCSV{VERSION}'
-DATE = '14. november 2026'
+DATE = '18. november 2026'
 WIDTH = A4[0] - 88
 HEIGHT = A4[1] - 48 - 55 - 12
 NAVY = colors.HexColor('#17324e')
@@ -160,7 +160,7 @@ def build():
         story.extend(content); layout.append(metric)
     pdf=ROOT / f'{STEM}.pdf'
     doc=SimpleDocTemplate(str(pdf),pagesize=A4,rightMargin=44,leftMargin=44,topMargin=48,bottomMargin=55,
-        title='MA-224: Delprøve 4 – søkbart hjelpeark V1',author='MA-224 hjelpeark',
+        title=f'MA-224: Delprøve 4 – søkbart hjelpeark V{VERSION}',author='MA-224 hjelpeark',
         subject='RSA, Hamming, bitfeil, generator- og kontrollmatriser, syndrom og dekoding')
     paint=lambda c,d:footer(c,d,len(pages))
     doc.build(story,onFirstPage=paint,onLaterPages=paint)

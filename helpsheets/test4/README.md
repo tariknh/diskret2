@@ -1,12 +1,14 @@
 # Delprøve 4 – søkbart hjelpeark
 
-- [TEST4DOCSV1.pdf](TEST4DOCSV1.pdf) – 40 sider med oppskrifter, engelske søkeord og konkrete talloppslag.
-- [Samme innhold som tekst](TEST4DOCSV1.md).
+- [TEST4DOCSV2.pdf](TEST4DOCSV2.pdf) – 41 sider med oppskrifter, engelske søkeord og konkrete talloppslag.
+- [Samme innhold som tekst](TEST4DOCSV2.md).
 - [Øvingsprøven](../../test4-med-preview.html) – last ned HTML-filen og åpne den i nettleseren.
+
+Versjon 2 har et gjennomregnet eksempel på side 12 med n=2747, Casio TABLE og begge utregningene i «powers mod».
 
 Kontrollert 14. november 2026 mot `tariknh/diskret`, mappen `Delprove_4`, revisjon `dcbf1e4e8597e1a80a445f1df91bf8864f74d836`.
 
-Mappen inneholder 44 PDF-er: 36 prøvekopier og 8 notatkopier. Fire prøvekopier er byte-identiske med andre prøver. De 32 ulike prøvefilene har til sammen 96 regneoppgaver. Alle er knyttet til et oppslag på side 36–38. Notatene er kontrollert separat på side 39. Studentinnsendte svar er ikke behandlet som fasit; svarene er regnet ut på nytt, også der gamle dekodingsnotater har feil.
+Mappen inneholder 44 PDF-er: 36 prøvekopier og 8 notatkopier. Fire prøvekopier er byte-identiske med andre prøver. De 32 ulike prøvefilene har til sammen 96 regneoppgaver. Alle er knyttet til et oppslag på side 37–39. Notatene er kontrollert separat på side 40. Studentinnsendte svar er ikke behandlet som fasit; svarene er regnet ut på nytt, også der gamle dekodingsnotater har feil.
 
 Åtte oppgavetyper er dekket:
 

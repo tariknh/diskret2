@@ -2,7 +2,7 @@
 
 [Last ned test4-med-preview.html](../test4-med-preview.html). Bruk nedlastingsknappen på GitHub og åpne den lagrede filen i nettleseren. GitHubs filvisning viser kildekoden.
 
-Siden er én fil og fungerer uten internett. Den har åtte oppgavetyper med norske hint, forklaringer og koblinger til [hjelpeark V1](../helpsheets/test4/TEST4DOCSV1.pdf). Bare hjelpearklenkene krever nett.
+Siden er én fil og fungerer uten internett. Den har åtte oppgavetyper med norske hint, forklaringer og koblinger til [hjelpeark V2](../helpsheets/test4/TEST4DOCSV2.pdf). Bare hjelpearklenkene krever nett.
 
 - Fullprøve: én RSA-oppgave, én Hamming-/sannsynlighetsoppgave og én kodeteorioppgave. Automatisk levering etter 30 minutter.
 - Kildeprøve T01–T36: de konkrete tallene fra én av de 32 ulike prøvefilene, med 30-minutters grense. Filkopiene T15, T34, T35 og T36 er representert ved sine originaler T14, T28 og T24.

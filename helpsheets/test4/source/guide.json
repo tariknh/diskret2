@@ -22,7 +22,7 @@
             ],
             [
               "Bob’s RSA key is weak / Find the unencrypted message",
-              "Privat nøkkel og klartekst: {page:rsa-break}. Talloppslag: {page:rsa-known}."
+              "Privat nøkkel og klartekst: {page:rsa-break}. Talloppslag: {page:rsa-known}. Casio-eksempel 2747: {page:rsa-casio}."
             ],
             [
               "minimal and maximal Hamming distance",
@@ -542,6 +542,10 @@
       [
         "p",
         "For de kjente tallene kan du slå opp på side {page:rsa-known}. For nye tall finner du inversen på neste side."
+      ],
+      [
+        "p",
+        "Se hele Casio-eksemplet med n=2747, x=1933 og M=1076 på side {page:rsa-casio}. Der brukes «powers mod» både for y og m."
       ]
     ]
   },
@@ -808,6 +812,104 @@
       [
         "p",
         "Svar derfor 13. Oppskriften virker fordi du kan ta resten etter hver multiplikasjon uten å endre sluttresten."
+      ],
+      [
+        "p",
+        "Du kan også bruke potens modulo til å finne y når phi er lett å faktorisere. Se eksemplet på side {page:rsa-casio}."
+      ]
+    ]
+  },
+  {
+    "key": "rsa-casio",
+    "title": "Svak RSA på Casio med n=2747",
+    "search": "Bob's RSA key is weak • find the unencrypted message • 2747 • 1933 • 1076 • Casio fx-9860GIII • powers mod",
+    "blocks": [
+      [
+        "p",
+        "Oppgaven gir (n,x)=(2747,1933) og kryptert melding M=1076. Finn den private eksponenten y i a) og klarteksten m i b). Bruk TABLE på Casioen og «powers mod» i oppgaven."
+      ],
+      [
+        "h",
+        "1. Finn faktorene til n med TABLE"
+      ],
+      [
+        "p",
+        "Trykk MENU → TABLE. Skriv 2747 ÷ X i Y1 (bruk X,θ,T-knappen), og trykk EXE. Velg F5 (SET) og sett Start=2, End=52, Step=1. 52 er heltallsdelen av √2747. Trykk EXIT → F6 (TABL)."
+      ],
+      [
+        "p",
+        "Raden X=41 gir Y1=67. Dermed er 2747=41×67, og phi=(41−1)×(67−1)=2640."
+      ],
+      [
+        "h",
+        "2. Finn eksponenten som gir y"
+      ],
+      [
+        "p",
+        "Del 2640 helt ned til 1. Når divisjonen går opp, prøv samme primtall på det nye tallet. Når den gir desimaler, behold tallet og prøv neste primtall."
+      ],
+      [
+        "code",
+        "2640 ÷ 2 = 1320 → ÷ 2 = 660 → ÷ 2 = 330 → ÷ 2 = 165\n 165 ÷ 3 =   55 → ÷ 5 =  11 → ÷ 11 = 1"
+      ],
+      [
+        "p",
+        "De ulike primtallene er 2, 3, 5 og 11. Bruk (p−1)/p for hvert av dem. Ta med 2 én gang, selv om det var fire divisjoner med 2."
+      ],
+      [
+        "code",
+        "2640 × (1÷2) × (2÷3) × (4÷5) × (10÷11) = 640\n640 − 1 = 639"
+      ],
+      [
+        "p",
+        "640 er Eulers phi-verdi for 2640. Derfor gir 1933^640 rest 1 modulo 2640. Da gir 1933^639 den private eksponenten y, siden én ekstra gang med 1933 gir rest 1."
+      ],
+      [
+        "h",
+        "3. Bruk «powers mod» i oppgaven to ganger"
+      ],
+      [
+        "table",
+        {
+          "headers": [
+            "Det du finner",
+            "Base",
+            "Exponent",
+            "Modulus",
+            "Resultat"
+          ],
+          "rows": [
+            [
+              "a) Privat eksponent y",
+              "1933",
+              "639",
+              "2640",
+              "997"
+            ],
+            [
+              "b) Klartekst m",
+              "1076",
+              "997",
+              "2747",
+              "2314"
+            ]
+          ],
+          "widths": [
+            1.9,
+            0.8,
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      [
+        "box",
+        "Skriv 997 i feltet y og 2314 i feltet m. Resultatet fra a) blir eksponenten i b). Bruk phi=2640 som modulus i a) og n=2747 i b)."
+      ],
+      [
+        "p",
+        "Med andre tall kan du bruke denne metoden når phi er lett å faktorisere. Euklid-tabellen på side {page:inverse} finner y direkte fra x og phi."
       ]
     ]
   },
@@ -2842,6 +2944,10 @@
           [
             "Store RSA-tall: bruk modulokalkulatoren",
             "calculator"
+          ],
+          [
+            "Svak RSA på Casio med n=2747",
+            "rsa-casio"
           ],
           [
             "Hamming-avstand: tell ulike posisjoner",

@@ -93,8 +93,8 @@ for key in gids:
     expected_matrices.append([matrix_text(q['G']),matrix_text(q['H'])])
 check([row for i in range(1,4) for row in rows('decode-matrices-'+str(i))]==expected_matrices,'decode G H registry')
 check(words([[1,0,0,0,1],[0,0,0,1,1],[0,1,1,1,0]])==sorted(['00000','01110','00011','01101','10001','11111','10010','11100']),'T42 nonsystematic code')
-pdf=fitz.open(R/'TEST4DOCSV1.pdf')
-check(len(pdf)==len(pages)==40,'40 logical and rendered pages')
+pdf=fitz.open(R/f'{build.STEM}.pdf')
+check(len(pdf)==len(pages),'logical and rendered page counts match')
 for i,page in enumerate(pages):
  txt=pdf[i].get_text();flat=lambda s:' '.join(str(s).replace('**','').split())
  check(flat(page['title']) in flat(txt),page['key']+' searchable title')
@@ -108,7 +108,7 @@ for i,page in enumerate(pages):
   if kind=='table':
    for row in [val['headers']]+val['rows']:
     for cell in row:check(flat(cell) in flat(txt),page['key']+' table text '+str(cell)[:25])
-check(len(pdf.get_toc())==40,'PDF bookmarks')
+check(len(pdf.get_toc())==len(pages),'PDF bookmarks')
 whole='\n'.join(p.get_text() for p in pdf)
 for phrase in ['at most 3','valid key pair','private key','Hamming','error pattern','11010110','1001','00000010']:
  check(phrase in whole,'search keyword '+phrase)
