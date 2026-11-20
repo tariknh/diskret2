@@ -17,9 +17,9 @@ from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate, Table, T
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / 'source'
-VERSION = 2
+VERSION = 3
 STEM = f'TEST4DOCSV{VERSION}'
-DATE = '18. november 2026'
+DATE = '20. november 2026'
 WIDTH = A4[0] - 88
 HEIGHT = A4[1] - 48 - 55 - 12
 NAVY = colors.HexColor('#17324e')

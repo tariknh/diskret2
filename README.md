@@ -6,9 +6,10 @@ Nettsiden blir tilgjengelig når Pages er aktivert. Deretter oppdateres den auto
 
 ## Delprøve 4
 
-- [Søkbart hjelpeark V2 – 41 sider](helpsheets/test4/TEST4DOCSV2.pdf)
+- [Søkbart hjelpeark V3 – 43 sider](helpsheets/test4/TEST4DOCSV3.pdf)
 - RSA-eksemplet med Casio og n=2747 står på side 12.
-- [Les hjelpearket som tekst](helpsheets/test4/TEST4DOCSV2.md)
+- De enkle kodeeksemplene viser G, H og syndrom på side 22 og retting av én bit på side 33.
+- [Les hjelpearket som tekst](helpsheets/test4/TEST4DOCSV3.md)
 - [Last ned øvingsprøven med forhåndsvisning](test4-med-preview.html) – åpne den lagrede HTML-filen i nettleseren.
 - [Bruk av øvingssiden og kontroller](practice/TEST4.md)
 - [Kilder og gjenoppbygging av hjelpearket](helpsheets/test4/README.md)
