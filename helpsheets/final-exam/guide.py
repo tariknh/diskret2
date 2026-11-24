@@ -5,8 +5,9 @@ Each entry in PAGES is one A4 page. The front page is generated from INDEX.
 """
 
 
-def page(key, label, title, prompt, exams, blocks):
-    return dict(key=key, label=label, title=title, prompt=prompt, exams=exams, blocks=blocks)
+def page(key, label, title, prompt, exams, blocks, *, source=''):
+    return dict(key=key, label=label, title=title, prompt=prompt, exams=exams,
+                blocks=blocks, source=source)
 
 
 def p(text):
@@ -30,20 +31,29 @@ def table(headings, rows, widths):
 
 
 INDEX = [
-    ('Logikk og bevisfeil', 'Truth table / logical inferences / find the flaws', 'logikk'),
-    ('Induksjon og Peano', 'Prove by induction / using the definitions', 'induksjon'),
-    ('Grammatikk og syntakstrær', 'Find a derivation / syntax tree / ambiguous / 4-tuple', 'grammatikk'),
-    ('NFA → DFA og minimering', 'Translate NFA to DFA / minimize', 'dfa'),
-    ('Regulære uttrykk', 'NFA to regular expression / right-regular grammar', 'regex'),
-    ('Programkorrekthet og JML', 'Correct implementation / refinement / extend JML', 'program'),
+    ('Logikk og bevis', 'Truth table / logical inferences / find the flaws', 'logikk'),
+    ('Induksjon og Peano', 'Prove by induction / Peano definitions', 'induksjon'),
+    ('Grammatikk', 'Derivation / syntax tree / ambiguous / 4-tuple', 'grammatikk'),
+    ('Automater', 'Translate NFA to DFA / minimize', 'dfa'),
+    ('Regulære uttrykk', 'NFA to regex / right-regular grammar', 'regex'),
+    ('Programkorrekthet', 'Correct implementation / refinement / JML', 'program'),
     ('Relasjoner', 'Reflexive / antisymmetric / equivalence / order', 'relasjoner'),
-    ('Rekurrens', 'Initial values / find a recurrence / particular / periodic', 'rekurrens'),
-    ('Grupper og Lagrange', 'Multiplication table / order / cyclic / subgroup / index', 'grupper'),
+    ('Relasjonsmatriser', 'Relation matrix / partition / add mandatory 1s', 'relasjonsmatrise'),
+    ('Relasjonsbevis', 'Union / transpose / lexicographic / least / remainder', 'relasjonsbevis'),
+    ('Rekurrens', 'Initial value / double root / periodic / find a recurrence', 'rekurrens'),
+    ('Flere rekurrenser', 'First order / variable coefficient / complex roots', 'rekurrensvarianter'),
+    ('Grupper', 'Group table / order / cyclic / gcd / lcm', 'grupper'),
+    ('Symmetri', 'Sₙ / permutation / D₄ / rotation / reflection', 'symmetri'),
+    ('Lagrange', 'Coset / index / subgroup orders', 'sideklasser'),
+    ('Gruppebevis', 'Prove subgroup / homomorphism / isomorphism', 'gruppebevis'),
     ('Modulo og Euklid', 'Euler totient / Pₙ / modular inverse / integer solutions', 'modulo'),
-    ('Kodeavstand og G', 'Detect / correct / choose a generator / minimum weight', 'kodeavstand'),
-    ('Syndrom og feilretting', 'Parity check / syndrome / codeword / coset leaders', 'syndrom'),
-    ('Turing-maskin og løkker', 'Last 1 on the tape / watchdog / infinite loop', 'maskin'),
-    ('Tillegg: tidslogikk og semantikk', 'Next / eventually / always / until / semantic function', 'tidslogikk'),
+    ('RSA og potenser', 'Public/private key / encrypt / Fermat / powers mod', 'rsa'),
+    ('Kodeavstand og G', 'Minimum distance / choose G / detect or correct', 'kodeavstand'),
+    ('Syndrom og feilretting', 'Parity check / syndrome / codeword / coset leader', 'syndrom'),
+    ('Bitfeil og sannsynlighet', 'No errors / at most k / receive a given word', 'kanal'),
+    ('Kode fra regler', 'Given E / generator matrix / group code / list codewords', 'gruppekode'),
+    ('Turing og løkker', 'Last 1 on the tape / watchdog / infinite loop', 'maskin'),
+    ('Tidslogikk', 'Next / eventually / always / until / semantic function', 'tidslogikk'),
 ]
 
 
@@ -370,9 +380,8 @@ PAGES = [
         p('Sett d=gcd(a,b). Når minst én koeffisient er ulik 0, får du **ingen** løsninger hvis d∤c '
           'og **uendelig mange** hvis d|c. For 28x+32y=4 er d=4, og (−1,1) virker. '
           'Alle fås ved x=−1+8k, y=1−7k, k et heltall.'),
-        p('**Regn modulo:** 2257³ mod 5 = 2³ mod 5 = 3. Reduser basen først. '
-          '**Fermat:** En rest ulik 1 i aⁿ⁻¹ mod n for 1≤a<n viser at n er sammensatt. '
-          'Å få 1 for noen baser gir ingen sikker konklusjon.'),
+        p('**Bézout.** Med siste ikke-null rest d og koeffisient t fra tabellen får du d=t·a+s·m '
+          'med s=(d−t·a)/m. For store potenser, Fermat og RSA, se side {page:rsa}.'),
     ]),
     page('kodeavstand', 'Kodeteori', 'Bygg G og sjekk hva koden tåler',
          'Minimum distance · find a generator · detect or correct errors',
@@ -497,4 +506,285 @@ PAGES = [
           'les A som «på alle veier» og E som «på minst én vei». '
           'Med to neste tilstander der bare én har p, er **EX p sann** og **AX p usann**.'),
     ]),
+    page('relasjonsmatrise', 'Relasjoner', 'Fyll ut en relasjonsmatrise',
+         'Relation matrix · partition · add mandatory 1s · Boolean product · composition', '', [
+        box('Sett **1 på rad a, kolonne b** for hvert gitt par (a,b). Merk alle radene og kolonnene '
+            'i samme rekkefølge. Ved «add mandatory 1s» behold de gitte 1-erne og legg til rutene reglene krever. '
+            'La resten stå 0.'),
+        h('Samme start, to ulike krav'),
+        p('Eksempel med mengden {1,2,3,5} og parene (2,3), (3,5). Sjekk hvilket krav som står i oppgaven.'),
+        table(['Oppgaven ber om', 'Fyll ut slik'], [
+            ['**Partial order**', 'Fyll diagonalen. (2,3) og (3,5) krever (2,5). '
+                                   'Fortsett å sjekke slike kjeder med de nye parene til ingen flere ruter må fylles.'],
+            ['**Equivalence relation**', 'Legg tallene som er koblet sammen i én gruppe, uansett pilretning. '
+                                          'Her får du {1} og {2,3,5}. Sett 1 når rad og kolonne er i samme gruppe.'],
+            ['**Gitt partition**', 'Gruppene er allerede oppgitt. Fyll alle rutene innen hver gruppe.'],
+        ], [1.3, 3.72]),
+        code('Rad / kolonne     1 2 3 5    1 2 3 5\n'
+             '                    Delvis     Ekvivalens\n'
+             '1                 1 0 0 0    1 0 0 0\n'
+             '2                 0 1 1 1    0 1 1 1\n'
+             '3                 0 0 1 1    0 1 1 1\n'
+             '5                 0 0 0 1    0 1 1 1'),
+        p('Ved **partial order** må par mellom ulike tall beholde retningen. Hvis du må sette 1 '
+          'i både (a,b) og (b,a) for a≠b, brytes antisymmetrien. Hvis de krever både **equivalence '
+          'relation og partial order**, fyller du bare diagonalen, fordi begge kravene da gjelder.'),
+        h('Snu, slå sammen eller koble to matriser'),
+        p('For å **transponere** bytter du rad og kolonne, så (a,b) blir (b,a). '
+          'Ved **union** setter du 1 der minst én av matrisene har 1.'),
+        p('I det **boolske produktet A·B** blir rute (i,j) 1 hvis minst én k har **A[i,k]=1 og B[k,j]=1**. '
+          'Med (6,3) i R og (3,6) i S gir «R først, S etterpå» paret **(6,6)**. '
+          'Ved R∘S bruker du rekkefølgen oppgaven definerer.'),
+        p('I (A·Id)[i,j] kan bare k=j bidra, så du får A[i,j]. I (Id·A)[i,j] velges k=i, '
+          'som også kopierer A[i,j]. Dermed er **Id nøytral**.'),
+    ], source='Canvas · Exercise6, lysbilde 4, 8–9, 15 og 17–19 · Solutions6, lysbilde 5, 10 og 12'),
+    page('relasjonsbevis', 'Relasjoner', 'Relasjonsbevis med små eksempler',
+         'Relation union · transpose · NAND or NOR · lexicographic order · minimal · same remainder', '', [
+        h('Hvis R og S har egenskapen, må R ∪ S ha den?'),
+        table(['Egenskap', 'Det du skriver'], [
+            ['Refleksiv', '**Ja.** Én refleksiv relasjon er nok. Alle (a,a) kommer med i unionen.'],
+            ['Symmetrisk', '**Ja.** Hvis (a,b) kommer fra R, kommer (b,a) også fra R. Samme argument for S.'],
+            ['Antisymmetrisk', '**Nei.** R={(1,2)} og S={(2,1)} på {1,2}. '
+                              'Hver for seg er de antisymmetriske. Unionen har begge retninger.'],
+            ['Transitiv', '**Nei.** R={(1,2)} og S={(2,3)} på {1,2,3}. Hver for seg er de transitive. '
+                          'Unionen har (1,2) og (2,3), og mangler (1,3).'],
+        ], [1.24, 3.75]),
+        p('Når **N=Mᵀ** definerer relasjonen, velg M med radene [0 1] og [0 0]. Da er M≠Mᵀ. Paret (M,M) mangler, '
+          'så refleksivitet feiler. M og Mᵀ står begge veier, så antisymmetri feiler. '
+          'De to stegene M → Mᵀ → M ville også krevd (M,M) for transitivitet. Symmetri holder fordi (Mᵀ)ᵀ=M.'),
+        h('Boolsk matrise og nøytralt element'),
+        p('Regn operasjonen for 00, 01, 10, 11 og skriv resultatene i to rader. NAND gir '
+          '**[1 1]** og **[1 0]**. NOR gir **[1 0]** og **[0 0]**. Et nøytralt e må gi '
+          'op(a,e)=op(e,a)=a for begge a. NAND feiler for a=0 med begge e. NOR feiler for a=1 med begge e.'),
+        h('Leksikografisk ordning og minste element'),
+        p('Sammenlign første ulike bokstav. Behandle slutten av et ord som et tegn før alle bokstaver. '
+          'For transitivitet, finn første forskjell i u<v og v<w. Ved den tidligste av de to posisjonene er u<w '
+          'fordi én eller begge sammenligningene gir en mindre bokstav. Likhet gir refleksivitet. '
+          'Forskjellige ord har én bestemt retning, så ≤ er antisymmetrisk og alle par kan sammenlignes.'),
+        p('Et **minimalt** element m har ingen x≠m med x≤m. Et **minste** element har m≤x for alle x. '
+          'I en total ordning er alle x sammenlignbare med m. For x≠m kan du utelukke x≤m, så m≤x.'),
+        h('Samme rest, også med negative tall'),
+        p('Bruk **x−m·Intg(x/m)** på Casio for positiv m. Intg runder ned, så med x=−18 og m=8 '
+          'får du −18−8·(−3)=6. Tallene −18, −10, −2, 6 og 14 ligger i samme klasse på −20…20. '
+          'Grupper bare tallene i oppgavens mengde. En restklasse mod 20 ligger i én restklasse mod 10. '
+          'For eksempel ligger klassen med rest 14 mod 20 i klassen med rest 4 mod 10.'),
+    ], source='Canvas · Exercise6, lysbilde 5–6, 11, 14, 16 og 20 · Solutions6, lysbilde 3–4, 6–9, 11 og 13'),
+    page('rekurrensvarianter', 'Rekurrens', 'Første orden, brøk og komplekse røtter',
+         'First order · variable coefficient · telescoping sum · complex conjugate roots', '', [
+        h('Ett tidligere ledd og et fast tall'),
+        p('For **a[n]=c·a[n−1]+d**, finn nivået L som oppfyller L=cL+d. Da er L=d/(1−c) for c≠1. '
+          'Sett b[n]=a[n]−L. Nå ganges b med c for hvert steg. Med start ved n=k blir '
+          '**a[n]=L+(a[k]−L)·c^(n−k)** for n>k. Hvis c=1, legg til d for hvert steg.'),
+        code('a[n] = 2·a[n−1]+1,  a[1]=1\n'
+             'L = 1/(1−2) = −1,   b[1] = 1−(−1) = 2\n'
+             'b[n] = 2·2^(n−1) = 2^n,  a[n] = 2^n−1'),
+        p('Hvis d=0 er L=0, så a[0]=−1 og a[n]=−0,5·a[n−1] gir a[n]=−1·(−0,5)^n. '
+          'Bruk parentes rundt en negativ base.'),
+        h('Brøk med n og n+1'),
+        p('For a[n]=n/(n+1)·a[n−1]+1 med a[0]=1, regner du fra n=1. Gang med **n+1**. Se etter at '
+          'faktoren på a[n−1] er den samme som faktoren på a[n], bare med én lavere indeks.'),
+        code('(n+1)·a[n] = n·a[n−1] + (n+1)\n'
+             'Sett b[n]=(n+1)·a[n]. Da er b[n]=b[n−1]+(n+1).\n'
+             'b[n] = 1+2+…+(n+1) = (n+1)·(n+2)/2\n'
+             'Del på n+1. Svar  a[n] = (n+2)/2.'),
+        h('Negativ diskriminant i andre orden'),
+        p('Regn som på side {page:rekurrens} til du har roten **u+iv** med v>0. Finn lengden '
+          'ρ=√(u²+v²) og vinkelen θ fra positiv realakse. Bruk '
+          '**a[n]=ρ^n·(A·cos(nθ)+B·sin(nθ))**. Startverdiene gir **A=a[0]** og '
+          '**B=(a[1]−u·A)/v**, fordi ρ·cosθ=u og ρ·sinθ=v.'),
+        p('For a[n]+2a[n−1]+2a[n−2]=0 er røttene −1±i. Punktet (−1,1) ligger 45° over den '
+          'negative realaksen, så ρ=√2 og θ=3π/4. Med a[0]=1 og a[1]=3 får du A=1 '
+          'og B=(3−(−1)·1)/1=4.'),
+        box('Svaret er **a[n]=(√2)^n·(cos(3nπ/4)+4·sin(3nπ/4))**. '
+            'Sett inn n=0 og n=1 som rask kontroll.'),
+    ], source='Canvas · exercise7_problems og exercise7_solutions, Problem 1–3'),
+    page('symmetri', 'Grupper', 'Permutasjoner og kvadratgruppen D₄',
+         'G = ⟨x⟩ ⊆ Sₙ · order of a permutation · D₄ multiplication table · rotation · reflection', '', [
+        h('Hva er G i første linje?'),
+        table(['Oppgaven gir', 'Dette følger'], [
+            ['G=⟨x⟩, ord(x)=t', '**|G|=t**. Elementene er e,x,…,x^(t−1). Gruppen er syklisk '
+                                'og abelsk siden xⁱxʲ=x^(i+j)=xʲxⁱ. Ved primtall t er undergruppene {e} og G.'],
+            ['G=Sₙ', '**|G|=n!**. For n≥3, bruk (1 2) og (2 3) for å vise at rekkefølgen betyr noe. '
+                     'Følg 1. I forelesningens rekkefølge får du 1→2→3 og 1→1→2.'],
+        ], [1.23, 3.76]),
+        p('**Ordenen til én permutasjon** er lcm av lengdene til dens separate sykler. '
+          'En 3-sykel og en 2-sykel kommer begge tilbake til start første gang etter 6 steg. '
+          'I S₃ har elementene orden 1, 2 eller 3. Dermed kan ingen generere alle 6.'),
+        h('D₄ i Canvas-øving 8'),
+        p('D₄ har 8 elementer. r er rotasjon +90°, s er speiling i y=x og e er identiteten. '
+          'Gjør radens operasjon først og deretter kolonnens, som i forelesning 8. '
+          'r⁴=e, s²=e og rs=sr³. Bruk oppgavens rekkefølge hvis den oppgis.'),
+        table(['·', 'e', 'r', 'r²', 'r³', 's', 'sr', 'sr²', 'sr³'], [
+            ['e',   'e',   'r',   'r²',  'r³',  's',   'sr',  'sr²', 'sr³'],
+            ['r',   'r',   'r²',  'r³',  'e',   'sr³', 's',   'sr',  'sr²'],
+            ['r²',  'r²',  'r³',  'e',   'r',   'sr²', 'sr³', 's',   'sr'],
+            ['r³',  'r³',  'e',   'r',   'r²',  'sr',  'sr²', 'sr³', 's'],
+            ['s',   's',   'sr',  'sr²', 'sr³', 'e',   'r',   'r²',  'r³'],
+            ['sr',  'sr',  'sr²', 'sr³', 's',   'r³',  'e',   'r',   'r²'],
+            ['sr²', 'sr²', 'sr³', 's',   'sr',  'r²',  'r³',  'e',   'r'],
+            ['sr³', 'sr³', 's',   'sr',  'sr²', 'r',   'r²',  'r³',  'e'],
+        ], [1] * 9),
+        p('D₄ er **ikke-abelsk** siden r·s=sr³ og s·r=sr. Den ekte undergruppen ⟨r⟩={e,r,r²,r³} '
+          'har orden 4, er syklisk og abelsk. Indeksen **[D₄:⟨r⟩]=8/4=2**. '
+          'For ⟨r²⟩={e,r²} er indeksen 4. For ⟨r⁴⟩={e} er indeksen 8.'),
+    ], source='Canvas · lecture8, s. 5–9 og 10–12 · exercise8_solutions, Problem 1–6'),
+    page('sideklasser', 'Grupper', 'Regn ut sideklasser og indeks',
+         'Compute a coset · left coset · same coset · index · Lagrange’s theorem', '', [
+        box('En **sideklasse gH** er mengden du får ved å regne g·h for hvert h i H. '
+            'Når gruppen bruker addisjon, heter den **g+H**. Finn H først hvis du bare har fått en generator.'),
+        h('Eksempel i Z/12 med H=⟨4⟩'),
+        p('Start på 0 og legg til 4 til du kommer tilbake til 0. Da er H={0,4,8}. '
+          'For 2+H legger du 2 til hvert av tallene og tar rest modulo 12.'),
+        table(['Representant g', 'g+H i Z/12'], [
+            ['0', '{0,4,8}'],
+            ['1', '{1,5,9}'],
+            ['2', '**{2,6,10}**'],
+            ['3', '{3,7,11}'],
+        ], [1.35, 3.64]),
+        p('For å **liste alle sideklassene**, velg neste g blant tallene som ennå ikke er dekket. '
+          'For eksempel ligger 6 allerede i 2+H, så 6+H gir samme mengde. '
+          'Her gir [G:H]=|G|/|H|=12/3=4 antall sideklasser.'),
+        h('Hvorfor virker tellingen?'),
+        p('Hvis gH og g′H overlapper, finnes a,b i H med g·a=g′·b. Da er g′=g·(ab⁻¹), '
+          'og ab⁻¹ ligger i H. Å gange alle elementene i H med ab⁻¹ gir H igjen. Derfor er g′H=gH. '
+          'Så sideklassene dekker G uten overlapp mellom ulike klasser.'),
+        p('Du kan sjekke om g og g′ er i samme sideklasse ved å teste **g⁻¹g′∈H**. Ved addisjon bruker du g′−g.'),
+        p('Alle sideklasser har |H| elementer fordi hvert h har et unikt bilde gh, og du får h '
+          'tilbake ved å gange med g⁻¹. Tell klassene og gang med |H|. Dette gir **|G|=|H|·[G:H]**.'),
+        h('Hva kan jeg slutte fra Lagrange?'),
+        p('Orden k til x er |⟨x⟩|. Da deler k gruppens orden n, så **x^n=e**. '
+          'Hvis n er primtall, har enhver undergruppe størrelse 1 eller n. '
+          'Hvis elementer har orden 5 og 7, deler begge |G|. Da deler også 35 |G|.'),
+        p('For å vise at en bestemt undergruppe finnes, oppgi dens elementer eller en generator. '
+          'I en **syklisk** gruppe G=⟨g⟩ av orden n finnes nøyaktig én undergruppe av orden d for '
+          'hver divisor d av n, nemlig ⟨g^(n/d)⟩. For eksempel i Z/12 med addisjon gir d=3 '
+          'generatoren 12/3=4.'),
+    ], source='Canvas · lecture9, s. 1–3 · lecture8, s. 11–12 · Handin 9'),
+    page('gruppebevis', 'Grupper', 'Bevis for grupper og avbildninger',
+         'Prove it is a group or subgroup · well defined · homomorphism · isomorphism · image', '', [
+        h('Hva må du bevise?'),
+        table(['Oppgaven gir', 'Sjekk dette'], [
+            ['**En gruppe** (G,·)', 'Regn at resultatet holder seg i G (lukkethet). '
+                                    'Vis (ab)c=a(bc), finn e med ea=ae=a, og vis at alle a har en invers i G.'],
+            ['**En undergruppe** H⊆G', 'Vis e∈H. For a,b∈H vis ab∈H og a⁻¹∈H. '
+                                       'Assosiativiteten følger fra G.'],
+            ['**Well defined**', 'Bytt representanter i samme klasse. Vis at resultatet blir i samme klasse. '
+                                  'For Z/n gir a′=a+kn og b′=b+ℓn at a′+b′ og a+b har samme rest.'],
+        ], [1.24, 3.75]),
+        h('To korte gruppebevis'),
+        p('For **SO(n) i GLₙ** har identitetsmatrisen determinant 1. For A,B med determinant 1 får '
+          'vi det(AB)=det(A)·det(B)=1 og det(A⁻¹)=1/det(A)=1. Dermed ligger begge resultatene i SO(n).'),
+        p('I **Pₙ med multiplikasjon modulo n**, for n≥2, kan ingen primfaktor '
+          'i n dele ab når gcd(a,n)=gcd(b,n)=1. Å ta rest beholder gcd med n. 1 er nøytral. '
+          'Utvidet Euklid gir ta+sn=1, så resten av t er inversen til a. '
+          'Enhver felles divisor av t og n må dele 1, så denne resten ligger i Pₙ. '
+          'Assosiativitet følger fra vanlig multiplikasjon.'),
+        h('Vis at f bevarer gruppeoperasjonen'),
+        p('For å vise **homomorfi**, ta vilkårlige a,b og vis f(ab)=f(a)f(b). '
+          'Hvis gruppen til venstre bruker +, skriv f(a+b). '
+          'For **isomorfi**, vis i tillegg at alle målverdier treffes nøyaktig én gang. '
+          'Da kan du gå tilbake med f⁻¹.'),
+        p('I Z/4 → ⟨r⟩, der r har orden 4, bruk f([k])=r^k. Å legge til 4 i eksponenten '
+          'gir samme rotasjon, så funksjonen er veldefinert. f([a]+[b])=r^(a+b)=r^a·r^b. '
+          'Eksponentene 0, 1, 2, 3 gir de fire rotasjonene én gang hver.'),
+        p('For **bildet f(G)** får du det nøytrale elementet fra f(e_G)=f(e_G)·f(e_G) ved å kansellere. '
+          'f(a)·f(b)=f(ab) ligger i bildet, og f(a)⁻¹=f(a⁻¹) ligger også der fordi f(aa⁻¹)=e.'),
+    ], source='Canvas · lecture8, s. 2–5 og 9–14 · lecture9, s. 4–6 · Handin 8'),
+    page('rsa', 'Modulo og RSA', 'Fermat, modulopotenser og RSA',
+         'Compute ϕ · Fermat’s little theorem · private key · encrypt/decrypt · powers mod', '', [
+        h('Finn ϕ(n) fra faktorer'),
+        p('Prøv primtall opp til √n ved faktorisering. Hvis p går opp, del ut p og test samme p '
+          'igjen på tallet som er igjen. **126=2·3²·7**, så **ϕ(126)=126·(1−1/2)·(1−1/3)·(1−1/7)=36**. '
+          'Bruk hver ulik primfaktor én gang i ϕ-formelen.'),
+        h('Regn en stor potens med små tall'),
+        p('Ta rest av basen først, som i 2257³ mod 5 = 2³ mod 5 = 3. '
+          'For **3¹³ mod 17**, skriv 13=8+4+1. Kvadrer for hver ny kolonne og ta rest.'),
+        table(['Eksponent', '1', '2', '4', '8'], [
+            ['3^eksponent mod 17', '3', '9', '13', '16'],
+        ], [2.6, .6, .6, .6, .6]),
+        p('Gang bare kolonnene for 8, 4 og 1. Tallet 16·13·3 gir **rest 12 modulo 17**. '
+          'Hvis prøven gir «powers mod», er feltene Base=3, Exponent=13, Modulus=17.'),
+        p('**Fermat-testen** bruker at hvis n er primtall, gir a^(n−1) rest 1 for alle 1≤a<n. '
+          '**2^526 mod 527 = 64**, så 527 er sammensatt. For 1105 gir base 2 rest 1. '
+          'Hvis alle oppgitte rester er 1, kan du ikke avgjøre det med de testene. '
+          'Med base 5 får du **5^1104 mod 1105 = 885**, så 1105 er sammensatt.'),
+        h('RSA. Skriv riktig modulus på hvert steg'),
+        table(['Når de ber om', 'Regn'], [
+            ['**Find private key y**', 'Finn de ulike primtallene p,q med n=p·q. Regn ϕ=(p−1)(q−1). '
+                                      'Finn inversen y til x **modulo ϕ**, med tabellen på side {page:modulo}.'],
+            ['Encrypt m / decrypt M', 'Regn **M=m^x mod n** for kryptering. For klartekst bruk **m=M^y mod n**.'],
+            ['Valid RSA pair?', 'Sjekk ulike primtall p,q, n=p·q og at x·y gir **rest 1 modulo ϕ**. '
+                                 'Følg eventuelle grenser for x og y i oppgaven.'],
+        ], [1.35, 3.64]),
+        p('Med **n=2747, x=1933 og M=1076** kan du bruke Casio TABLE med Y1=2747÷X og X=2…52. '
+          'Ved X=41 får du 67, så ϕ=40·66=2640. Inversen er **y=997**, fordi 1933·997=730·2640+1. '
+          'I «powers mod» gir Base=1076, Exponent=997, Modulus=2747 svaret **m=2314**.'),
+        p('Med Euler kan du bruke «powers mod» også for y. Fra 2640=2⁴·3·5·11 får du ϕ(2640)=640. '
+          'Siden gcd(1933,2640)=1, gir 1933^640 rest 1. Da er **1933^639 mod 2640 = 997**.'),
+        p('**Hvorfor dekrypteringen virker.** Sjekk m^(xy)≡m modulo p og modulo q hver for seg. '
+          'For en faktor ℓ som deler m, er begge rester 0. Ellers gir Fermat m^(ℓ−1)≡1. '
+          'Fordi ℓ−1 deler xy−1, blir m^(xy)≡m. Da passer begge restene og dermed resten modulo p·q.'),
+    ], source='Canvas · lecture10 og exercise10 · 2021 Q18, Q20 · Delprøve 4'),
+    page('kanal', 'Kodeteori', 'Sannsynlighet for bitfeil',
+         'Binary symmetric channel · no errors · exactly k · at most k · receive a particular word', '', [
+        box('Tell antall sendte bit n. Skriv p for sannsynligheten for én bitfeil, og q=1−p for at '
+            'én bit kommer riktig fram. I en binær symmetrisk kanal antar vi uavhengige bitfeil.'),
+        table(['Ordene i oppgaven', 'Dette skal inn på kalkulatoren'], [
+            ['**No errors**', 'q^n'],
+            ['**Receive r** når w sendes', 'Tell d plasser der w og r er ulike. Regn **p^d·q^(n−d)** for dette bestemte r.'],
+            ['**Exactly k errors**', '**(n nCr k)·p^k·q^(n−k)**. Plassene kan velges på n nCr k måter.'],
+            ['**At most k errors**', 'Legg sammen «exactly» for 0,1,…,k. Ved høyst 2, bruk '
+                                    '**q^n+n·p·q^(n−1)+(n·(n−1)/2)·p²·q^(n−2)** for n≥2.'],
+            ['**At least k errors**', 'Regn 1 minus sannsynligheten for høyst k−1 feil.'],
+        ], [1.37, 3.62]),
+        h('Akkurat én eller to feil, Canvas 11.2'),
+        p('Her sendes **6 kodebiter** med p=0,001, så q=0,999. '
+          'Én feil kan ligge på 6 plasser. To feil kan ligge på **6·5/2=15** ulike par av plasser.'),
+        code('Akkurat 1:  6·0,001·0,999^5   ≈ 0,005970\n'
+             'Akkurat 2:  15·0,001²·0,999^4 ≈ 0,000015'),
+        h('Når oppgaven gir én bestemt mottatt streng'),
+        code('w = 1 0 0 1 1 0 1\n'
+             'r = 0 1 0 1 0 0 1\n'
+             '    ↑ ↑     ↑      d=3 av n=7'),
+        p('Med p=0,111 får dette bestemte r sannsynligheten 0,111³·0,889⁴≈0,0008542. '
+          'For **akkurat tre feil hvor som helst** ganger du også med 7 nCr 3=35.'),
+        h('Tre desimaler fra E-visning'),
+        p('8,542…E−4 betyr 8,542…·10⁻⁴, så flytt komma fire plasser til venstre. '
+          '0,0008542 har 8 som fjerde desimal. Da blir svaret **0.001** med tre desimaler og punktum. '
+          'Avrund først når du har regnet hele svaret.'),
+        h('Kan vi oppdage feilen i øving 11.2?'),
+        p('Kontrollbitene er x=w₁+w₃ og y=w₂+w₄. En feil i en meldingsbit får den tilhørende '
+          'kontrollen til å feile. En feil i x eller y gir også et avvik, så **alle enkeltfeil oppdages**. '
+          'E(1000)=100010 har vekt 2. Dermed er dₘᵢₙ=2. Se side {page:kodeavstand} for avstandsregelen.'),
+    ], source='Canvas · exercise11, Problem 11.2 · Delprøve 4'),
+    page('gruppekode', 'Kodeteori', 'Fra koderegel til G, H og avstand',
+         'Given E · generator matrix · parity check · group code · list codewords · error detection', '', [
+        box('For en lineær koding med radvektorer er **rad i i G = E(meldingen med bare bit i lik 1)**. '
+            'En (n,k)-kode har k meldingsbit og n kodebit. G har k rader og n kolonner.'),
+        h('Eksempel E(w₁w₂)=w₁w₂(w₁+w₂)'),
+        p('Regn med 1+1=0. E(10)=101 gir første rad. E(01)=011 gir andre rad. '
+          'G har identiteten til venstre, så H=[Pᵀ|I] fås ved å legge siste kolonne i G som rad og føye til 1.'),
+        code('G = 1 0 | 1        H = 1 1 | 1\n'
+             '    0 1 | 1'),
+        p('Med r=111 skal siste bit være 1+1=0, men du fikk 1. Syndromet er **1**. '
+          'Alle tre H-kolonnene er 1, så en feil i hvilken som helst enkeltbit gir dette syndromet.'),
+        h('Bevis at kodeordene danner en gruppe'),
+        p('Med **G eller lineære kontrollregler** er E(0)=0 og E(u⊕v)=E(u)⊕E(v), siden du regner '
+          'hver utbit som summer av innbit modulo 2. Derfor er summen av to kodeord et kodeord. '
+          'Hvert kodeord er sin egen invers, siden c⊕c=0.'),
+        p('For en **liste C** sjekker du at nullordet står der, og at XOR av hvert par fra C fortsatt ligger i C. '
+          'Ett par som gir noe utenfor listen, er nok som moteksempel.'),
+        h('Finn den minste avstanden du faktisk trenger'),
+        p('**For en lineær kode**, ta minste vekt blant kodeordene utenom nullordet. '
+          'Eksemplet har {000,011,101,110}, så dₘᵢₙ=2. For en generell kodeliste sammenligner du par av ulike ord. '
+          'Ser du **000000 og 000100** i samme liste, er dₘᵢₙ=1 med én gang.'),
+        p('Du kan alltid **oppdage** opptil dₘᵢₙ−1 feil og **rette** opptil heltallsdelen '
+          'av (dₘᵢₙ−1)/2. For dₘᵢₙ=2 betyr det oppdage 1 og rette 0. '
+          'For dₘᵢₙ=3 betyr det oppdage 2 og rette 1.'),
+        p('Ved **matriseprodukt mod 2** ganger du rad med kolonne, legger sammen produktene og tar rest mod 2. '
+          'For eksempel gir [1 1]·[1 1]ᵀ summen 1+1=0 mod 2.'),
+        p('I **Canvas 12.1(a)** gir oppgavetekstens formel ti kodebit. Med bare w₆=1 får du vekt 1, '
+          'så dₘᵢₙ=1 for den formelen. I fasitens sjubiters paritetskode gir dₘᵢₙ=2. '
+          'Tell bitene i E slik oppgaven oppgir dem.'),
+    ], source='Canvas · exercise11, Problem 11.1–2 · exercise12, Problem 12.1–2'),
 ]

@@ -6,9 +6,9 @@ Nettsiden blir tilgjengelig når Pages er aktivert. Deretter oppdateres den auto
 
 ## MA-224-eksamen
 
-[Last ned forsiden for alle emnene](helpsheets/final-exam/MA224_FORSIDE_OPPSLAG.pdf). Side 1 kobler de 12 handin-emnene til hovedarket, gamle fasiter og handin-vedlegget. Side 2–4 har detaljerte oppslag etter oppgavetype, med løsninger fra 2021–2025 og flere varianter fra handins.
+[Last ned eksamensarket for utskrift (24 sider)](helpsheets/final-exam/MA224_EKSAMEN_PAPIR.pdf). Side 1 viser hvor du finner framgangsmåten til hver oppgavetype. Side 2–15 har eksempler fra de gamle eksamenene og tidslogikk. Side 16–24 dekker flere Canvas-varianter innen relasjoner, rekurrenser, grupper, RSA og kodeteori.
 
-[Last ned eksamensarket for utskrift](helpsheets/final-exam/MA224_EKSAMEN_PAPIR.pdf). Side 1–14 har en sideoversikt, korte framgangsmåter og eksempler fra eksamenene 2021–2025. Side 15 er et tillegg om tidslogikk og semantiske funksjoner.
+[Last ned oppslagsarket til de andre papirene (4 sider)](helpsheets/final-exam/MA224_FORSIDE_OPPSLAG.pdf). Her finner du sidetall i hovedarket, gamle eksamensfasiter fra 2021–2025 og handin-vedlegget. Side 4 viser også hvilke Canvas-oppgaver som passer.
 
 Bygg eksamensarket med `python helpsheets/final-exam/build.py` og førstesiden med `python helpsheets/final-exam/build_front_index.py`. Byggerne bruker DejaVu Sans, DejaVu Sans Mono og Python-avhengighetene i [requirements-filen](helpsheets/test4/requirements.txt).
 

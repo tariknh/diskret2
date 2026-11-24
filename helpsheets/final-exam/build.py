@@ -82,7 +82,7 @@ def grid(headings, rows, weights, cover=False):
              for i, text in enumerate(row)] for row in rows]
     result = Table([header, *body], colWidths=[WIDTH * w / sum(weights) for w in weights],
                    hAlign='LEFT')
-    pad = 5.3 if cover else 4.2
+    pad = 2.8 if cover else 4.2
     result.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), DARK),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
@@ -113,17 +113,13 @@ def callout(text):
 def cover(numbers):
     return [
         paragraph('Eksamensark på papir', 'cover_title'),
-        paragraph('Diskret matematikk 2 · MA-224', 'prompt'),
-        paragraph('Les oppgaven, finn formuleringen i midtkolonnen, og bla til tallet i høyre '
-                  'kolonne. Der finner du framgangsmåten og et regnet eksempel.', 'p'),
+        paragraph(f'Diskret matematikk 2 · {len(PAGES)+1} sider', 'prompt'),
+        paragraph('Finn et ord fra oppgaven i midtkolonnen og bla til siden til høyre.', 'p'),
         grid(['Tema', 'Se etter disse ordene i oppgaven', 'Side'],
              [[f'**{topic}**', clue, str(numbers[key])] for topic, clue, key in INDEX],
              [1.55, 2.95, .49], cover=True),
-        callout('Når oppgaven sier **«prove»**, vis steget som gjør argumentet gyldig. '
-                'Når den sier **«give a counterexample»**, skriv verdiene, regn ut hva som skjer, '
-                'og si hvilket krav som feiler.'),
-        paragraph('Side 1–14 bygger på 70 oppgaver fra MA-224-eksamenene 2021–2025. '
-                  'Tidslogikk står som tillegg på side 15.', 'p'),
+        paragraph('Det separate oppslagsarket viser sidene i gamle eksamensfasiter og handin-vedlegget.',
+                  'table_cell'),
     ]
 
 
@@ -168,8 +164,10 @@ def paint(canvas, doc):
     canvas.setFillColor(MUTED)
     if page is None:
         citation = 'MA-224 · A4 · Oppdatert 24. november 2026'
+    elif page['exams']:
+        citation = f"Sett i {page['exams']}"
     else:
-        citation = f"Sett i {page['exams']}" if page['exams'] else 'Tillegg til eksamensarket · Standard LTL'
+        citation = page['source'] or 'Tillegg til eksamensarket · Standard LTL'
     canvas.drawString(MARGIN + FRAME_PAD, 28, citation)
     canvas.drawRightString(PAGE_W - MARGIN - FRAME_PAD, 28, f'{current} / {len(PAGES)+1}')
     canvas.restoreState()

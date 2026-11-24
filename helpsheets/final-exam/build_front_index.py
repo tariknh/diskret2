@@ -9,6 +9,7 @@ from reportlab.platypus import PageBreak, SimpleDocTemplate, TableStyle
 from build import (BOTTOM_MARGIN, DARK, FRAME_PAD, HEIGHT, INK, MARGIN, MUTED,
                    PAGE_H, PAGE_W, RULE, TOP_MARGIN, grid, height, paragraph,
                    register_fonts)
+from guide import PAGES
 
 
 OUTPUT = Path(__file__).with_name('MA224_FORSIDE_OPPSLAG.pdf')
@@ -40,7 +41,8 @@ class Lookup:
         title = f'**{self.prompt}**'
         if self.keywords:
             title += '\n' + self.keywords
-        return [title, f'**{self.guide}**',
+        pages = '\n'.join(f'**{line}**' for line in self.guide.splitlines())
+        return [title, pages,
                 '\n'.join(x.label() for x in self.solutions) or '–',
                 '\n'.join(self.handins) or '–']
 
@@ -63,25 +65,25 @@ SUBJECTS = [
     L('Programkorrekthet', '7',
       (S(2023, '5', '8'), S(2024, '5', '5')),
       ('H05 · s. 16–18',), 'Refinement, JML, ADT'),
-    L('Relasjoner', '8',
+    L('Relasjoner', '8\n16–17',
       (S(2024, '6', '6–7'), S(2023, '6', '8–9')),
-      ('H06 · s. 19*',), 'Transitive, partial order, equivalence'),
-    L('Rekurrensrelasjoner', '9',
+      ('H06 · s. 19*',), 'Partial order, equivalence, matrix'),
+    L('Rekurrensrelasjoner', '9\n18',
       (S(2024, '7', '7'), S(2025, '7', '9')),
       ('H07 · s. 20–21',), 'Recurrence, initial values, root, period'),
-    L('Grupper og generatorer', '10',
+    L('Grupper og generatorer', '10\n19–21',
       (S(2025, '8', '10'), S(2022, '8', '9')),
-      ('H08 · s. 22–23',), 'Group table, cyclic, order, generator'),
-    L('Sideklasser og Lagrange', '10–11',
+      ('H08 · s. 22–23',), 'Group table, cyclic, D₄, homomorphism'),
+    L('Sideklasser og Lagrange', '10\n20',
       (S(2022, '10', '10'), S(2023, '10', '12–13')),
       ('H09 · s. 24–25',), 'Coset, index, subgroup order'),
-    L('Modulo, totient og RSA', '10–11',
+    L('Modulo, totient og RSA', '11\n22',
       (S(2021, '16–17', '13'), S(2025, '9', '11')),
       ('H10 · s. 26–30',), 'gcd, inverse, φ(n), Fermat, RSA'),
-    L('Kodeord, avstand og kanal', '12',
+    L('Kodeord, avstand og kanal', '12\n23',
       (S(2025, '11', '12'), S(2023, '11', '13–14')),
       ('H11 · s. 31–32',), 'Hamming distance, detect, probability'),
-    L('Gruppekoder og feilretting', '12–13',
+    L('Gruppekoder og feilretting', '13\n24',
       (S(2025, '12', '13'), S(2024, '12', '10')),
       ('H12 · s. 33–34*',), 'Syndrome, parity check, coset leader'),
     L('Turingmaskiner', '14', (S(2021, '7–8', '7–8'),), keywords='Turing machine, watchdog'),
@@ -136,10 +138,10 @@ ADVANCED = [
       ('H07 7.2 · s. 20 (økende)',)),
     L('Group table / identity / element order', '10',
       (S(2025, '8', '10'), S(2021, '15', '12–13')), ('H08 8.2 · s. 22',)),
-    L('Cyclic group / subgroups / group inverse', '10',
+    L('Cyclic group / subgroups / group inverse', '10\n21',
       (S(2022, '8–9', '9–10'), S(2021, '14', '12'), S(2024, '8', '8', hint='Invers'), S(2023, '8', '11')),
       ('H08 8.4–6 · s. 23',)),
-    L('Index / Lagrange / possible orders', '10',
+    L('Index / Lagrange / possible orders', '20',
       (S(2022, '10', '10'), S(2023, '10', '12–13'), S(2025, '10', '11', True),
        S(2024, '10', '8'), S(2021, '19', '14')),
       ('H09 9.4–6 · s. 25',)),
@@ -147,7 +149,7 @@ ADVANCED = [
       (S(2025, '9', '11'), S(2024, '9', '8')), ('H09 9.2 · s. 24', 'H10 10.4–5 · s. 29–30')),
     L('Extended Euclid / inverse / integer solutions', '11',
       (S(2021, '16–17', '13'), S(2023, '9', '12', hint='Heltall')), ('H10 10.1 · s. 26',)),
-    L('Modulo powers / Fermat test', '11',
+    L('Modulo powers / Fermat test', '22',
       (S(2021, '18, 20', '14–15'),), ('H10 10.2 · s. 26–27',)),
     L('Min distance / detect errors', '12',
       (S(2025, '11', '12'), S(2023, '11', '13–14'), S(2021, '21', '15–16')),
@@ -173,29 +175,37 @@ HANDIN_EXTRAS = [
       ('H04 Task 2 · s. 13', 'H04 Task 4–5 · s. 14')),
     L('Why testing is insufficient / abstract data type', '7', (),
       ('H05 Task 2–4 · s. 16',)),
-    L('NOR / relation matrix / partition mod 10 and 20', '8', (),
-      ('H06 6.2–4, 6.6 · s. 19*',)),
-    L('Limit of a sequence / variable coefficients', '–', (),
-      ('H07 7.3–4 · s. 20–21',)),
+    L('Relation matrix / partition / closure', '16', (),
+      ('H06 6.4 · s. 19*', 'Canvas øving 6 · fasit lysbilde 5, 10 og 12')),
+    L('Union / transpose / NOR / lexicographic / same remainder', '17', (),
+      ('H06 6.2, 6.6 · s. 19*', 'Øving 6 · fasit lysb. 3–4, 6–9, 11, 13')),
+    L('First order / variable coefficients / complex roots', '18', (),
+      ('H07 7.1, 7.4 · s. 20–21', 'Canvas øving 7 · Problem 1–3')),
+    L('Limit of a sequence', '–', (), ('H07 7.3 · s. 20',)),
     L('Recurrence for a coin game or bitstrings', '9', (),
       ('H07 7.5–6 · s. 21',)),
-    L('Is S₃ abelian? / subgroup of matrices', '10', (),
-      ('H08 8.1 · s. 22', 'H08 8.6 · s. 23')),
-    L('Compute a coset such as 2 + H', '10', (),
-      ('H09 9.3 · s. 24',)),
-    L('RSA encrypt / decrypt / find private exponent', '11', (),
-      ('H10 10.3 · s. 28–29', 'Delprøve 4 V3 · s. 8–12')),
-    L('Weight ≤ 2 / probability of a bit error', '12', (),
-      ('H11 11.1–2 · s. 31', 'Delprøve 4 V3 · s. 16–18')),
-    L('Prove group code / multiply matrices mod 2', '12–13', (),
-      ('H12 12.2–3 · s. 33–34*',)),
+    L('Is S₃ abelian? / D₄ table', '19', (),
+      ('H08 8.1 · s. 22', 'Canvas øving 8 · Problem 1–6')),
+    L('Subgroup of matrices / homomorphism', '21', (),
+      ('H08 8.6 · s. 23', 'Canvas lecture8 · s. 9–10, 12–14')),
+    L('Compute a coset such as 2 + H', '20', (),
+      ('H09 9.3 · s. 24', 'Canvas lecture9 · s. 1–3')),
+    L('RSA encrypt / decrypt / private exponent', '22', (),
+      ('H10 10.3 · s. 28–29', 'Canvas lecture10 · s. 3–4')),
+    L('At most k errors / probability of receiving r', '23', (),
+      ('H11 11.2 · s. 31', 'Canvas øving 11 · Problem 11.2')),
+    L('G from E / group code / matrices mod 2', '24', (),
+      ('H12 12.2–3 · s. 33–34*', 'Canvas øving 11–12 · Problem 11.1, 12.1–2')),
     L('Temporal logic / semantic functions', '15', ()),
 ]
 
 
-def lookup_table(rows, headings=None, widths=(1.75, .40, 1.62, 1.46)):
+def lookup_table(entries, headings=None, widths=(1.75, .40, 1.62, 1.46), *, include_exams=True):
     headings = headings or ['Se etter i oppgaven', 'Ark', 'Løsning i gammel eksamen', 'Handin-vedlegg']
-    rendered = grid(headings, [lookup.row() for lookup in rows], widths)
+    rows = [lookup.row() for lookup in entries]
+    if not include_exams:
+        rows = [row[:2] + row[3:] for row in rows]
+    rendered = grid(headings, rows, widths)
     rendered.setStyle(TableStyle([
         ('TOPPADDING', (0, 1), (-1, -1), 2.8),
         ('BOTTOMPADDING', (0, 1), (-1, -1), 2.8),
@@ -218,7 +228,8 @@ def paint(canvas, doc, page_count):
     canvas.line(left, 43, right, 43)
     canvas.setFillColor(MUTED)
     canvas.setFont('Main', 8.6)
-    canvas.drawString(left, 28, 'Eksamener 2021–2025 · Eksamensarket på 15 sider · Handin-vedlegget på 34 sider')
+    canvas.drawString(left, 28,
+                      f'Eksamener 2021–2025 · Eksamensarket på {len(PAGES)+1} sider · Handin-vedlegget på 34 sider')
     canvas.restoreState()
 
 
@@ -234,8 +245,8 @@ def build():
                       (2.34, .56, 1.29, 1.04)),
          paragraph('**Ark** = side i hovedarket. **2025 Q1 · s. 1–2** = Problem 1 på side 1–2 i 2025-eksamenen. '
                    '**H01 · s. 2–4** = side 2–4 i handin-vedlegget. * Kun oppgavetekst.\n'
-                   '**Side 2–3** har flere gamle fasiter per oppgavetype. **Side 4** har oppslag for RSA, '
-                   'bitfeilsannsynlighet og flere handin-varianter.',
+                   '**Side 2–3** har flere gamle fasiter per oppgavetype. **Side 4** viser hvor '
+                   'du finner flere varianter i handin-vedlegget og Canvas.',
                    'table_cell')],
         [paragraph('Finn en løst oppgave', 'title'),
          paragraph('Logikk, induksjon, grammatikk, automater, programmer og relasjoner', 'prompt'),
@@ -244,12 +255,11 @@ def build():
          lookup_table(FOUNDATIONS), common_note],
         [paragraph('Rekurrens, grupper og koder', 'title'),
          lookup_table(ADVANCED), common_note],
-        [paragraph('Flere varianter å slå opp', 'title'),
-         paragraph('Her er oppgavetyper der de innsendte handinene eller hjelpearkene gir et nyttig oppslag. '
-                   '«Ark» peker på en grunnmetode når den finnes der. Streken under «gammel eksamen» '
-                   'betyr at vi ikke har et direkte treff i de fem gamle eksamenene.', 'p'),
-         lookup_table(HANDIN_EXTRAS, ['Se etter i oppgaven', 'Ark', 'Gammel fasit', 'Handin-vedlegg'],
-                      (1.9, .56, 1.06, 1.71)), common_note],
+        [paragraph('Flere varianter fra kurset', 'title'),
+         paragraph('«Ark» er siden i eksamensarket. Til høyre finner du flere øvingseksempler.', 'p'),
+         lookup_table(HANDIN_EXTRAS, ['Se etter i oppgaven', 'Ark', 'Handin-vedlegg eller Canvas'],
+                      (2.29, .56, 2.38), include_exams=False),
+         paragraph('* H06 og H12 inneholder oppgavetekst.', 'table_cell')],
     ]
     story = []
     for number, section in enumerate(sections, 1):
