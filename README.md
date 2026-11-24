@@ -6,7 +6,7 @@ Nettsiden blir tilgjengelig når Pages er aktivert. Deretter oppdateres den auto
 
 ## MA-224-eksamen
 
-[Last ned førstesiden med oppslag](helpsheets/final-exam/MA224_FORSIDE_OPPSLAG.pdf). Ett tosidig ark kobler ordlyden i eksamen til siden i hjelpearket, sidetall for løsningsforslag fra 2021–2025 og passende handin-oppgaver.
+[Last ned forsiden for alle emnene](helpsheets/final-exam/MA224_FORSIDE_OPPSLAG.pdf). Side 1 kobler de 12 handin-emnene til hovedarket, gamle fasiter og handin-vedlegget. Side 2–4 har detaljerte oppslag etter oppgavetype, med løsninger fra 2021–2025 og flere varianter fra handins.
 
 [Last ned eksamensarket for utskrift](helpsheets/final-exam/MA224_EKSAMEN_PAPIR.pdf). Side 1–14 har en sideoversikt, korte framgangsmåter og eksempler fra eksamenene 2021–2025. Side 15 er et tillegg om tidslogikk og semantiske funksjoner.
 
