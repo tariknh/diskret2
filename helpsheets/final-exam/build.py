@@ -82,7 +82,7 @@ def grid(headings, rows, weights, cover=False):
              for i, text in enumerate(row)] for row in rows]
     result = Table([header, *body], colWidths=[WIDTH * w / sum(weights) for w in weights],
                    hAlign='LEFT')
-    pad = 7 if cover else 4.2
+    pad = 5.3 if cover else 4.2
     result.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), DARK),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
@@ -122,8 +122,8 @@ def cover(numbers):
         callout('Når oppgaven sier **«prove»**, vis steget som gjør argumentet gyldig. '
                 'Når den sier **«give a counterexample»**, skriv verdiene, regn ut hva som skjer, '
                 'og si hvilket krav som feiler.'),
-        paragraph('Bygger på 70 nummererte oppgaver fra de fem MA-224-eksamenene 2021–2025. '
-                  'Eksemplene følger oppgavetypene som faktisk ble brukt.', 'p'),
+        paragraph('Side 1–14 bygger på 70 oppgaver fra MA-224-eksamenene 2021–2025. '
+                  'Tidslogikk står som tillegg på side 15.', 'p'),
     ]
 
 
@@ -166,7 +166,10 @@ def paint(canvas, doc):
     canvas.line(MARGIN + FRAME_PAD, 43, PAGE_W - MARGIN - FRAME_PAD, 43)
     canvas.setFont('Main', 8.6)
     canvas.setFillColor(MUTED)
-    citation = f"Sett i {page['exams']}" if page else 'MA-224 · Eksamener 2021–2025 · A4'
+    if page is None:
+        citation = 'MA-224 · A4 · Oppdatert 24. november 2026'
+    else:
+        citation = f"Sett i {page['exams']}" if page['exams'] else 'Tillegg til eksamensarket · Standard LTL'
     canvas.drawString(MARGIN + FRAME_PAD, 28, citation)
     canvas.drawRightString(PAGE_W - MARGIN - FRAME_PAD, 28, f'{current} / {len(PAGES)+1}')
     canvas.restoreState()

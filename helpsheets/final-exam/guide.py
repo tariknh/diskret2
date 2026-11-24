@@ -43,6 +43,7 @@ INDEX = [
     ('Kodeavstand og G', 'Detect / correct / choose a generator / minimum weight', 'kodeavstand'),
     ('Syndrom og feilretting', 'Parity check / syndrome / codeword / coset leaders', 'syndrom'),
     ('Turing-maskin og løkker', 'Last 1 on the tape / watchdog / infinite loop', 'maskin'),
+    ('Tillegg: tidslogikk og semantikk', 'Next / eventually / always / until / semantic function', 'tidslogikk'),
 ]
 
 
@@ -81,7 +82,8 @@ PAGES = [
         box('**Skriv tre linjer før du regner.** 1. Vis første tilfelle. 2. Anta påstanden for k (eller t). '
             '3. Bruk definisjonen til å vise neste tilfelle. Marker hvor du bruker antakelsen.'),
         h('Peano: finn hvilken side regelen virker på'),
-        p('Når oppgaven gir s(x)+a=s(x+a), åpner du første argument i +. '
+        p('s(x) betyr etterfølgeren til x, altså tallet etter x. '
+          'Når oppgaven gir s(x)+a=s(x+a), kan du bytte ut venstresiden med høyresiden. '
           'Bruk akkurat definisjonene i oppgaven. Her er 0+a=a og 1=s(0).'),
         code('Vis n+1=s(n).\n'
              'Start:       0+1=1=s(0).\n'
@@ -110,6 +112,8 @@ PAGES = [
     page('grammatikk', 'Grammatikk', 'Derivasjon, tre og tvetydighet',
          'Find a derivation · syntax tree · ambiguous · grammar as a 4-tuple',
          '2021 Q3–4 · 2022 Q3 · 2023 Q3 · 2024 Q3 · 2025 Q3', [
+        p('I regelen A→a er **A en ikke-terminal**, et symbol du kan bytte ut. '
+          '**a er en terminal**, et av tegnene som står i den ferdige strengen.'),
         table(['Når de ber om', 'Gjør dette'], [
             ['Derivasjon', 'Start med startsymbolet. Bytt én ikke-terminal per pil. '
                            'Hvis du har et tre, følg barna til noden. Velg gjerne det venstre symbolet først.'],
@@ -144,7 +148,8 @@ PAGES = [
         box('**Ta én rad og én bokstav av gangen.** Startmengden er ε-lukningen til start. '
             'I en rute følger du først den oppgitte bokstaven fra alle tilstandene i raden. '
             'Så legger du til alle steder du kan nå fra de nye målene med ε.'),
-        p('En ε-lukning inneholder tilstanden du startet i. Følg også kjeder av ε-piler. '
+        p('ε er tom streng. En ε-pil flytter deg uten å lese et tegn. '
+          'ε-lukningen er alle tilstandene du kan nå på den måten, også den du startet i. '
           'En ε-pil har retning. En tilstand uten pil for den aktuelle bokstaven bidrar med ingenting.'),
         h('Slik fyller du én rute, fra 2023'),
         code('A = ε-lukning({1}) = {1,2,4,6,8}.\n'
@@ -238,20 +243,22 @@ PAGES = [
     page('relasjoner', 'Relasjoner', 'Relasjoner, ekvivalens og ordning',
          'Reflexive · symmetric · antisymmetric · transitive · equivalence classes',
          '2021 Q11–12 · 2022 Q6 · 2023 Q6 · 2024 Q6 · 2025 Q6', [
-        table(['Egenskap', 'Skriv dette for å bevise den', 'Moteksempel'], [
-            ['Refleksiv', 'For vilkårlig a, vis aRa.', 'Én a uten aRa.'],
-            ['Symmetrisk', 'Anta aRb. Vis bRa.', 'aRb, men ikke bRa.'],
-            ['Antisymmetrisk', 'Anta aRb og bRa. Vis a=b.', 'Ulike a,b med begge piler.'],
-            ['Transitiv', 'Anta aRb og bRc. Vis aRc.', 'To piler i kjede uten snarvei.'],
-            ['Total / sammenlignbar', 'For alle a,b, vis aRb eller bRa.', 'Ingen av pilene finnes.'],
-        ], [1.25, 1.9, 1.8]),
+        p('**aRb** betyr at paret **(a,b) står i relasjonen R**. I en matrise ser du på '
+          '**rad a, kolonne b**. Finn ett tilfelle som bryter kravet, slik som i høyre kolonne.'),
+        table(['Egenskap', 'Det du skal vise', 'Slik ser et moteksempel ut'], [
+            ['Refleksiv', '(a,a) må stå i R for alle a.', '1 er med i mengden, men (1,1) mangler i R.'],
+            ['Symmetrisk', 'Hvis (a,b) står i R, må (b,a) også stå der.', '(1,2) står i R, men (2,1) mangler.'],
+            ['Antisymmetrisk', 'Hvis (a,b) og (b,a) begge står i R, må a=b.', 'Både (1,2) og (2,1) står i R, og 1≠2.'],
+            ['Transitiv', 'Hvis (a,b) og (b,c) står i R, må (a,c) også stå der.', '(1,2) og (2,3) står i R, men (1,3) mangler.'],
+            ['Sammenlignbar', 'For alle a,b må (a,b) eller (b,a) stå i R.', 'Både (1,2) og (2,1) mangler.'],
+        ], [1.15, 1.85, 2.1]),
         box('**Ekvivalens** = refleksiv + symmetrisk + transitiv. '
             '**Delvis ordning** = refleksiv + antisymmetrisk + transitiv. '
             '**Total ordning** = delvis ordning + alle par kan sammenlignes.'),
         h('Samme paritet, fra 2025'),
-        p('aRb betyr at a+b er partall. a+a=2a gir refleksivitet. a+b=b+a gir symmetri. '
-          'Hvis a+b og b+c er partall, er a+c=(a+b)+(b+c)−2b partall, så R er transitiv. '
-          '1 og 3 har begge piler, så R er ikke antisymmetrisk. Konklusjon: ekvivalens.'),
+        p('Her betyr aRb at a+b er partall. a+a=2a gir refleksivitet. a+b=b+a gir symmetri. '
+          'Hvis a+b og b+c er partall, er a+c=(a+b)+(b+c)−2b partall. Det viser transitivitet. '
+          'Både (1,3) og (3,1) står i R, så antisymmetri feiler. R er en ekvivalensrelasjon.'),
         h('Delelighet, fra 2024'),
         p('a|b betyr b=ak. Refleksiv: a=a·1. Transitiv: b=ak og c=bℓ gir c=a(kℓ). '
           'Antisymmetri: anta også a=bℓ. Hvis a=0, må b=0. Ellers får du a=a·kℓ og k=ℓ=1. '
@@ -262,15 +269,15 @@ PAGES = [
           'Likhet av produkt gir de tre ekvivalensegenskapene. Hvert n forekommer som (1,n), '
           'så det er uendelig mange klasser. Ved «same number of prime factors» teller du med gjentakelser. '
           '12=2·2·3 har tre faktorer.'),
-        p('**Antisymmetri med «a≠b»:** Vis begge retninger. Anta a≠b og aRb. '
-          'Hvis bRa også, tvinger antisymmetri a=b. Omvendt kan begge piler bare finnes '
-          'når a=b. For ordning på par kan du bruke hver egenskap separat på hver koordinat.'),
+        p('**Antisymmetri med «a≠b»:** Hvis a og b er forskjellige, kan ikke både (a,b) '
+          'og (b,a) stå i R. Det er det samme som å si at når begge står der, må a=b. '
+          'For ordning på par kan du sjekke hver koordinat separat.'),
     ]),
     page('rekurrens', 'Rekurrens', 'Fra rekurrens til formel, og tilbake',
          'Initial value problem · find a recurrence · particular solution · periodic',
          '2021 Q13 · 2022 Q7 · 2023 Q7 · 2024 Q7 · 2025 Q7', [
-        box('Skriv hele likningen **a[n]−S·a[n−1]+P·a[n−2]=0**. '
-            'Det karakteristiske polynomet er **r²−S·r+P**. Har du røttene, bruk **S=r₁+r₂** og **P=r₁r₂**.'),
+        box('For **a[n]−S·a[n−1]+P·a[n−2]=0** erstatter du a[n], a[n−1], a[n−2] med **r², r, 1** '
+            'i den rekkefølgen. Løs **r²−S·r+P=0** for å finne røttene. Har du røttene, bruk **S=r₁+r₂** og **P=r₁r₂**.'),
         table(['Røtter', 'Formel for a[n]', 'Bruk a[0] og a[1]'], [
             ['Ulike r₁ og r₂', 'A·r₁ⁿ + B·r₂ⁿ', 'A+B=a[0], A·r₁+B·r₂=a[1]'],
             ['Dobbel rot r≠0', '(A+B·n)·rⁿ', 'A=a[0], B=a[1]/r−A'],
@@ -307,11 +314,16 @@ PAGES = [
             ['Orden til g', 'Regn g, g², g³,… til du får e. Første eksponent er ordenen. '
                           'For + bruker du 0 og g, 2g, 3g,…'],
             ['Syklisk?', 'Finn en g med orden |G|, eller vis at ingen elementer har så høy orden.'],
-            ['Maksimal indeks', 'Velg en tillatt undergruppe H med minst mulig |H|. Indeks [G:H]=|G|/|H|.'],
+            ['Maksimal indeks', 'Indeks [G:H]=|G|/|H| teller sideklassene. Velg en tillatt H med minst mulig |H|.'],
         ], [1.45, 3.4]),
-        h('Regn med orden'),
-        p('I Z/m er ord(a)=m/gcd(m,a). I et direkte produkt tar du minste felles multiplum (lcm) '
-          'av koordinatordenene. I Z/2×Z/3 har (1,1) orden lcm(2,3)=6, så den genererer hele gruppen.'),
+        h('gcd og lcm med små tall'),
+        p('**gcd** er største tall som går opp i begge. 4 har divisorene 1, 2, 4. '
+          '6 har 1, 2, 3, 6. Største treff er 2, så **gcd(4,6)=2**. '
+          '**lcm** er minste positive tall som begge går opp i. Tell 4, 8, 12 og 6, 12. '
+          'Første felles treff er 12, så **lcm(4,6)=12**.'),
+        p('I Z/m er ord(a)=m/gcd(m,a). I Z/2×Z/3 legger du til (1,1) om igjen. Første koordinat '
+          'er 0 hver 2. gang. Andre er 0 hver 3. gang. Begge er 0 første gang ved **6**. '
+          'Da har (1,1) orden lcm(2,3)=6 og genererer alle seks elementene.'),
         p('I Z/3×Z/3 får du én undergruppe {(0,0)} og fire undergrupper {(0,0),v,2v} '
           'med v=(1,0),(0,1),(1,1),(1,2). De andre generatorene gir samme undergrupper. '
           'Alle undergrupper av orden 3 er sykliske. Hele gruppen har orden 9 og er eneste ikke-sykliske.'),
@@ -332,7 +344,8 @@ PAGES = [
          'Euler totient · multiplicative group Pₙ · inverse · integer solutions',
          '2021 Q15–18, Q20 · 2022 Q9 · 2023 Q9–10 · 2024 Q9 · 2025 Q9', [
         h('Tell Pₙ eller vis at gruppen er syklisk'),
-        p('**Pₙ** inneholder tallene 1≤a<n med gcd(a,n)=1. Gruppens orden er φ(n). '
+        p('**Pₙ** inneholder tallene 1≤a<n med gcd(a,n)=1, altså der 1 er eneste felles divisor. '
+          '**φ(n)** er antall tall i Pₙ. '
           'Når n er primtall får du n−1. For en primpotens pᵏ er φ=pᵏ−pᵏ⁻¹. '
           'Generelt: faktoriser n og gang n med (p−1)/p for hvert **ulikt** primtall p.'),
         p('**2024:** φ(1024)=512 fordi n er en 2-potens og bare oddetallene telles. '
@@ -341,7 +354,8 @@ PAGES = [
         p('**Syklisk?** Regn potenser med rest etter hvert steg. I P₅ gir 2,4,3,1 orden 4, '
           'så 2 er generator. I P₈ er gruppen {1,3,5,7}, og alle kvadrater er 1. Da finnes ingen generator.'),
         h('Invers a⁻¹ mod m, med to kolonner'),
-        p('Start med (r,t)=(m,0) og (a,1). Del forrige r på siste r og ta heltallsdelen q. '
+        p('Inversen til a er tallet som gir **rest 1** når du ganger med a og deler på m. '
+          'Start med (r,t)=(m,0) og (a,1). Del forrige r på siste r og ta heltallsdelen q. '
           'I begge kolonner skriver du forrige rad minus q ganger siste rad.'),
         table(['q brukt', 'r', 't'], [
             ['Start', '211', '0'], ['Start', '28', '1'], ['7', '15', '−7'], ['1', '13', '8'],
@@ -366,7 +380,9 @@ PAGES = [
         box('For en lineær kode er **dₘᵢₙ = minste antall 1-ere i et kodeord ulik null**. '
             'Alle feil med opptil t bit oppdages hvis dₘᵢₙ≥t+1. '
             'Alle feil med opptil t bit kan rettes hvis dₘᵢₙ≥2t+1.'),
-        p('For å lage et kodeord wG, legg sammen de radene der w har 1, bit for bit. '
+        p('**Vekt** teller 1-ere i én streng. **Hamming-avstand** teller hvor to strenger er ulike. '
+          '10100 har vekt 2, og avstanden til 11101 er 2 (plass 2 og 5). '
+          'For å lage et kodeord wG, legg sammen de radene der w har 1, bit for bit (⊕). '
           '**To 1-ere blir 0.** For eksempel velger 101 rad 1 og 3. '
           'For en lineær kode er avstanden mellom c og c′ lik vekten til kodeordet c⊕c′. '
           'Derfor holder det å telle 1-ere i de sju ikke-null kodeordene ved tre meldingsbit.'),
@@ -393,8 +409,9 @@ PAGES = [
     page('syndrom', 'Kodeteori', 'Syndrom, H og én bitfeil',
          'Parity check matrix · syndrome · is r a codeword? · coset leaders',
          '2022 Q11 · 2023 Q12 · 2024 Q11–12 · 2025 Q12', [
-        p('For G=[I|P] finner du **H=[Pᵀ|I]**. Les hver kontrollkolonne i G ovenfra og ned og '
-          'legg den som en rad i H. Sett identitetsmatrisen til høyre. Én rad i H gir én kontrollbit.'),
+        p('**r** er det du fikk, **c** er kodeordet som ble sendt, og **e** har 1 på hver plass som ble endret. '
+          'For G=[I|P] finner du **H=[Pᵀ|I]**. Les hver kontrollkolonne i G loddrett og legg den '
+          'som én rad i H. I er matrisen med 1 på diagonalen og 0 ellers.'),
         h('Sammenlign «skal være» og «du fikk», fra 2025'),
         code('G = 1 0 0 | 1 0      H = 1 0 1 | 1 0\n'
              '    0 1 0 | 0 1          0 1 1 | 0 1\n'
@@ -452,5 +469,32 @@ PAGES = [
         p('Grunnlag: de fem opplastede engelske MA-224-eksamenene med løsninger '
           '(november 2021 og desember 2022, 2023, 2024 og 2025). '
           'Oppgavenumre nederst på temasidene viser hvor du kan øve videre.'),
+    ]),
+    page('tidslogikk', 'Tillegg', 'Tidslogikk og semantiske funksjoner',
+         'Temporal logic · next · eventually · always · until · semantic function', '', [
+        box('En **tilstand** forteller hva som er sant akkurat nå. En **kjøring** er en rekke tilstander '
+            'i tidsrekkefølge. Finn først hvilken plass i rekka du skal starte på. Her bruker vi vanlig LTL på én kjøring.'),
+        table(['Hvis du ser', 'Sjekk dette fra plassen du står på'], [
+            ['X p · next · ○p', 'Gå én plass fram. Er p sann akkurat der?'],
+            ['F p · eventually · ◇p', 'Finn minst én plass der p er sann. Plassen du står på teller også.'],
+            ['G p · always · □p', 'p må være sann på alle plasser fra nå av, inkludert denne. Én usann er nok til å svare nei.'],
+            ['p U q · until', 'Finn en plass der q er sann. p må være sann på alle plasser før treffet, fra der du starter. '
+                              'Hvis q er sann nå, er kravet oppfylt nå.'],
+        ], [1.5, 3.7]),
+        h('Se på en tidslinje'),
+        code('Plass:    0     1     2     3     4     …\n'
+             'p:        0     1     0     1     1     …  (1 for alltid fra 3)'),
+        p('Fra plass 0 er **X p sann** (p=1 på plass 1), **F p sann** (du finner en 1-er) og '
+          '**G p usann** (p=0 på plass 0). Fra plass 1 er **X p usann**, fordi p=0 på den neste plassen, altså 2.'),
+        p('**G F p** betyr at du fra hver plass kan finne en p senere eller nå. '
+          '**F G p** betyr at du kan finne en plass der p fortsetter å være sann for alltid. '
+          'Med p=0,1,0,1,… for alltid er **G F p sann** og **F G p usann**.'),
+        h('Semantisk funksjon: hva betyr uttrykket her?'),
+        p('En semantisk funksjon gir betydningen av et uttrykk i en gitt tilstand. '
+          'Hvis σ gir x verdien 4, får vi **⟦x+1⟧(σ)=5**. Klammene «⟦ ⟧» betyr at du regner ut hva som står inni. '
+          'I tidslogikk får du en sannhetsverdi. **⟦X p⟧(i)=⟦p⟧(i+1)** langs kjøringen.'),
+        p('Hvis oppgaven bruker et diagram med flere veier ut og skriver **A** eller **E** foran en operator, '
+          'les A som «på alle veier» og E som «på minst én vei». '
+          'Med to neste tilstander der bare én har p, er **EX p sann** og **AX p usann**.'),
     ]),
 ]

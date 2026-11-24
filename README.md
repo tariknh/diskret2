@@ -6,7 +6,7 @@ Nettsiden blir tilgjengelig når Pages er aktivert. Deretter oppdateres den auto
 
 ## MA-224-eksamen
 
-[Last ned eksamensarket for utskrift](helpsheets/final-exam/MA224_EKSAMEN_PAPIR.pdf). Det er 14 A4-sider med en sideoversikt først, korte framgangsmåter og eksempler fra eksamenene 2021–2025. Tosidig utskrift bruker sju ark.
+[Last ned eksamensarket for utskrift](helpsheets/final-exam/MA224_EKSAMEN_PAPIR.pdf). Side 1–14 har en sideoversikt, korte framgangsmåter og eksempler fra eksamenene 2021–2025. Side 15 er et tillegg om tidslogikk og semantiske funksjoner.
 
 Bygg PDF-en fra `helpsheets/final-exam/guide.py` med `python helpsheets/final-exam/build.py`. Byggeren bruker DejaVu Sans, DejaVu Sans Mono og Python-avhengighetene i [requirements-filen](helpsheets/test4/requirements.txt).
 
